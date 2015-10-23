@@ -7,9 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Web", "Ident
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.DomainModel", "IdentityServer.DomainModel\IdentityServer.DomainModel.csproj", "{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.DomainModel.Repositories", "IdentityServer.DomainModel.Repositories\IdentityServer.DomainModel.Repositories.csproj", "{CF84E13B-2FAF-47DF-8640-704C265064D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EntityFramework", "IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj", "{56B09B36-5CBB-47A9-8AFF-597C4D00104D}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 5
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://reiteristvan.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -19,6 +23,12 @@ Global
 		SccProjectUniqueName2 = IdentityServer.DomainModel\\IdentityServer.DomainModel.csproj
 		SccProjectName2 = IdentityServer.DomainModel
 		SccLocalPath2 = IdentityServer.DomainModel
+		SccProjectUniqueName3 = IdentityServer.DomainModel.Repositories\\IdentityServer.DomainModel.Repositories.csproj
+		SccProjectName3 = IdentityServer.DomainModel.Repositories
+		SccLocalPath3 = IdentityServer.DomainModel.Repositories
+		SccProjectUniqueName4 = IdentityServer.EntityFramework\\IdentityServer.EntityFramework.csproj
+		SccProjectName4 = IdentityServer.EntityFramework
+		SccLocalPath4 = IdentityServer.EntityFramework
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +43,14 @@ Global
 		{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
