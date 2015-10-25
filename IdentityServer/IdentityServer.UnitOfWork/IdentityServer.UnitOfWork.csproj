@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountErrorCodes.cs" />
     <Compile Include="Account\PasswordService.cs" />
+    <Compile Include="Account\Registration.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="RequirementFailedException.cs" />
     <Compile Include="UnitOfWork.cs" />
