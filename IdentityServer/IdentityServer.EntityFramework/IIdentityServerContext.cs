@@ -8,6 +8,8 @@ namespace IdentityServer.EntityFramework
 {
     public interface IIdentityServerContext
     {
+        DbSet<User> Users { get; set; }
+        DbSet<Developer> Developers { get; set; } 
         DbSet<Product> Products { get; set; }
         DbSet<ClientApplication> ClientApplications { get; set; }
         Database Database { get; }
