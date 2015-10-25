@@ -8,21 +8,21 @@ namespace IdentityServer.UnitOfWork
 {
     public abstract class UnitOfWork : IDisposable
     {
-        protected readonly IIdentityServerContext _IdentityServerContext;
+        protected readonly IIdentityServerContext _identityServerContext;
         protected readonly DbContextTransaction _transaction;
 
         protected UnitOfWork(IIdentityServerContext identityServerContext,
                              IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            _IdentityServerContext = identityServerContext;
-            _transaction = _IdentityServerContext.Database.BeginTransaction(isolationLevel);
+            _identityServerContext = identityServerContext;
+            _transaction = _identityServerContext.Database.BeginTransaction(isolationLevel);
         }
 
         public async Task Commit()
         {
             try
             {
-                await _IdentityServerContext.SaveChangesAsync();
+                await _identityServerContext.SaveChangesAsync();
                 _transaction.Commit();
             }
             catch (Exception)
