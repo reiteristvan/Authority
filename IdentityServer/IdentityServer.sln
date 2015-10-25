@@ -11,9 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.DomainModel.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EntityFramework", "IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj", "{56B09B36-5CBB-47A9-8AFF-597C4D00104D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.UnitOfWork", "IdentityServer.UnitOfWork\IdentityServer.UnitOfWork.csproj", "{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
+		SccNumberOfProjects = 6
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://reiteristvan.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -29,6 +31,9 @@ Global
 		SccProjectUniqueName4 = IdentityServer.EntityFramework\\IdentityServer.EntityFramework.csproj
 		SccProjectName4 = IdentityServer.EntityFramework
 		SccLocalPath4 = IdentityServer.EntityFramework
+		SccProjectUniqueName5 = IdentityServer.UnitOfWork\\IdentityServer.UnitOfWork.csproj
+		SccProjectName5 = IdentityServer.UnitOfWork
+		SccLocalPath5 = IdentityServer.UnitOfWork
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +56,10 @@ Global
 		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
