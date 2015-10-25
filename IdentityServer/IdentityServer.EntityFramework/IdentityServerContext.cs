@@ -19,6 +19,7 @@ namespace IdentityServer.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<Developer> Developers { get; set; } 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Claim> Claims { get; set; } 
         public DbSet<ClientApplication> ClientApplications { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
