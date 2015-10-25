@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using IdentityServer.DomainModel;
 using IdentityServer.EntityFramework.Configurations;
@@ -18,11 +16,15 @@ namespace IdentityServer.EntityFramework
             
         }
 
+        public DbSet<User> Users { get; set; }
+        public DbSet<Developer> Developers { get; set; } 
         public DbSet<Product> Products { get; set; }
         public DbSet<ClientApplication> ClientApplications { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new DeveloperConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());
             modelBuilder.Configurations.Add(new ClientApplicationConfiguration());
 

@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\ClientApplicationConfiguration.cs" />
+    <Compile Include="Configurations\DeveloperConfiguration.cs" />
     <Compile Include="Configurations\ProductConfiguration.cs" />
+    <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="IdentityServerContext.cs" />
     <Compile Include="IIdentityServerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
