@@ -11,7 +11,9 @@ namespace IdentityServer.EntityFramework.Configurations
 
             HasKey(e => e.Id);
 
-            Property(p => p.Name).HasMaxLength(128);
+            Property(p => p.Name).IsRequired().HasMaxLength(128);
+
+            HasMany(p => p.Claims);
         }
     }
 }

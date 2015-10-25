@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity.ModelConfiguration;
 using IdentityServer.DomainModel;
 
 namespace IdentityServer.EntityFramework.Configurations
@@ -13,6 +8,13 @@ namespace IdentityServer.EntityFramework.Configurations
         public UserConfiguration()
         {
             ToTable("Users");
+
+            HasKey(e => e.Id);
+
+            Property(u => u.Email).IsRequired().HasMaxLength(256);
+            Property(u => u.Username).IsRequired().HasMaxLength(128);
+
+            HasMany(u => u.Claims);
         }
     }
 }

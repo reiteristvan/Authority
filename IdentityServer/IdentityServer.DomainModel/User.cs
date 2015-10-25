@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace IdentityServer.DomainModel
 {
     public class User : EntityBase
     {
+        public User()
+        {
+            Claims = new HashSet<Claim>();
+        }
+
         public string Email { get; set; }
 
         public string Username { get; set; }
@@ -23,5 +29,7 @@ namespace IdentityServer.DomainModel
         public string ExternalToken { get; set; }
 
         public bool IsActive { get; set; }
+
+        public ICollection<Claim> Claims { get; set; } 
     }
 }
