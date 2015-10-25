@@ -10,7 +10,7 @@ using IdentityServer.EntityFramework.Configurations;
 
 namespace IdentityServer.EntityFramework
 {
-    public sealed class IdentityServerContext : DbContext
+    public sealed class IdentityServerContext : DbContext, IIdentityServerContext
     {
         public IdentityServerContext()
             : base("IdentityServerConnection")
