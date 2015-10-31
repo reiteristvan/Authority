@@ -13,7 +13,7 @@ namespace IdentityServer.EntityFramework.Configurations
 
             Property(p => p.Name).IsRequired().HasMaxLength(128);
 
-            HasMany(p => p.Claims);
+            HasMany(p => p.Policies);
         }
     }
 }
