@@ -19,6 +19,7 @@ namespace IdentityServer.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<Developer> Developers { get; set; } 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Policy> Policies { get; set; } 
         public DbSet<Claim> Claims { get; set; } 
         public DbSet<ClientApplication> ClientApplications { get; set; }
 
@@ -27,6 +28,8 @@ namespace IdentityServer.EntityFramework
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new DeveloperConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());
+            modelBuilder.Configurations.Add(new ClaimConfiguration());
+            modelBuilder.Configurations.Add(new PolicyConfiguration());
             modelBuilder.Configurations.Add(new ClientApplicationConfiguration());
 
             base.OnModelCreating(modelBuilder);

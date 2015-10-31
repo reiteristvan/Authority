@@ -6,11 +6,11 @@ namespace IdentityServer.DomainModel
     {
         public Product()
         {
-            Claims = new HashSet<Claim>();
+            Policies = new HashSet<Policy>();
         }
 
         public string Name { get; set; }
 
-        public ICollection<Claim> Claims { get; set; } 
+        public ICollection<Policy> Policies { get; set; } 
     }
 }
