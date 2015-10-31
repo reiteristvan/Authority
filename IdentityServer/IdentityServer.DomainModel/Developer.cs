@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace IdentityServer.DomainModel
 {
-    public class Developer
+    public class Developer : EntityBase
     {
         public Developer()
         {
