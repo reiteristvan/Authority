@@ -1,4 +1,8 @@
-﻿namespace IdentityServer.UnitOfWork.Account
+﻿using System.Collections.Generic;
+using System.Linq;
+using IdentityServer.DomainModel;
+
+namespace IdentityServer.UnitOfWork.Account
 {
     // 1XXX
     public static class AccountErrorCodes
