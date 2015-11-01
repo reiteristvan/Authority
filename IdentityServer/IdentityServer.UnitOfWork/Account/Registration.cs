@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IdentityServer.DomainModel;
 using IdentityServer.EntityFramework;
+using IdentityServer.UnitOfWork.Utilities;
 
 namespace IdentityServer.UnitOfWork.Account
 {
