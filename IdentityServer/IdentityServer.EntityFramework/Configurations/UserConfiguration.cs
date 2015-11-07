@@ -11,8 +11,13 @@ namespace IdentityServer.EntityFramework.Configurations
 
             HasKey(e => e.Id);
 
-            Property(u => u.Email).IsRequired().HasMaxLength(256);
-            Property(u => u.Username).IsRequired().HasMaxLength(128);
+            Property(u => u.Email).IsRequired().HasMaxLength(128);
+            Property(u => u.Username).IsRequired().HasMaxLength(64);
+            Property(d => d.PasswordHash).IsRequired().HasMaxLength(128);
+            Property(d => d.Salt).IsRequired().HasMaxLength(128);
+            Property(d => d.IsPending).IsRequired();
+            Property(d => d.IsActive).IsRequired();
+            Property(d => d.PendingRegistrationId).IsRequired();
 
             HasMany(u => u.Claims);
         }
