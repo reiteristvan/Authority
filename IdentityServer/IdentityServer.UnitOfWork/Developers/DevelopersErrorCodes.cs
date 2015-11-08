@@ -5,5 +5,6 @@
     {
         public static int EmailAlreadyExists = 1000;
         public static int DisplayNameNotAvailable = 1001;
+        public static int FailedActivation = 1002;
     }
 }

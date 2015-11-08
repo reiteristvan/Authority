@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Account\AccountErrorCodes.cs" />
     <Compile Include="Account\Registration.cs" />
+    <Compile Include="Developers\DeveloperActivation.cs" />
     <Compile Include="Developers\DeveloperRegistration.cs" />
     <Compile Include="Developers\DevelopersErrorCodes.cs" />
     <Compile Include="Requirement.cs" />
