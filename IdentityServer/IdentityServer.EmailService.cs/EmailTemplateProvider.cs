@@ -26,7 +26,7 @@ namespace IdentityServer.EmailService.cs
 
             string emailTemplatePath = _emailSettingsProvider.TemplateFolderPath + "/" + templateAttribute.TemplateName + ".cshtml";
             string template = File.ReadAllText(emailTemplatePath);
-            string body = Engine.Razor.RunCompile(template, model.GetType(), model);
+            string body = Engine.Razor.RunCompile(template, model.GetHashCode().ToString(), model.GetType(), model);
             return body;
         }
     }
