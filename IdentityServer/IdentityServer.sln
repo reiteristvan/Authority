@@ -17,9 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Services", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EmailService.cs", "IdentityServer.EmailService.cs\IdentityServer.EmailService.cs.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Tests", "IdentityServer.Tests\IdentityServer.Tests.csproj", "{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://reiteristvan.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -44,6 +46,9 @@ Global
 		SccProjectUniqueName7 = IdentityServer.EmailService.cs\\IdentityServer.EmailService.cs.csproj
 		SccProjectName7 = IdentityServer.EmailService.cs
 		SccLocalPath7 = IdentityServer.EmailService.cs
+		SccProjectUniqueName8 = IdentityServer.Tests\\IdentityServer.Tests.csproj
+		SccProjectName8 = IdentityServer.Tests
+		SccLocalPath8 = IdentityServer.Tests
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +83,10 @@ Global
 		{713F8D1A-3927-47C2-A37C-F9D36F28AE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{713F8D1A-3927-47C2-A37C-F9D36F28AE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{713F8D1A-3927-47C2-A37C-F9D36F28AE63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
