@@ -1,4 +1,5 @@
-﻿using IdentityServer.EntityFramework;
+﻿using IdentityServer.EmailService.cs;
+using IdentityServer.EntityFramework;
 using Microsoft.Practices.Unity;
 
 namespace IdentityServer.Web.Infrastructure
@@ -10,6 +11,8 @@ namespace IdentityServer.Web.Infrastructure
             UnityContainer container = new UnityContainer();
 
             container.RegisterType<IIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
+
+            container.RegisterType<IEmailSettingsProvider, EmailSettingsProvider>(new ContainerControlledLifetimeManager());
 
             return container;
         }
