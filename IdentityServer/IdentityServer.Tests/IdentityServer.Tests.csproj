@@ -74,9 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer.EmailService.cs\IdentityServer.EmailService.cs.csproj">
+    <ProjectReference Include="..\IdentityServer.EmailService.cs\IdentityServer.EmailService.csproj">
       <Project>{713f8d1a-3927-47c2-a37c-f9d36f28ae63}</Project>
-      <Name>IdentityServer.EmailService.cs</Name>
+      <Name>IdentityServer.EmailService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

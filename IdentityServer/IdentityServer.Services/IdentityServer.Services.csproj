@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeveloperAccountServices.cs" />
+    <Compile Include="DeveloperService.cs" />
+    <Compile Include="IConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +55,10 @@
     <ProjectReference Include="..\IdentityServer.DomainModel\IdentityServer.DomainModel.csproj">
       <Project>{ea0a007e-85b0-4048-8b54-b4b712c4edc7}</Project>
       <Name>IdentityServer.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IdentityServer.EmailService.cs\IdentityServer.EmailService.csproj">
+      <Project>{713F8D1A-3927-47C2-A37C-F9D36F28AE63}</Project>
+      <Name>IdentityServer.EmailService</Name>
     </ProjectReference>
     <ProjectReference Include="..\IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj">
       <Project>{56b09b36-5cbb-47a9-8aff-597c4d00104d}</Project>
