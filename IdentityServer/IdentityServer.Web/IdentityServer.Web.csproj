@@ -152,13 +152,16 @@
     <Compile Include="Areas\Developers\Models\LoginModel.cs" />
     <Compile Include="Areas\Developers\Models\RegisterModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\DependencyRegistrations.cs" />
     <Compile Include="Infrastructure\EmailSettingsProvider.cs" />
+    <Compile Include="Models\Developers\RegisterModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +196,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Developers\Index.cshtml" />
+    <Content Include="Views\Developers\Register.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -208,13 +213,17 @@
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer.EmailService.cs\IdentityServer.EmailService.cs.csproj">
+    <ProjectReference Include="..\IdentityServer.EmailService.cs\IdentityServer.EmailService.csproj">
       <Project>{713f8d1a-3927-47c2-a37c-f9d36f28ae63}</Project>
-      <Name>IdentityServer.EmailService.cs</Name>
+      <Name>IdentityServer.EmailService</Name>
     </ProjectReference>
     <ProjectReference Include="..\IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj">
       <Project>{56b09b36-5cbb-47a9-8aff-597c4d00104d}</Project>
       <Name>IdentityServer.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IdentityServer.Services\IdentityServer.Services.csproj">
+      <Project>{25C54590-0C96-4878-8E6D-C0496D77D45B}</Project>
+      <Name>IdentityServer.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

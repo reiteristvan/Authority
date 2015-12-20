@@ -57,6 +57,7 @@
     <Compile Include="Developers\DeveloperActivation.cs" />
     <Compile Include="Developers\DeveloperRegistration.cs" />
     <Compile Include="Developers\DevelopersErrorCodes.cs" />
+    <Compile Include="Policies\CreatePolicy.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="RequirementFailedException.cs" />
     <Compile Include="UnitOfWork.cs" />

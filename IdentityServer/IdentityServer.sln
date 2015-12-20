@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.UnitOfWork",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Services", "IdentityServer.Services\IdentityServer.Services.csproj", "{25C54590-0C96-4878-8E6D-C0496D77D45B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EmailService.cs", "IdentityServer.EmailService.cs\IdentityServer.EmailService.cs.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EmailService", "IdentityServer.EmailService.cs\IdentityServer.EmailService.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Tests", "IdentityServer.Tests\IdentityServer.Tests.csproj", "{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}"
 EndProject
@@ -43,12 +43,12 @@ Global
 		SccProjectUniqueName6 = IdentityServer.Services\\IdentityServer.Services.csproj
 		SccProjectName6 = IdentityServer.Services
 		SccLocalPath6 = IdentityServer.Services
-		SccProjectUniqueName7 = IdentityServer.EmailService.cs\\IdentityServer.EmailService.cs.csproj
-		SccProjectName7 = IdentityServer.EmailService.cs
-		SccLocalPath7 = IdentityServer.EmailService.cs
-		SccProjectUniqueName8 = IdentityServer.Tests\\IdentityServer.Tests.csproj
-		SccProjectName8 = IdentityServer.Tests
-		SccLocalPath8 = IdentityServer.Tests
+		SccProjectUniqueName7 = IdentityServer.Tests\\IdentityServer.Tests.csproj
+		SccProjectName7 = IdentityServer.Tests
+		SccLocalPath7 = IdentityServer.Tests
+		SccProjectUniqueName8 = IdentityServer.EmailService.cs\\IdentityServer.EmailService.csproj
+		SccProjectName8 = IdentityServer.EmailService.cs
+		SccLocalPath8 = IdentityServer.EmailService.cs
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
