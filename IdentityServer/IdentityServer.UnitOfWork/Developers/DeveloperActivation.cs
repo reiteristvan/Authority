@@ -6,7 +6,7 @@ using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork.Developers
 {
-    public sealed class DeveloperActivation : UnitOfWork
+    public sealed class DeveloperActivation : Operation
     {
         public DeveloperActivation(IIdentityServerContext identityServerContext)
             : base(identityServerContext)

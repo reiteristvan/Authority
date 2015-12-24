@@ -8,7 +8,7 @@ using IdentityServer.UnitOfWork.Utilities;
 
 namespace IdentityServer.UnitOfWork.Account
 {
-    public sealed class Registration : UnitOfWork
+    public sealed class Registration : Operation
     {
         private readonly PasswordService _passwordService;
 

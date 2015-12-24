@@ -60,6 +60,7 @@
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="IdentityServerContext.cs" />
     <Compile Include="IIdentityServerContext.cs" />
+    <Compile Include="ISafeIdentityServerContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

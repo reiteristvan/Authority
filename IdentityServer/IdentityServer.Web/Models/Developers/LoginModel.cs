@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IdentityServer.Web.Areas.Developers.Models
+namespace IdentityServer.Web.Models.Developers
 {
     public sealed class LoginModel
     {
