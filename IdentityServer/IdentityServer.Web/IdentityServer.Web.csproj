@@ -146,11 +146,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Areas\Developers\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Developers\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Developers\DevelopersAreaRegistration.cs" />
-    <Compile Include="Areas\Developers\Models\LoginModel.cs" />
-    <Compile Include="Areas\Developers\Models\RegisterModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -161,6 +156,9 @@
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\DependencyRegistrations.cs" />
     <Compile Include="Infrastructure\EmailSettingsProvider.cs" />
+    <Compile Include="Infrastructure\Identity\DeveloperPrincipal.cs" />
+    <Compile Include="Infrastructure\Identity\IDeveloperPrincipal.cs" />
+    <Compile Include="Models\Developers\LoginModel.cs" />
     <Compile Include="Models\Developers\RegisterModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -175,8 +173,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Developers\Views\Account\SignUp.cshtml" />
-    <Content Include="Areas\Developers\Views\Account\LogIn.cshtml" />
     <Content Include="EmailTemplates\DeveloperActivation.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -198,6 +194,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Developers\Index.cshtml" />
     <Content Include="Views\Developers\Register.cshtml" />
+    <Content Include="Views\Developers\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -225,18 +222,6 @@
       <Project>{25C54590-0C96-4878-8E6D-C0496D77D45B}</Project>
       <Name>IdentityServer.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Developers\Views\web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Developers\Views\_ViewStart.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Developers\Views\Shared\_Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Developers\Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

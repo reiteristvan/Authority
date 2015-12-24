@@ -39,5 +39,11 @@ namespace IdentityServer.Services
                 ActivationUrl = string.Format(_configuration.DeveloperActivationEmailTemplate, developer.PendingRegistrationId)
             });
         }
+
+        public async Task<bool> Login(string email, string password)
+        {
+            DeveloperLogin operation = new DeveloperLogin(_identityServerContext);
+            return await operation.ValidateLogin(email, password);
+        }
     }
 }

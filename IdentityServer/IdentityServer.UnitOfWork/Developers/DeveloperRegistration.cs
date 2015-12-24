@@ -8,7 +8,7 @@ using IdentityServer.UnitOfWork.Utilities;
 
 namespace IdentityServer.UnitOfWork.Developers
 {
-    public sealed class DeveloperRegistration : UnitOfWork
+    public sealed class DeveloperRegistration : Operation
     {
         private readonly PasswordService _passwordService;
 
@@ -35,7 +35,8 @@ namespace IdentityServer.UnitOfWork.Developers
                 PasswordHash = Convert.ToBase64String(hashBytes),
                 IsActive = true,
                 IsPending = true,
-                PendingRegistrationId = Guid.NewGuid()
+                PendingRegistrationId = Guid.NewGuid(),
+                Created = DateTime.UtcNow
             };
 
             _identityServerContext.Developers.Add(developer);

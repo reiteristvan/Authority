@@ -6,12 +6,12 @@ using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork
 {
-    public abstract class UnitOfWork : IDisposable
+    public abstract class Operation : IDisposable
     {
         protected readonly IIdentityServerContext _identityServerContext;
         protected readonly DbContextTransaction _transaction;
 
-        protected UnitOfWork(IIdentityServerContext identityServerContext,
+        protected Operation(IIdentityServerContext identityServerContext,
                              IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
             _identityServerContext = identityServerContext;

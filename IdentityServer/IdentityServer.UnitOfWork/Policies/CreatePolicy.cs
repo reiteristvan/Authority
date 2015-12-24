@@ -5,7 +5,7 @@ using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork.Policies
 {
-    public class CreatePolicy : UnitOfWork
+    public class CreatePolicy : Operation
     {
         public CreatePolicy(IIdentityServerContext identityServerContext)
             : base(identityServerContext)

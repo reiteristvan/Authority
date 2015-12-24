@@ -10,6 +10,7 @@ namespace IdentityServer.DomainModel
         }
 
         public string Name { get; set; }
+        public bool IsPublic { get; set; }
 
         public ICollection<Policy> Policies { get; set; }
     }

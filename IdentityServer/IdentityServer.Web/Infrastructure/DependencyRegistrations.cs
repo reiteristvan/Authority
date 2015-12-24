@@ -12,6 +12,7 @@ namespace IdentityServer.Web.Infrastructure
             UnityContainer container = new UnityContainer();
 
             container.RegisterType<IIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
+            container.RegisterType<ISafeIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
 
             container.RegisterType<IEmailSettingsProvider, EmailSettingsProvider>(new ContainerControlledLifetimeManager());
 

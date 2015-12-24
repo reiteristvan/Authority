@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using IdentityServer.Services;
-using IdentityServer.Web.Areas.Developers.Models;
+using IdentityServer.Web.Models.Developers;
 
 namespace IdentityServer.Web.Controllers
 {
@@ -33,9 +33,16 @@ namespace IdentityServer.Web.Controllers
         [Route("register")]
         public async Task<ActionResult> Register(RegisterModel model)
         {
-            await _developerService.Register(model.Email, model.DisplayName, model.Password);
+            await _developerService.Register(model.Email, model.Username, model.Password);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("login")]
+        public ActionResult Login(LoginModel model)
+        {
+            return View();
         }
     }
 }
