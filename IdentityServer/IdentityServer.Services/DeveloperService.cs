@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using IdentityServer.DomainModel;
 using IdentityServer.EmailService.cs;
 using IdentityServer.EmailService.cs.Models;
@@ -7,9 +9,22 @@ using IdentityServer.UnitOfWork.Developers;
 
 namespace IdentityServer.Services
 {
+    public sealed class LoginResult
+    {
+        public LoginResult()
+        {
+            IsSuccess = false;
+        }
+
+        public bool IsSuccess { get; set; }
+        public string Email { get; set; }
+        public Guid Id { get; set; }
+    }
+
     public interface IDeveloperService
     {
         Task Register(string email, string displayName, string password);
+        Task<LoginResult> Login(string email, string password);
     }
 
     public sealed class DeveloperService : IDeveloperService
@@ -40,10 +55,23 @@ namespace IdentityServer.Services
             });
         }
 
-        public async Task<bool> Login(string email, string password)
+        public async Task<LoginResult> Login(string email, string password)
         {
+            LoginResult result = new LoginResult();
             DeveloperLogin operation = new DeveloperLogin(_identityServerContext);
-            return await operation.ValidateLogin(email, password);
+            
+            if (!await operation.ValidateLogin(email, password))
+            {
+                return result;
+            }
+
+            result.IsSuccess = true;
+            result.Email = email;
+
+            Developer developer = await _identityServerContext.Developers.FirstAsync(d => d.Email == email);
+            result.Id = developer.Id;
+
+            return result;
         }
     }
 }

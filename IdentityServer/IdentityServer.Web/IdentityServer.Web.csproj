@@ -156,7 +156,9 @@
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\DependencyRegistrations.cs" />
     <Compile Include="Infrastructure\EmailSettingsProvider.cs" />
+    <Compile Include="Infrastructure\Identity\CookieProvider.cs" />
     <Compile Include="Infrastructure\Identity\DeveloperPrincipal.cs" />
+    <Compile Include="Infrastructure\Identity\DeveloperPrincipalSerializable.cs" />
     <Compile Include="Infrastructure\Identity\IDeveloperPrincipal.cs" />
     <Compile Include="Models\Developers\LoginModel.cs" />
     <Compile Include="Models\Developers\RegisterModel.cs" />
