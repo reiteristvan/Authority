@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -40,6 +41,16 @@ namespace IdentityServer.Web.Controllers
         public async Task<ActionResult> Register(RegisterModel model)
         {
             await _developerService.Register(model.Email, model.Username, model.Password);
+
+            return RedirectToAction("Login");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("activation/{activationCode}")]
+        public async Task<ActionResult> Activate(Guid activationCode)
+        {
+            await _developerService.Activation(activationCode);
 
             return RedirectToAction("Login");
         }
