@@ -1,9 +1,15 @@
-﻿using System.Web;
+﻿using System;
+using System.Linq;
+using System.Threading;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 using IdentityServer.Web.Infrastructure;
+using IdentityServer.Web.Infrastructure.Identity;
 using Microsoft.Practices.Unity.Mvc;
+using Newtonsoft.Json;
 
 namespace IdentityServer.Web
 {
@@ -17,6 +23,29 @@ namespace IdentityServer.Web
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(DependencyRegistrations.Register()));
+        }
+
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            if (!HttpContext.Current.Request.Cookies.AllKeys.Contains(FormsAuthentication.FormsCookieName))
+            {
+                return;
+            }
+
+            HttpCookie authCookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+
+            DeveloperPrincipalSerializable userData = JsonConvert.DeserializeObject<DeveloperPrincipalSerializable>(ticket.UserData);
+
+            if (userData == null)
+            {
+                return;
+            }
+
+            DeveloperPrincipal principal = new DeveloperPrincipal(userData.Id, userData.Email);
+
+            Thread.CurrentPrincipal = principal;
+            HttpContext.Current.User = principal;
         }
     }
 }
