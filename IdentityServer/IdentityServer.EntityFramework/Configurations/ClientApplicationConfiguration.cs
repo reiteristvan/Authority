@@ -11,11 +11,12 @@ namespace IdentityServer.EntityFramework.Configurations
 
             HasKey(e => e.Id);
 
-            Property(c => c.Name).HasMaxLength(128);
-            Property(c => c.ApplicationId).HasMaxLength(128);
-            Property(c => c.ApplicationSecret).HasMaxLength(128);
-            Property(c => c.RedirectUrl).HasMaxLength(128);
-            Property(c => c.IsEnabled);
+            Property(c => c.Name).IsRequired().HasMaxLength(128);
+            Property(c => c.ApplicationId).IsRequired().HasMaxLength(128);
+            Property(c => c.ApplicationSecret).IsRequired().HasMaxLength(128);
+            Property(c => c.RedirectUrl).IsRequired().HasMaxLength(128);
+            Property(c => c.IsEnabled).IsRequired();
+            Property(c => c.IsPublic).IsRequired();
             
             HasRequired(c => c.Product);
         }
