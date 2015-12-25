@@ -64,8 +64,8 @@
       <Project>{ea0a007e-85b0-4048-8b54-b4b712c4edc7}</Project>
       <Name>IdentityServer.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IdentityServer.EmailService.cs\IdentityServer.EmailService.csproj">
-      <Project>{713F8D1A-3927-47C2-A37C-F9D36F28AE63}</Project>
+    <ProjectReference Include="..\IdentityServer.EmailService\IdentityServer.EmailService.csproj">
+      <Project>{713f8d1a-3927-47c2-a37c-f9d36f28ae63}</Project>
       <Name>IdentityServer.EmailService</Name>
     </ProjectReference>
     <ProjectReference Include="..\IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj">
