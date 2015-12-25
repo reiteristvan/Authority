@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.UnitOfWork",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Services", "IdentityServer.Services\IdentityServer.Services.csproj", "{25C54590-0C96-4878-8E6D-C0496D77D45B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EmailService", "IdentityServer.EmailService.cs\IdentityServer.EmailService.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EmailService", "IdentityServer.EmailService\IdentityServer.EmailService.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Tests", "IdentityServer.Tests\IdentityServer.Tests.csproj", "{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}"
 EndProject

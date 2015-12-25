@@ -1,4 +1,4 @@
-﻿using IdentityServer.EmailService.cs;
+﻿using IdentityServer.EmailService;
 using IdentityServer.EntityFramework;
 using IdentityServer.Services;
 using Microsoft.Practices.Unity;
