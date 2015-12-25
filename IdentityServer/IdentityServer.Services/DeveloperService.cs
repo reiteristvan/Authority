@@ -24,6 +24,7 @@ namespace IdentityServer.Services
     public interface IDeveloperService
     {
         Task Register(string email, string displayName, string password);
+        Task Activation(Guid activationCode);
         Task<LoginResult> Login(string email, string password);
     }
 
@@ -72,6 +73,13 @@ namespace IdentityServer.Services
             result.Id = developer.Id;
 
             return result;
+        }
+
+        public async Task Activation(Guid activationCode)
+        {
+            DeveloperActivation operation = new DeveloperActivation(_identityServerContext);
+            await operation.Activation(activationCode);
+            await operation.Commit();
         }
     }
 }
