@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace IdentityServer.EntityFramework
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new DeveloperConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());

@@ -61,6 +61,11 @@
     <Compile Include="IdentityServerContext.cs" />
     <Compile Include="IIdentityServerContext.cs" />
     <Compile Include="ISafeIdentityServerContext.cs" />
+    <Compile Include="Migrations\201512251447578_Seed.cs" />
+    <Compile Include="Migrations\201512251447578_Seed.Designer.cs">
+      <DependentUpon>201512251447578_Seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +77,14 @@
       <Project>{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}</Project>
       <Name>IdentityServer.DomainModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512251447578_Seed.resx">
+      <DependentUpon>201512251447578_Seed.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migrations.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

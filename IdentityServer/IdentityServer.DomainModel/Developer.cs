@@ -23,6 +23,7 @@ namespace IdentityServer.DomainModel
         public Guid PendingRegistrationId { get; set; }
 
         public bool IsActive { get; set; }
+
         public DateTime Created { get; set; }
 
         public ICollection<ClientApplication> Applications { get; set; } 
