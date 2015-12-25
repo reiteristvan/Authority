@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using IdentityServer.Services;
+using IdentityServer.Web.Infrastructure.Identity;
 using IdentityServer.Web.Models.Developers;
 
 namespace IdentityServer.Web.Controllers
@@ -15,6 +18,7 @@ namespace IdentityServer.Web.Controllers
             _developerService = developerService;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("index")]
         public ActionResult Index()
@@ -22,6 +26,7 @@ namespace IdentityServer.Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("register")]
         public ActionResult Register()
@@ -29,20 +34,49 @@ namespace IdentityServer.Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             await _developerService.Register(model.Email, model.Username, model.Password);
 
+            return RedirectToAction("Login");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("login")]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("login")]
+        public async Task<ActionResult> Login(LoginModel model)
+        {
+            LoginResult loginResult = await _developerService.Login(model.Email, model.Password);
+
+            if (!loginResult.IsSuccess)
+            {
+                return RedirectToAction("Login");
+            }
+
+            HttpCookie cookie = CookieProvider.Create(loginResult.Id, loginResult.Email);
+            HttpContext.Response.Cookies.Add(cookie);
+
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         [HttpGet]
-        [Route("login")]
-        public ActionResult Login(LoginModel model)
+        [Route("logout")]
+        public ActionResult LogOut()
         {
-            return View();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }
