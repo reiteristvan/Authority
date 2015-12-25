@@ -1,5 +1,5 @@
 ﻿using System;
-using IdentityServer.EmailService.cs;
+using IdentityServer.EmailService;
 using IdentityServer.Tests.EmailService.Models;
 using Xunit;
 

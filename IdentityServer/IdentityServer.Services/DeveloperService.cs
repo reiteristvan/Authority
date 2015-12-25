@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Threading.Tasks;
 using IdentityServer.DomainModel;
-using IdentityServer.EmailService.cs;
+using IdentityServer.EmailService;
 using IdentityServer.EmailService.cs.Models;
 using IdentityServer.EntityFramework;
 using IdentityServer.UnitOfWork.Developers;

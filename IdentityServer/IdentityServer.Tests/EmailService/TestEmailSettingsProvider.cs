@@ -1,4 +1,4 @@
-﻿using IdentityServer.EmailService.cs;
+﻿using IdentityServer.EmailService;
 
 namespace IdentityServer.Tests.EmailService
 {
