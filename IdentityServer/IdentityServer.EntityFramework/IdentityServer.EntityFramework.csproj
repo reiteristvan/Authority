@@ -55,6 +55,7 @@
     <Compile Include="Configurations\ClaimConfiguration.cs" />
     <Compile Include="Configurations\ClientApplicationConfiguration.cs" />
     <Compile Include="Configurations\DeveloperConfiguration.cs" />
+    <Compile Include="Configurations\ErrorConfiguration.cs" />
     <Compile Include="Configurations\PolicyConfiguration.cs" />
     <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
@@ -64,6 +65,10 @@
     <Compile Include="Migrations\201512251447578_Seed.cs" />
     <Compile Include="Migrations\201512251447578_Seed.Designer.cs">
       <DependentUpon>201512251447578_Seed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512251721313_Error.cs" />
+    <Compile Include="Migrations\201512251721313_Error.Designer.cs">
+      <DependentUpon>201512251721313_Error.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,6 +86,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512251447578_Seed.resx">
       <DependentUpon>201512251447578_Seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512251721313_Error.resx">
+      <DependentUpon>201512251721313_Error.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

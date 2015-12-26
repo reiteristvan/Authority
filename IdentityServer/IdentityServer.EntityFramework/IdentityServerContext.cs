@@ -23,6 +23,7 @@ namespace IdentityServer.EntityFramework
         public DbSet<Policy> Policies { get; set; } 
         public DbSet<Claim> Claims { get; set; } 
         public DbSet<ClientApplication> ClientApplications { get; set; }
+        public DbSet<Error> Errors { get; set; } 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -34,6 +35,7 @@ namespace IdentityServer.EntityFramework
             modelBuilder.Configurations.Add(new ClaimConfiguration());
             modelBuilder.Configurations.Add(new PolicyConfiguration());
             modelBuilder.Configurations.Add(new ClientApplicationConfiguration());
+            modelBuilder.Configurations.Add(new ErrorConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
