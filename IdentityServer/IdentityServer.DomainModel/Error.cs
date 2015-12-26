@@ -1,4 +1,6 @@
-﻿namespace IdentityServer.DomainModel
+﻿using System;
+
+namespace IdentityServer.DomainModel
 {
     public sealed class Error : EntityBase
     {
@@ -7,5 +9,7 @@
         public string StackTrace { get; set; }
 
         public string Message { get; set; }
+
+        public DateTime Date { get; set; }
     }
 }
