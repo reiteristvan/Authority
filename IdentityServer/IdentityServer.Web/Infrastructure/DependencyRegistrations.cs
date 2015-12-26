@@ -11,6 +11,8 @@ namespace IdentityServer.Web.Infrastructure
         {
             UnityContainer container = new UnityContainer();
 
+            container.RegisterType<IErrorService, ErrorService>(new ContainerControlledLifetimeManager());
+
             container.RegisterType<IIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
             container.RegisterType<ISafeIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
 

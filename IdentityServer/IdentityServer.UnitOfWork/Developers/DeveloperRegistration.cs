@@ -20,8 +20,8 @@ namespace IdentityServer.UnitOfWork.Developers
 
         public async Task<Developer> Register(string email, string displayname, string password)
         {
-            await Requirement.Check(() => IsUserExist(email), DevelopersErrorCodes.EmailAlreadyExists);
-            await Requirement.Check(() => IsUsernameAvailable(displayname), DevelopersErrorCodes.DisplayNameNotAvailable);
+            await Check(() => IsUserExist(email), DevelopersErrorCodes.EmailAlreadyExists);
+            await Check(() => IsUsernameAvailable(displayname), DevelopersErrorCodes.DisplayNameNotAvailable);
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
             byte[] saltBytes = _passwordService.CreateSalt();

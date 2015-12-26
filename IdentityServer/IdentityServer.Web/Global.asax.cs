@@ -6,8 +6,10 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using IdentityServer.Services;
 using IdentityServer.Web.Infrastructure;
 using IdentityServer.Web.Infrastructure.Identity;
+using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Mvc;
 using Newtonsoft.Json;
 
@@ -22,7 +24,10 @@ namespace IdentityServer.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
-            DependencyResolver.SetResolver(new UnityDependencyResolver(DependencyRegistrations.Register()));
+            IUnityContainer container = DependencyRegistrations.Register();
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            GlobalFilters.Filters.Add(new ErrorHandler(container.Resolve<IErrorService>()));
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)

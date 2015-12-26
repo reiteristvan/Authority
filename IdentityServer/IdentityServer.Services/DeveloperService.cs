@@ -21,7 +21,7 @@ namespace IdentityServer.Services
         public Guid Id { get; set; }
     }
 
-    public interface IDeveloperService
+    public interface IDeveloperService : IService
     {
         Task Register(string email, string displayName, string password);
         Task Activation(Guid activationCode);
@@ -48,7 +48,7 @@ namespace IdentityServer.Services
         {
             DeveloperRegistration operation = new DeveloperRegistration(_identityServerContext);
             Developer developer = await operation.Register(email, displayName, password);
-            await operation.Commit();
+            await operation.CommitAsync();
 
             await _emailService.SendDeveloperActivation(developer.Email, new DeveloperActivationModel
             {
@@ -79,7 +79,7 @@ namespace IdentityServer.Services
         {
             DeveloperActivation operation = new DeveloperActivation(_identityServerContext);
             await operation.Activation(activationCode);
-            await operation.Commit();
+            await operation.CommitAsync();
         }
     }
 }

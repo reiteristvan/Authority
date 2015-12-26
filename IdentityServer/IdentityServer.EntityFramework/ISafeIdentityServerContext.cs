@@ -13,6 +13,7 @@ namespace IdentityServer.EntityFramework
         DbSet<Claim> Claims { get; set; }
         DbSet<Policy> Policies { get; set; }
         DbSet<ClientApplication> ClientApplications { get; set; }
+        DbSet<Error> Errors { get; set; } 
         Database Database { get; }
         DbChangeTracker ChangeTracker { get; }
         DbContextConfiguration Configuration { get; }
