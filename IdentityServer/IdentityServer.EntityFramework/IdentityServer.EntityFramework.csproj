@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201512251721313_Error.Designer.cs">
       <DependentUpon>201512251721313_Error.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512261144512_ErrorAddDate.cs" />
+    <Compile Include="Migrations\201512261144512_ErrorAddDate.Designer.cs">
+      <DependentUpon>201512261144512_ErrorAddDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512251721313_Error.resx">
       <DependentUpon>201512251721313_Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512261144512_ErrorAddDate.resx">
+      <DependentUpon>201512261144512_ErrorAddDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

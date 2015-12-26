@@ -11,9 +11,10 @@ namespace IdentityServer.EntityFramework.Configurations
 
             HasKey(e => e.Id);
 
-            Property(d => d.Type).IsRequired().HasMaxLength(256);
-            Property(d => d.StackTrace).IsRequired();
-            Property(d => d.Message).IsRequired();
+            Property(e => e.Type).IsRequired().HasMaxLength(256);
+            Property(e => e.StackTrace).IsRequired();
+            Property(e => e.Message).IsRequired();
+            Property(e => e.Date).IsRequired();
         }
     }
 }

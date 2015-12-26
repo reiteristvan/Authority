@@ -18,7 +18,8 @@ namespace IdentityServer.UnitOfWork.Errors
             {
                 Message = message,
                 StackTrace = stackTrace,
-                Type = type
+                Type = type,
+                Date = DateTime.UtcNow
             };
 
             _identityServerContext.Errors.Add(error);

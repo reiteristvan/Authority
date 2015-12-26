@@ -5,6 +5,7 @@ namespace IdentityServer.UnitOfWork
     public sealed class RequirementFailedException : Exception
     {
         public RequirementFailedException(int errorCode)
+            : base(errorCode.ToString(), null)
         {
             ErrorCode = errorCode;
         }
