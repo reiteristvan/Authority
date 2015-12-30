@@ -83,6 +83,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AssertExtensions.cs" />
+    <Compile Include="Common\EntityFrameworkTest.cs" />
     <Compile Include="Common\TestDbAsyncEnumerable.cs" />
     <Compile Include="Developers\DeveloperRegistrationTests.cs" />
     <Compile Include="EmailService\Models\TestActivation.cs" />

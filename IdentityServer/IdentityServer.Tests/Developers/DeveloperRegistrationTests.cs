@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using IdentityServer.DomainModel;
 using IdentityServer.EntityFramework;
 using IdentityServer.Tests.Common;
+using IdentityServer.UnitOfWork;
 using IdentityServer.UnitOfWork.Developers;
 using Moq;
 using Xunit;
@@ -20,23 +21,10 @@ namespace IdentityServer.Tests.Developers
         [Fact]
         public void PositiveRegistration()
         {
-            IQueryable<Developer> developers = new List<Developer>().AsQueryable();
-
-            Mock<DbSet<Developer>> mockDeveloperSet = new Mock<DbSet<Developer>>();
-            mockDeveloperSet.As<IQueryable<Developer>>().Setup(m => m.Provider).Returns(new TestDbAsyncQueryProvider<Developer>(developers.Provider));
-            mockDeveloperSet.As<IQueryable<Developer>>().Setup(m => m.Expression).Returns(developers.Expression);
-            mockDeveloperSet.As<IQueryable<Developer>>().Setup(m => m.ElementType).Returns(developers.ElementType);
-            mockDeveloperSet.As<IQueryable<Developer>>().Setup(m => m.GetEnumerator()).Returns(developers.GetEnumerator());
-            mockDeveloperSet.As<IDbAsyncEnumerable<Developer>>()
-                .Setup(m => m.GetAsyncEnumerator())
-                .Returns(new TestDbAsyncEnumerator<Developer>(developers.GetEnumerator()));
-
-            Mock<IIdentityServerContext> mockContext = new Mock<IIdentityServerContext>();
-            mockContext.Setup(m => m.BeginTransaction(It.IsAny<IsolationLevel>())).Verifiable();
-            mockContext.Setup(m => m.CommitTransaction()).Verifiable();
-            mockContext.Setup(m => m.RollbackTransaction()).Verifiable();
-
-            mockContext.Setup(m => m.Developers).Returns(mockDeveloperSet.Object);
+            Mock<IIdentityServerContext> mockContext = EntityFrameworkTest.CreateMockContext();
+            mockContext
+                .Setup(m => m.Developers)
+                .Returns(EntityFrameworkTest.CreateEmptyDbSet<Developer>());
 
             string email = "test@test.com";
             string username = "testmaster";
@@ -48,6 +36,35 @@ namespace IdentityServer.Tests.Developers
             operation.Commit();
 
             Assert.NotNull(result);
+        }
+
+        [Fact]
+        public async Task RegistrationFailsWithExistingUser()
+        {
+            List<Developer> developers = new List<Developer>
+            {
+                new Developer
+                {
+                    Email = "test@test.com", DisplayName = "testmaster"
+                }
+            };
+
+            Mock<IIdentityServerContext> mockContext = EntityFrameworkTest.CreateMockContext();
+            mockContext
+                .Setup(m => m.Developers)
+                .Returns(EntityFrameworkTest.CreateDbSetWithData<Developer>(developers));
+
+            string email = "test@test.com";
+            string username = "testmaster";
+            string password = "12Budapest99";
+
+            DeveloperRegistration operation = new DeveloperRegistration(mockContext.Object);
+
+            await AssertExtensions.ThrowAsync<RequirementFailedException>(async () =>
+            {
+                Developer result = await operation.Register(email, username, password);
+                operation.Commit();
+            });
         }
     }
 }
