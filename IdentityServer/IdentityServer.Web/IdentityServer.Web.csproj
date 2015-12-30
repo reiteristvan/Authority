@@ -148,6 +148,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,6 +208,7 @@
     <Content Include="Views\Developers\Register.cshtml" />
     <Content Include="Views\Developers\Login.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Error\Show.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

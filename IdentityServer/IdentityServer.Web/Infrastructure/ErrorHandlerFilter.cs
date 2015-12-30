@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.Routing;
 using IdentityServer.Services;
 
 namespace IdentityServer.Web.Infrastructure
@@ -22,7 +23,12 @@ namespace IdentityServer.Web.Infrastructure
             filterContext.ExceptionHandled = true;
 
             Guid id = _errorService.RecordError(type, stackTrace, message);
-            filterContext.Result = new RedirectResult("https://google.com");
+            filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+            {
+                controller = "Error", 
+                action = "Show", 
+                id = id
+            }));
         }
     }
 }
