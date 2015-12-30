@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
@@ -11,6 +12,8 @@ namespace IdentityServer.EntityFramework
 {
     public sealed class IdentityServerContext : DbContext, IIdentityServerContext
     {
+        private DbContextTransaction _transaction;
+
         public IdentityServerContext()
             : base("IdentityServerConnection")
         {
@@ -76,6 +79,32 @@ namespace IdentityServer.EntityFramework
 
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
+        }
+
+
+        public void BeginTransaction(IsolationLevel isolationLevel)
+        {
+            _transaction = Database.BeginTransaction(isolationLevel);
+        }
+
+        public void CommitTransaction()
+        {
+            _transaction.Commit();
+        }
+
+        public void RollbackTransaction()
+        {
+            _transaction.Rollback();
+        }
+
+        public new void Dispose()
+        {
+            if (_transaction != null && _transaction.UnderlyingTransaction.Connection.State != ConnectionState.Closed)
+            {
+                _transaction.Dispose();
+            }
+
+            base.Dispose();
         }
     }
 }

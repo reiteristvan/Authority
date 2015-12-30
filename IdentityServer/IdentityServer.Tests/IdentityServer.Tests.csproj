@@ -37,7 +37,28 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Testing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkTesting.1.1.4\lib\net45\EntityFramework.Testing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Testing.Moq, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFrameworkTesting.Moq.1.1.5\lib\net45\EntityFramework.Testing.Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,26 +83,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\TestDbAsyncEnumerable.cs" />
+    <Compile Include="Developers\DeveloperRegistrationTests.cs" />
     <Compile Include="EmailService\Models\TestActivation.cs" />
     <Compile Include="EmailService\TemplateProviderTests.cs" />
+    <Compile Include="EmailService\TemplateTestFixture.cs" />
     <Compile Include="EmailService\TestEmailSettingsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="EmailService\Templates\TestActivation.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\IdentityServer.DomainModel\IdentityServer.DomainModel.csproj">
+      <Project>{ea0a007e-85b0-4048-8b54-b4b712c4edc7}</Project>
+      <Name>IdentityServer.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IdentityServer.EmailService\IdentityServer.EmailService.csproj">
       <Project>{713f8d1a-3927-47c2-a37c-f9d36f28ae63}</Project>
       <Name>IdentityServer.EmailService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj">
+      <Project>{56b09b36-5cbb-47a9-8aff-597c4d00104d}</Project>
+      <Name>IdentityServer.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IdentityServer.UnitOfWork\IdentityServer.UnitOfWork.csproj">
+      <Project>{8749794c-e17f-4ba4-9ab4-f8e9c2e60a12}</Project>
+      <Name>IdentityServer.UnitOfWork</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Data;
+using System.Data.Entity;
+using System.Threading.Tasks;
 
 namespace IdentityServer.EntityFramework
 {
@@ -6,5 +8,8 @@ namespace IdentityServer.EntityFramework
     {
         int SaveChanges();
         Task<int> SaveChangesAsync();
+        void BeginTransaction(IsolationLevel isolationLevel);
+        void CommitTransaction();
+        void RollbackTransaction();
     }
 }
