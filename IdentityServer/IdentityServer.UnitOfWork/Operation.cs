@@ -1,28 +1,26 @@
 ﻿using System;
 using System.Data;
-using System.Data.Entity;
 using System.Threading.Tasks;
 using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork
 {
-    public abstract class Operation : IDisposable
+    public abstract class Operation
     {
         protected IIdentityServerContext _identityServerContext;
-        protected readonly DbContextTransaction _transaction;
 
         protected Operation(IIdentityServerContext identityServerContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
             _identityServerContext = identityServerContext;
-            _transaction = _identityServerContext.Database.BeginTransaction(isolationLevel);
+            _identityServerContext.BeginTransaction(isolationLevel);
         }
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)
         {
             if (!(await condition()))
             {
-                _transaction.Rollback();
+                _identityServerContext.RollbackTransaction();
                 throw new RequirementFailedException(errorCode);
             }
         }
@@ -31,7 +29,7 @@ namespace IdentityServer.UnitOfWork
         {
             if (!condition())
             {
-                _transaction.Rollback();
+                _identityServerContext.RollbackTransaction();
                 throw new RequirementFailedException(errorCode);
             }
         }
@@ -41,11 +39,11 @@ namespace IdentityServer.UnitOfWork
             try
             {
                 await _identityServerContext.SaveChangesAsync();
-                _transaction.Commit();
+                _identityServerContext.CommitTransaction();
             }
             catch (Exception)
             {
-                _transaction.Rollback();
+                _identityServerContext.RollbackTransaction();
                 throw;
             }
         }
@@ -55,20 +53,12 @@ namespace IdentityServer.UnitOfWork
             try
             {
                 _identityServerContext.SaveChanges();
-                _transaction.Commit();
+                _identityServerContext.CommitTransaction();
             }
             catch (Exception)
             {
-                _transaction.Rollback();
+                _identityServerContext.RollbackTransaction();
                 throw;
-            }
-        }
-
-        public void Dispose()
-        {
-            if (_transaction != null && _transaction.UnderlyingTransaction.Connection.State != ConnectionState.Closed)
-            {
-                _transaction.Dispose();
             }
         }
     }

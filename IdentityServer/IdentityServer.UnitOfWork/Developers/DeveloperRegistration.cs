@@ -20,7 +20,7 @@ namespace IdentityServer.UnitOfWork.Developers
 
         public async Task<Developer> Register(string email, string displayname, string password)
         {
-            await Check(() => IsUserExist(email), DevelopersErrorCodes.EmailAlreadyExists);
+            await Check(() => IsUserNotExist(email), DevelopersErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(displayname), DevelopersErrorCodes.DisplayNameNotAvailable);
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
@@ -44,16 +44,16 @@ namespace IdentityServer.UnitOfWork.Developers
             return developer;
         }
 
-        private async Task<bool> IsUserExist(string email)
+        private async Task<bool> IsUserNotExist(string email)
         {
             Developer user = await _identityServerContext.Developers.FirstOrDefaultAsync(u => u.Email == email);
-            return user != null;
+            return user == null;
         }
 
         private async Task<bool> IsUsernameAvailable(string displayName)
         {
             Developer user = await _identityServerContext.Developers.FirstOrDefaultAsync(p => p.DisplayName == displayName);
-            return user != null;
+            return user == null;
         }
     }
 }
