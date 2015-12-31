@@ -5,9 +5,9 @@ namespace IdentityServer.Web.Infrastructure
 {
     public sealed class Configuration : IConfiguration
     {
-        public string DeveloperActivationEmailTemplate
+        public string DeveloperActivationUrlTemplate
         {
-            get { return ConfigurationManager.AppSettings["DeveloperActivationEmailTemplate"]; }
+            get { return ConfigurationManager.AppSettings["DeveloperActivationUrlTemplate"]; }
         }
     }
 }

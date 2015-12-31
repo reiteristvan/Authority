@@ -52,7 +52,7 @@ namespace IdentityServer.Services
 
             await _emailService.SendDeveloperActivation(developer.Email, new DeveloperActivationModel
             {
-                ActivationUrl = string.Format(_configuration.DeveloperActivationEmailTemplate, developer.PendingRegistrationId)
+                ActivationUrl = string.Format(_configuration.DeveloperActivationUrlTemplate, developer.PendingRegistrationId)
             });
         }
 
