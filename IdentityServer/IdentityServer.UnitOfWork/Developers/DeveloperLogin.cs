@@ -28,7 +28,7 @@ namespace IdentityServer.UnitOfWork.Developers
             }
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-            byte[] saltBytes = _passwordService.CreateSalt();
+            byte[] saltBytes = Convert.FromBase64String(user.Salt);
             byte[] hashBytes = _passwordService.CreateHash(passwordBytes, saltBytes);
             string hash = Convert.ToBase64String(hashBytes);
 
