@@ -24,7 +24,7 @@ namespace IdentityServer.UnitOfWork.Developers
             Developer developer = await _identityServerContext.Developers
                 .FirstOrDefaultAsync(d => d.PendingRegistrationId == activationCode);
 
-            if (developer == null || developer.IsPending == false)
+            if (developer == null || developer.IsPending == false || developer.PendingRegistrationId != activationCode)
             {
                 throw new RequirementFailedException(DevelopersErrorCodes.FailedActivation);
             }
