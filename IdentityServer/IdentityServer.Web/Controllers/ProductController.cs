@@ -23,6 +23,7 @@ namespace IdentityServer.Web.Controllers
         }
 
         [HttpGet]
+        [Route]
         [Route("index")]
         public async Task<ActionResult> Index()
         {
