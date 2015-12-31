@@ -22,7 +22,7 @@ namespace IdentityServer.EmailService
         public async Task SendDeveloperActivation(string recipient, DeveloperActivationModel model)
         {
             string body = _templateProvider.Load(model);
-            await Send(recipient, "", body);
+            await Send(recipient, "Activate your account at IdentityServer", body);
         }
 
         private async Task Send(string recipient, string subject, string body)

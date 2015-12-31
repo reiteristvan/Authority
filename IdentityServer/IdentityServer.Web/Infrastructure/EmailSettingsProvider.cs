@@ -1,10 +1,17 @@
 ﻿using System.Configuration;
+using System.Web.Hosting;
 using IdentityServer.EmailService;
 
 namespace IdentityServer.Web.Infrastructure
 {
     public sealed class EmailSettingsProvider : IEmailSettingsProvider
     {
-        public string TemplateFolderPath { get { return ConfigurationManager.AppSettings["EmailTemplatePath"]; } }
+        public string TemplateFolderPath 
+        {
+            get
+            {
+                return HostingEnvironment.MapPath(ConfigurationManager.AppSettings["EmailTemplatePath"]);
+            } 
+        }
     }
 }
