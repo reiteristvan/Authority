@@ -74,6 +74,14 @@
     <Compile Include="Migrations\201512261144512_ErrorAddDate.Designer.cs">
       <DependentUpon>201512261144512_ErrorAddDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512310936215_ProductIsActive.cs" />
+    <Compile Include="Migrations\201512310936215_ProductIsActive.Designer.cs">
+      <DependentUpon>201512310936215_ProductIsActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512310945130_ProductOwnerId.cs" />
+    <Compile Include="Migrations\201512310945130_ProductOwnerId.Designer.cs">
+      <DependentUpon>201512310945130_ProductOwnerId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512261144512_ErrorAddDate.resx">
       <DependentUpon>201512261144512_ErrorAddDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512310936215_ProductIsActive.resx">
+      <DependentUpon>201512310936215_ProductIsActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512310945130_ProductOwnerId.resx">
+      <DependentUpon>201512310945130_ProductOwnerId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

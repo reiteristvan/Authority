@@ -3,9 +3,9 @@
     // 2XXX
     public sealed class DevelopersErrorCodes
     {
-        public static int EmailAlreadyExists = 1000;
-        public static int DisplayNameNotAvailable = 1001;
-        public static int FailedActivation = 1002;
-        public static int FailedLogin = 1003;
+        public static int EmailAlreadyExists = 2000;
+        public static int DisplayNameNotAvailable = 2001;
+        public static int FailedActivation = 2002;
+        public static int FailedLogin = 2003;
     }
 }

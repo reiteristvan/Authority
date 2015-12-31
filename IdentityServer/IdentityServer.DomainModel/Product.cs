@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace IdentityServer.DomainModel
 {
@@ -9,8 +10,10 @@ namespace IdentityServer.DomainModel
             Policies = new HashSet<Policy>();
         }
 
+        public Guid OwnerId { get; set; }
         public string Name { get; set; }
         public bool IsPublic { get; set; }
+        public bool IsActive { get; set; }
 
         public ICollection<Policy> Policies { get; set; }
     }

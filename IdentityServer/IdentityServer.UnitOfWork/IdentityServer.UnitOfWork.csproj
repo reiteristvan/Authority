@@ -60,6 +60,8 @@
     <Compile Include="Developers\DevelopersErrorCodes.cs" />
     <Compile Include="Errors\RecordError.cs" />
     <Compile Include="Policies\CreatePolicy.cs" />
+    <Compile Include="Products\CreateProduct.cs" />
+    <Compile Include="Products\ProductErrorCodes.cs" />
     <Compile Include="Requirement.cs" />
     <Compile Include="RequirementFailedException.cs" />
     <Compile Include="Operation.cs" />
