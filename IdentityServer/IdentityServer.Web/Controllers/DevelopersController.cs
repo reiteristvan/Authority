@@ -21,6 +21,7 @@ namespace IdentityServer.Web.Controllers
 
         [Authorize]
         [HttpGet]
+        [Route]
         [Route("index")]
         public ActionResult Index()
         {
@@ -38,6 +39,7 @@ namespace IdentityServer.Web.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("register")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             await _developerService.Register(model.Email, model.Username, model.Password);
@@ -66,6 +68,7 @@ namespace IdentityServer.Web.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("login")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
         {
             LoginResult loginResult = await _developerService.Login(model.Email, model.Password);
