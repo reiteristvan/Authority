@@ -1,2 +1,2 @@
 ﻿Add-Migration -Project IdentityServer.EntityFramework "MigrationName"
-Update-Database -Project IdentityServer.EntityFramework
+Update-Database -Project IdentityServer.EntityFramework -Verbose
