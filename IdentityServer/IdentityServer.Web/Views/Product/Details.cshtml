@@ -1,4 +1,5 @@
-﻿@model IdentityServer.Services.Dto.ProductDto
+﻿@using IdentityServer.Services.Dto
+@model IdentityServer.Services.Dto.ProductDto
 
 @{
     ViewBag.Title = "Details";
@@ -34,6 +35,26 @@
             @Html.DisplayFor(model => model.IsActive)
         </dd>
     </dl>
+
+    <hr/>
+
+    <div>
+        @foreach (PolicyDto policy in Model.Policies)
+        {
+            <h4>@policy.Name</h4>
+            <h3>Claims:</h3>
+            
+            foreach (ClaimDto claim in policy.Claims)
+            {
+                <h4>@claim.Issuer</h4>
+                <h4>@claim.Type</h4>
+                <h4>@claim.Value</h4>
+                <br/>
+            }
+            
+            <hr/>
+        }
+    </div>
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")
