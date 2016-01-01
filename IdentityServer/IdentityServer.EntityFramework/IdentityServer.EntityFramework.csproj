@@ -82,6 +82,14 @@
     <Compile Include="Migrations\201512310945130_ProductOwnerId.Designer.cs">
       <DependentUpon>201512310945130_ProductOwnerId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601011554266_UserPolicyClaimsRefactor.cs" />
+    <Compile Include="Migrations\201601011554266_UserPolicyClaimsRefactor.Designer.cs">
+      <DependentUpon>201601011554266_UserPolicyClaimsRefactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601011559101_UserPolicyManyToMany.cs" />
+    <Compile Include="Migrations\201601011559101_UserPolicyManyToMany.Designer.cs">
+      <DependentUpon>201601011559101_UserPolicyManyToMany.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512310945130_ProductOwnerId.resx">
       <DependentUpon>201512310945130_ProductOwnerId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601011554266_UserPolicyClaimsRefactor.resx">
+      <DependentUpon>201601011554266_UserPolicyClaimsRefactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601011559101_UserPolicyManyToMany.resx">
+      <DependentUpon>201601011559101_UserPolicyManyToMany.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

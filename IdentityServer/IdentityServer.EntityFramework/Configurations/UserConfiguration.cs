@@ -19,7 +19,7 @@ namespace IdentityServer.EntityFramework.Configurations
             Property(d => d.IsActive).IsRequired();
             Property(d => d.PendingRegistrationId).IsRequired();
 
-            HasMany(u => u.Claims);
+            HasMany(u => u.Policies).WithMany(p => p.Users);
         }
     }
 }

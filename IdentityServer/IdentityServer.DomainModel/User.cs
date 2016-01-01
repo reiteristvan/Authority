@@ -7,7 +7,7 @@ namespace IdentityServer.DomainModel
     {
         public User()
         {
-            Claims = new HashSet<Claim>();
+            Policies = new HashSet<Policy>();
         }
 
         public string Email { get; set; }
@@ -30,6 +30,6 @@ namespace IdentityServer.DomainModel
 
         public bool IsActive { get; set; }
 
-        public ICollection<Claim> Claims { get; set; } 
+        public ICollection<Policy> Policies { get; set; } 
     }
 }
