@@ -54,6 +54,8 @@
     <Compile Include="DeveloperService.cs" />
     <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="ErrorService.cs" />
+    <Compile Include="Extensions\ClaimExtensions.cs" />
+    <Compile Include="Extensions\PolicyExtensions.cs" />
     <Compile Include="Extensions\ProductExtensions.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IService.cs" />

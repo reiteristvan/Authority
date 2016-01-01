@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Linq.Expressions;
 using IdentityServer.DomainModel;
 using IdentityServer.EntityFramework;
 using Moq;
@@ -26,29 +28,29 @@ namespace IdentityServer.Tests.Common
         {
             IQueryable<TEntity> data = new List<TEntity>().AsQueryable();
 
-            Mock<DbSet<TEntity>> mockDeveloperSet = new Mock<DbSet<TEntity>>();
+            Mock<DbSet<TEntity>> mockDataSet = new Mock<DbSet<TEntity>>();
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.Provider)
                 .Returns(new TestDbAsyncQueryProvider<Developer>(data.Provider));
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.Expression)
                 .Returns(data.Expression);
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.ElementType)
                 .Returns(data.ElementType);
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.GetEnumerator())
                 .Returns(data.GetEnumerator());
 
-            mockDeveloperSet.As<IDbAsyncEnumerable<TEntity>>()
+            mockDataSet.As<IDbAsyncEnumerable<TEntity>>()
                 .Setup(m => m.GetAsyncEnumerator())
                 .Returns(new TestDbAsyncEnumerator<TEntity>(data.GetEnumerator()));
 
-            return mockDeveloperSet.Object;
+            return mockDataSet.Object;
         }
 
         public static DbSet<TEntity> CreateDbSetWithData<TEntity>(IEnumerable<TEntity> input)
@@ -56,29 +58,29 @@ namespace IdentityServer.Tests.Common
         {
             IQueryable<TEntity> data = new List<TEntity>(input).AsQueryable();
 
-            Mock<DbSet<TEntity>> mockDeveloperSet = new Mock<DbSet<TEntity>>();
+            Mock<DbSet<TEntity>> mockDataSet= new Mock<DbSet<TEntity>>();
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.Provider)
                 .Returns(new TestDbAsyncQueryProvider<Developer>(data.Provider));
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.Expression)
                 .Returns(data.Expression);
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.ElementType)
                 .Returns(data.ElementType);
 
-            mockDeveloperSet.As<IQueryable<TEntity>>()
+            mockDataSet.As<IQueryable<TEntity>>()
                 .Setup(m => m.GetEnumerator())
                 .Returns(data.GetEnumerator());
 
-            mockDeveloperSet.As<IDbAsyncEnumerable<TEntity>>()
+            mockDataSet.As<IDbAsyncEnumerable<TEntity>>()
                 .Setup(m => m.GetAsyncEnumerator())
                 .Returns(new TestDbAsyncEnumerator<TEntity>(data.GetEnumerator()));
 
-            return mockDeveloperSet.Object;
+            return mockDataSet.Object;
         }
     }
 }
