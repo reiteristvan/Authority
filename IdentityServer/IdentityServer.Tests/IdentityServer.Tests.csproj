@@ -91,6 +91,7 @@
     <Compile Include="EmailService\TemplateProviderTests.cs" />
     <Compile Include="EmailService\TemplateTestFixture.cs" />
     <Compile Include="EmailService\TestEmailSettingsProvider.cs" />
+    <Compile Include="Products\GetProductDetailsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

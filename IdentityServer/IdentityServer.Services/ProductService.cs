@@ -13,8 +13,9 @@ namespace IdentityServer.Services
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductDto>> GetProductsOfUser(Guid ownerId);
+        Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId);
         Task<Guid> Create(Guid ownerId, string name);
+        Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
     }
 
     public sealed class ProductService : IProductService
@@ -26,7 +27,7 @@ namespace IdentityServer.Services
             _identityServerContext = identityServerContext;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetProductsOfUser(Guid ownerId)
+        public async Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId)
         {
             List<Product> products = await _identityServerContext.Products
                 .Where(p => p.OwnerId == ownerId)
@@ -41,6 +42,14 @@ namespace IdentityServer.Services
             await operation.CommitAsync();
 
             return id;
+        }
+
+        public async Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId)
+        {
+            GetProductDetails operation = new GetProductDetails(_identityServerContext);
+            Product product = await operation.GetDetails(ownerId, proudctId);
+
+            return product.ToDto();
         }
     }
 }

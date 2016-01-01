@@ -28,7 +28,7 @@ namespace IdentityServer.Web.Controllers
         public async Task<ActionResult> Index()
         {
             Guid userId = HttpContext.User.GetUserId();
-            IEnumerable<ProductDto> products = await _productService.GetProductsOfUser(userId);
+            IEnumerable<ProductSimpleDto> products = await _productService.GetProductsOfUser(userId);
 
             return View(products);
         }
@@ -48,6 +48,16 @@ namespace IdentityServer.Web.Controllers
             Guid userId = HttpContext.User.GetUserId();
             await _productService.Create(userId, model.Name);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [Route("details/{id}")]
+        public async Task<ActionResult> Details(Guid id)
+        {
+            Guid userId = HttpContext.User.GetUserId();
+            ProductDto product = await _productService.GetProductDetails(userId, id);
+
+            return View(product);
         }
     }
 }
