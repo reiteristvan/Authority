@@ -7,7 +7,7 @@ namespace IdentityServer.UnitOfWork
 {
     public abstract class Operation
     {
-        protected IIdentityServerContext _identityServerContext;
+        protected IIdentityServerContext _identityServerContext; // TODO make this private so derived classes cannot modify database
 
         protected Operation(IIdentityServerContext identityServerContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
@@ -15,6 +15,8 @@ namespace IdentityServer.UnitOfWork
             _identityServerContext = identityServerContext;
             _identityServerContext.BeginTransaction(isolationLevel);
         }
+
+        protected ISafeIdentityServerContext Context { get { return _identityServerContext; } }
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)
         {

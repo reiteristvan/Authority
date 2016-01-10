@@ -90,6 +90,14 @@
     <Compile Include="Migrations\201601011559101_UserPolicyManyToMany.Designer.cs">
       <DependentUpon>201601011559101_UserPolicyManyToMany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601031256068_ClaimFriendlyName.cs" />
+    <Compile Include="Migrations\201601031256068_ClaimFriendlyName.Designer.cs">
+      <DependentUpon>201601031256068_ClaimFriendlyName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601031534442_ProductHasClaims.cs" />
+    <Compile Include="Migrations\201601031534442_ProductHasClaims.Designer.cs">
+      <DependentUpon>201601031534442_ProductHasClaims.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601011559101_UserPolicyManyToMany.resx">
       <DependentUpon>201601011559101_UserPolicyManyToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601031256068_ClaimFriendlyName.resx">
+      <DependentUpon>201601031256068_ClaimFriendlyName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601031534442_ProductHasClaims.resx">
+      <DependentUpon>201601031534442_ProductHasClaims.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

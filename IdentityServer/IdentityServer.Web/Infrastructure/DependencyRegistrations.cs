@@ -22,6 +22,7 @@ namespace IdentityServer.Web.Infrastructure
             container.RegisterType<IConfiguration, Configuration>(new ContainerControlledLifetimeManager());
             container.RegisterType<IDeveloperService, DeveloperService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IProductService, ProductService>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IPolicyService, PolicyService>(new ContainerControlledLifetimeManager());
 
             return container;
         }
