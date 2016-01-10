@@ -59,8 +59,12 @@
     <Compile Include="Developers\DeveloperRegistration.cs" />
     <Compile Include="Developers\DevelopersErrorCodes.cs" />
     <Compile Include="Errors\RecordError.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Policies\CreatePolicy.cs" />
+    <Compile Include="Policies\PolicyErrorCodes.cs" />
+    <Compile Include="Products\CreateClaimForProduct.cs" />
     <Compile Include="Products\CreateProduct.cs" />
+    <Compile Include="Products\GetClaimsOfProduct.cs" />
     <Compile Include="Products\GetProductDetails.cs" />
     <Compile Include="Products\ProductErrorCodes.cs" />
     <Compile Include="Requirement.cs" />
@@ -84,6 +88,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

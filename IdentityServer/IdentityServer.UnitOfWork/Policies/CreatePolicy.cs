@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Data.Entity;
 using System.Threading.Tasks;
 using IdentityServer.DomainModel;
 using IdentityServer.EntityFramework;
@@ -13,13 +14,31 @@ namespace IdentityServer.UnitOfWork.Policies
             
         }
 
-        public async Task<Policy> Create(string name, List<Claim> claims)
+        public async Task<Policy> Create(Guid userId, Guid productId, string name)
         {
-            Policy policy = new Policy();
+            Product product = await Context.Products
+                .FirstOrDefaultAsync(p => p.Id == productId);
 
-            policy.Claims = claims;
+            Check(() => IsUserOwnsProduct(userId, product), PolicyErrorCodes.UnAuthorizedAccess);
+
+            Policy policy = new Policy
+            {
+                Name = name
+            };
+
+            Context.Policies.Add(policy);
 
             return policy;
-        } 
+        }
+
+        public bool IsUserOwnsProduct(Guid userId, Product product)
+        {
+            if (product == null)
+            {
+                return false;
+            }
+
+            return product.OwnerId == userId;
+        }
     }
 }

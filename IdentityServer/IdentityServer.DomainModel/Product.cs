@@ -16,5 +16,6 @@ namespace IdentityServer.DomainModel
         public bool IsActive { get; set; }
 
         public ICollection<Policy> Policies { get; set; }
+        public ICollection<Claim> Claims { get; set; }
     }
 }

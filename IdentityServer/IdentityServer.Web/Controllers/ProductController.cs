@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using IdentityServer.Services;
 using IdentityServer.Services.Dto;
@@ -53,6 +51,16 @@ namespace IdentityServer.Web.Controllers
         [HttpGet]
         [Route("details/{id}")]
         public async Task<ActionResult> Details(Guid id)
+        {
+            Guid userId = HttpContext.User.GetUserId();
+            ProductDto product = await _productService.GetProductDetails(userId, id);
+
+            return View(product);
+        }
+
+        [HttpGet]
+        [Route("edit/{id}")]
+        public async Task<ActionResult> Edit(Guid id)
         {
             Guid userId = HttpContext.User.GetUserId();
             ProductDto product = await _productService.GetProductDetails(userId, id);

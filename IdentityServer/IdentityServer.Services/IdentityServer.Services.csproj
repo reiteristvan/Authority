@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClaimService.cs" />
     <Compile Include="DeveloperService.cs" />
     <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="ErrorService.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Extensions\ProductExtensions.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="PolicyService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
