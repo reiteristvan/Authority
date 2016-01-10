@@ -7,7 +7,7 @@ namespace IdentityServer.UnitOfWork
 {
     public abstract class Operation
     {
-        protected IIdentityServerContext _identityServerContext; // TODO make this private so derived classes cannot modify database
+        private readonly IIdentityServerContext _identityServerContext;
 
         protected Operation(IIdentityServerContext identityServerContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)

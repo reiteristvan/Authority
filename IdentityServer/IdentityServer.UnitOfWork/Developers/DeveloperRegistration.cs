@@ -39,20 +39,20 @@ namespace IdentityServer.UnitOfWork.Developers
                 Created = DateTime.UtcNow
             };
 
-            _identityServerContext.Developers.Add(developer);
+            Context.Developers.Add(developer);
 
             return developer;
         }
 
         private async Task<bool> IsUserNotExist(string email)
         {
-            Developer user = await _identityServerContext.Developers.FirstOrDefaultAsync(u => u.Email == email);
+            Developer user = await Context.Developers.FirstOrDefaultAsync(u => u.Email == email);
             return user == null;
         }
 
         private async Task<bool> IsUsernameAvailable(string displayName)
         {
-            Developer user = await _identityServerContext.Developers.FirstOrDefaultAsync(p => p.DisplayName == displayName);
+            Developer user = await Context.Developers.FirstOrDefaultAsync(p => p.DisplayName == displayName);
             return user == null;
         }
     }
