@@ -44,13 +44,13 @@ namespace IdentityServer.UnitOfWork.Account
 
         private async Task<bool> IsUserExist(string email)
         {
-            User user = await _identityServerContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+            User user = await Context.Users.FirstOrDefaultAsync(u => u.Email == email);
             return user != null;
         }
 
         private async Task<bool> IsUsernameAvailable(string username)
         {
-            User user = await _identityServerContext.Users.FirstOrDefaultAsync(p => p.Username == username);
+            User user = await Context.Users.FirstOrDefaultAsync(p => p.Username == username);
             return user != null;
         }
     }

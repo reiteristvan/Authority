@@ -26,14 +26,14 @@ namespace IdentityServer.UnitOfWork.Products
                 IsPublic = false
             };
 
-            _identityServerContext.Products.Add(product);
+            Context.Products.Add(product);
 
             return product.Id;
         }
 
         private async Task<bool> IsNameAvailable(string name)
         {
-            Product product = await _identityServerContext.Products.FirstOrDefaultAsync(p => p.Name == name);
+            Product product = await Context.Products.FirstOrDefaultAsync(p => p.Name == name);
             return product == null;
         }
     }

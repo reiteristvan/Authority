@@ -21,7 +21,7 @@ namespace IdentityServer.UnitOfWork.Developers
                 throw new RequirementFailedException(DevelopersErrorCodes.FailedActivation);
             }
 
-            Developer developer = await _identityServerContext.Developers
+            Developer developer = await Context.Developers
                 .FirstOrDefaultAsync(d => d.PendingRegistrationId == activationCode);
 
             if (developer == null || developer.IsPending == false || developer.PendingRegistrationId != activationCode)
@@ -32,8 +32,8 @@ namespace IdentityServer.UnitOfWork.Developers
             developer.IsPending = false;
             developer.PendingRegistrationId = Guid.Empty;
 
-            _identityServerContext.Developers.Attach(developer);
-            _identityServerContext.Entry(developer).State = EntityState.Modified;
+            Context.Developers.Attach(developer);
+            Context.Entry(developer).State = EntityState.Modified;
         }
     }
 }

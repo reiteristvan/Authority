@@ -22,7 +22,7 @@ namespace IdentityServer.UnitOfWork.Errors
                 Date = DateTime.UtcNow
             };
 
-            _identityServerContext.Errors.Add(error);
+            Context.Errors.Add(error);
 
             return error.Id;
         }
