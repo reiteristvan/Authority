@@ -17,7 +17,7 @@ namespace IdentityServer.EntityFramework
         public IdentityServerContext()
             : base("IdentityServerConnection")
         {
-            
+
         }
 
         public DbSet<User> Users { get; set; }
@@ -99,7 +99,8 @@ namespace IdentityServer.EntityFramework
 
         public new void Dispose()
         {
-            if (_transaction != null && _transaction.UnderlyingTransaction.Connection.State != ConnectionState.Closed)
+            if (_transaction != null && 
+                (_transaction.UnderlyingTransaction.Connection == null || _transaction.UnderlyingTransaction.Connection.State != ConnectionState.Closed))
             {
                 _transaction.Dispose();
             }
