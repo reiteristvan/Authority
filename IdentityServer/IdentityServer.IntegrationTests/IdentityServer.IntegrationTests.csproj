@@ -75,6 +75,7 @@
     <Compile Include="Common\DbContextExtensions.cs" />
     <Compile Include="Common\Operations.cs" />
     <Compile Include="Developers\ActivationTests.cs" />
+    <Compile Include="Developers\LoginTests.cs" />
     <Compile Include="EntityGenerator.cs" />
     <Compile Include="Developers\RegistrationTests.cs" />
     <Compile Include="Fixtures\SimpleFixture.cs" />

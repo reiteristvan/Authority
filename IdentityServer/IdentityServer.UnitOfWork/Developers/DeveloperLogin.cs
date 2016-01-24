@@ -22,7 +22,7 @@ namespace IdentityServer.UnitOfWork.Developers
         {
             Developer user = await _identityServerContext.Developers.FirstOrDefaultAsync(u => u.Email == email);
 
-            if (user == null)
+            if (user == null || user.IsPending || !user.IsActive)
             {
                 return false;
             }
