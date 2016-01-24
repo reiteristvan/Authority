@@ -72,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AssertExtensions.cs" />
+    <Compile Include="Common\DbContextExtensions.cs" />
+    <Compile Include="Common\Operations.cs" />
+    <Compile Include="Developers\ActivationTests.cs" />
     <Compile Include="EntityGenerator.cs" />
     <Compile Include="Developers\RegistrationTests.cs" />
     <Compile Include="Fixtures\SimpleFixture.cs" />
