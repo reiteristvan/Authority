@@ -31,6 +31,7 @@ namespace IdentityServer.IntegrationTests.Developers
             Developer existingDeveloper = _fixture.Context.ReloadEntity<Developer>(developer.Id);
 
             Assert.False(existingDeveloper.IsPending);
+            Assert.True(existingDeveloper.PendingRegistrationId == Guid.Empty);
         }
 
         [Fact]
