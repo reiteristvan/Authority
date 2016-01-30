@@ -70,7 +70,6 @@
     <Compile Include="Products\GetClaimsOfProduct.cs" />
     <Compile Include="Products\GetProductDetails.cs" />
     <Compile Include="Products\ProductErrorCodes.cs" />
-    <Compile Include="Requirement.cs" />
     <Compile Include="RequirementFailedException.cs" />
     <Compile Include="Operation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
