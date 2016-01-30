@@ -11,12 +11,10 @@ namespace IdentityServer.IntegrationTests.Common
         {
             string email = RandomData.Email();
             string username = RandomData.RandomString();
+            password = password == "" ? RandomData.RandomString(12, true) : password;
 
-            DeveloperRegistration operation = new DeveloperRegistration(context);
-            Developer developer = await operation.Register(
-                email, 
-                username, 
-                password == "" ? RandomData.RandomString(12, true) : password);
+            DeveloperRegistration operation = new DeveloperRegistration(context, email, username, password);
+            Developer developer = await operation.Do();
 
             await operation.CommitAsync();
 
@@ -29,9 +27,10 @@ namespace IdentityServer.IntegrationTests.Common
         {
             string email = RandomData.Email();
             string username = RandomData.RandomString();
+            password = password == "" ? RandomData.RandomString(12, true) : password;
 
-            DeveloperRegistration registration = new DeveloperRegistration(context);
-            Developer developer = await registration.Register(email, username, password ?? RandomData.RandomString(12, true));
+            DeveloperRegistration registration = new DeveloperRegistration(context, email, username, password);
+            Developer developer = await registration.Do();
             await registration.CommitAsync();
 
             DeveloperActivation activation = new DeveloperActivation(context);

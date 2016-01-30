@@ -8,41 +8,47 @@ using IdentityServer.UnitOfWork.Utilities;
 
 namespace IdentityServer.UnitOfWork.Developers
 {
-    public sealed class DeveloperRegistration : Operation
+    public sealed class DeveloperRegistration : OperationWithReturnValue<Task<Developer>>
     {
+        private readonly string _email;
+        private readonly string _displayname;
+        private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public DeveloperRegistration(IIdentityServerContext identityServerContext)
+        public DeveloperRegistration(IIdentityServerContext identityServerContext, string email, string displayname, string password)
             : base(identityServerContext)
         {
+            _email = email;
+            _displayname = displayname;
+            _password = password;
             _passwordService = new PasswordService();
         }
 
-        public async Task<Developer> Register(string email, string displayname, string password)
-        {
-            await Check(() => IsUserNotExist(email), DevelopersErrorCodes.EmailAlreadyExists);
-            await Check(() => IsUsernameAvailable(displayname), DevelopersErrorCodes.DisplayNameNotAvailable);
+        //public async Task<Developer> Register(string email, string displayname, string password)
+        //{
+        //    await Check(() => IsUserNotExist(email), DevelopersErrorCodes.EmailAlreadyExists);
+        //    await Check(() => IsUsernameAvailable(displayname), DevelopersErrorCodes.DisplayNameNotAvailable);
 
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-            byte[] saltBytes = _passwordService.CreateSalt();
-            byte[] hashBytes = _passwordService.CreateHash(passwordBytes, saltBytes);
+        //    byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+        //    byte[] saltBytes = _passwordService.CreateSalt();
+        //    byte[] hashBytes = _passwordService.CreateHash(passwordBytes, saltBytes);
 
-            Developer developer = new Developer
-            {
-                Email = email,
-                DisplayName = displayname,
-                Salt = Convert.ToBase64String(saltBytes),
-                PasswordHash = Convert.ToBase64String(hashBytes),
-                IsActive = true,
-                IsPending = true,
-                PendingRegistrationId = Guid.NewGuid(),
-                Created = DateTime.UtcNow
-            };
+        //    Developer developer = new Developer
+        //    {
+        //        Email = email,
+        //        DisplayName = displayname,
+        //        Salt = Convert.ToBase64String(saltBytes),
+        //        PasswordHash = Convert.ToBase64String(hashBytes),
+        //        IsActive = true,
+        //        IsPending = true,
+        //        PendingRegistrationId = Guid.NewGuid(),
+        //        Created = DateTime.UtcNow
+        //    };
 
-            Context.Developers.Add(developer);
+        //    Context.Developers.Add(developer);
 
-            return developer;
-        }
+        //    return developer;
+        //}
 
         private async Task<bool> IsUserNotExist(string email)
         {
@@ -54,6 +60,32 @@ namespace IdentityServer.UnitOfWork.Developers
         {
             Developer user = await Context.Developers.FirstOrDefaultAsync(p => p.DisplayName == displayName);
             return user == null;
+        }
+
+        public override async Task<Developer> Do()
+        {
+            await Check(() => IsUserNotExist(_email), DevelopersErrorCodes.EmailAlreadyExists);
+            await Check(() => IsUsernameAvailable(_displayname), DevelopersErrorCodes.DisplayNameNotAvailable);
+
+            byte[] passwordBytes = Encoding.UTF8.GetBytes(_password);
+            byte[] saltBytes = _passwordService.CreateSalt();
+            byte[] hashBytes = _passwordService.CreateHash(passwordBytes, saltBytes);
+
+            Developer developer = new Developer
+            {
+                Email = _email,
+                DisplayName = _displayname,
+                Salt = Convert.ToBase64String(saltBytes),
+                PasswordHash = Convert.ToBase64String(hashBytes),
+                IsActive = true,
+                IsPending = true,
+                PendingRegistrationId = Guid.NewGuid(),
+                Created = DateTime.UtcNow
+            };
+
+            Context.Developers.Add(developer);
+
+            return developer;
         }
     }
 }

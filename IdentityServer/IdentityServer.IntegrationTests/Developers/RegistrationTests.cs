@@ -25,8 +25,8 @@ namespace IdentityServer.IntegrationTests.Developers
             string username = RandomData.RandomString();
             string password = RandomData.RandomString(12, true);
 
-            DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context);
-            Developer developer = await operation.Register(email, username, password);
+            DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context, email, username, password);
+            Developer developer = await operation.Do();
             
             await operation.CommitAsync();
 
@@ -44,15 +44,15 @@ namespace IdentityServer.IntegrationTests.Developers
             string username = RandomData.RandomString();
             string password = RandomData.RandomString(12, true);
 
-            DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context);
-            Developer developer = await operation.Register(email, username, password);
+            DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context, email, username, password);
+            Developer developer = await operation.Do();
 
             await operation.CommitAsync();
 
             await AssertExtensions.ThrowAsync<RequirementFailedException>(async () =>
             {
-                DeveloperRegistration failOperation = new DeveloperRegistration(_fixture.Context);
-                Developer failDeveloper = await failOperation.Register(email, username, password);
+                DeveloperRegistration failOperation = new DeveloperRegistration(_fixture.Context, email, username, password);
+                Developer failDeveloper = await failOperation.Do();
             });          
         }
 
@@ -63,16 +63,16 @@ namespace IdentityServer.IntegrationTests.Developers
             string username = RandomData.RandomString();
             string password = RandomData.RandomString(12, true);
 
-            DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context);
-            Developer developer = await operation.Register(email, username, password);
+            DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context, email, username, password);
+            Developer developer = await operation.Do();
 
             await operation.CommitAsync();
 
             await AssertExtensions.ThrowAsync<RequirementFailedException>(async () =>
             {
                 string newEmail = RandomData.Email();
-                DeveloperRegistration failOperation = new DeveloperRegistration(_fixture.Context);
-                Developer failDeveloper = await failOperation.Register(newEmail, username, password);
+                DeveloperRegistration failOperation = new DeveloperRegistration(_fixture.Context, email, username, password);
+                Developer failDeveloper = await failOperation.Do();
             });     
         }
     }

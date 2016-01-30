@@ -17,7 +17,7 @@ namespace IdentityServer.EntityFramework.Configurations
             Property(p => p.IsActive).IsRequired();
 
             HasMany(p => p.Policies);
-            HasMany(p => p.Claims);
+            HasMany(p => p.Claims).WithOptional().WillCascadeOnDelete(false);
         }
     }
 }
