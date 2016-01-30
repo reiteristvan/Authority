@@ -65,10 +65,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer.DomainModel.Repositories\IdentityServer.DomainModel.Repositories.csproj">
-      <Project>{cf84e13b-2faf-47df-8640-704c265064d4}</Project>
-      <Name>IdentityServer.DomainModel.Repositories</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IdentityServer.DomainModel\IdentityServer.DomainModel.csproj">
       <Project>{ea0a007e-85b0-4048-8b54-b4b712c4edc7}</Project>
       <Name>IdentityServer.DomainModel</Name>
