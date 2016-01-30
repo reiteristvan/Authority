@@ -60,10 +60,13 @@
     <Compile Include="Developers\DevelopersErrorCodes.cs" />
     <Compile Include="Errors\RecordError.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="OperationWithNoReturn.cs" />
+    <Compile Include="OperationWithReturnValue.cs" />
     <Compile Include="Policies\CreatePolicy.cs" />
     <Compile Include="Policies\PolicyErrorCodes.cs" />
     <Compile Include="Products\CreateClaimForProduct.cs" />
     <Compile Include="Products\CreateProduct.cs" />
+    <Compile Include="Products\DeleteProduct.cs" />
     <Compile Include="Products\GetClaimsOfProduct.cs" />
     <Compile Include="Products\GetProductDetails.cs" />
     <Compile Include="Products\ProductErrorCodes.cs" />

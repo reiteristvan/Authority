@@ -46,8 +46,8 @@ namespace IdentityServer.Services
 
         public async Task Register(string email, string displayName, string password)
         {
-            DeveloperRegistration operation = new DeveloperRegistration(_identityServerContext);
-            Developer developer = await operation.Register(email, displayName, password);
+            DeveloperRegistration operation = new DeveloperRegistration(_identityServerContext, email, displayName, password);
+            Developer developer = await operation.Do();
             await operation.CommitAsync();
 
             await _emailService.SendDeveloperActivation(developer.Email, new DeveloperActivationModel
