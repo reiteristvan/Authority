@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using IdentityServer.Services;
+using IdentityServer.Services.Dto;
 using IdentityServer.Web.Infrastructure.Identity;
 using IdentityServer.Web.Models.Developers;
 
@@ -13,19 +15,24 @@ namespace IdentityServer.Web.Controllers
     public class DevelopersController : Controller
     {
         private readonly IDeveloperService _developerService;
+        private readonly IProductService _productService;
 
-        public DevelopersController(IDeveloperService developerService)
+        public DevelopersController(IDeveloperService developerService, IProductService productService)
         {
             _developerService = developerService;
+            _productService = productService;
         }
 
         [Authorize]
         [HttpGet]
         [Route]
         [Route("index")]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            Guid userId = HttpContext.User.GetUserId();
+            IEnumerable<ProductSimpleDto> products = await _productService.GetProductsOfUser(userId);
+
+            return View(products);
         }
 
         [AllowAnonymous]

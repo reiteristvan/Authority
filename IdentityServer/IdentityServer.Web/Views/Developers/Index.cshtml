@@ -1,7 +1,23 @@
-﻿
+﻿@using IdentityServer.Services.Dto
+@model IEnumerable<IdentityServer.Services.Dto.ProductSimpleDto>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<h3>Your products</h3>
+
+<ul>
+    @foreach (ProductSimpleDto product in Model)
+    {
+        <li>
+            @product.Name
+        </li>
+    }
+</ul>
+
+<h3>Create a new Product</h3>
+
+@Html.ActionLink("New Product", "Create", "Product")
