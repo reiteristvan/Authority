@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Web", "Ident
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.DomainModel", "IdentityServer.DomainModel\IdentityServer.DomainModel.csproj", "{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.DomainModel.Repositories", "IdentityServer.DomainModel.Repositories\IdentityServer.DomainModel.Repositories.csproj", "{CF84E13B-2FAF-47DF-8640-704C265064D4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.EntityFramework", "IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj", "{56B09B36-5CBB-47A9-8AFF-597C4D00104D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.UnitOfWork", "IdentityServer.UnitOfWork\IdentityServer.UnitOfWork.csproj", "{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}"
@@ -23,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.IntegrationT
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
+		SccNumberOfProjects = 9
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://reiteristvan.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -33,27 +31,24 @@ Global
 		SccProjectUniqueName2 = IdentityServer.DomainModel\\IdentityServer.DomainModel.csproj
 		SccProjectName2 = IdentityServer.DomainModel
 		SccLocalPath2 = IdentityServer.DomainModel
-		SccProjectUniqueName3 = IdentityServer.DomainModel.Repositories\\IdentityServer.DomainModel.Repositories.csproj
-		SccProjectName3 = IdentityServer.DomainModel.Repositories
-		SccLocalPath3 = IdentityServer.DomainModel.Repositories
-		SccProjectUniqueName4 = IdentityServer.EntityFramework\\IdentityServer.EntityFramework.csproj
-		SccProjectName4 = IdentityServer.EntityFramework
-		SccLocalPath4 = IdentityServer.EntityFramework
-		SccProjectUniqueName5 = IdentityServer.UnitOfWork\\IdentityServer.UnitOfWork.csproj
-		SccProjectName5 = IdentityServer.UnitOfWork
-		SccLocalPath5 = IdentityServer.UnitOfWork
-		SccProjectUniqueName6 = IdentityServer.Services\\IdentityServer.Services.csproj
-		SccProjectName6 = IdentityServer.Services
-		SccLocalPath6 = IdentityServer.Services
-		SccProjectUniqueName7 = IdentityServer.Tests\\IdentityServer.Tests.csproj
-		SccProjectName7 = IdentityServer.Tests
-		SccLocalPath7 = IdentityServer.Tests
-		SccProjectUniqueName8 = IdentityServer.EmailService\\IdentityServer.EmailService.csproj
-		SccProjectName8 = IdentityServer.EmailService
-		SccLocalPath8 = IdentityServer.EmailService
-		SccProjectUniqueName9 = IdentityServer.IntegrationTests\\IdentityServer.IntegrationTests.csproj
-		SccProjectName9 = IdentityServer.IntegrationTests
-		SccLocalPath9 = IdentityServer.IntegrationTests
+		SccProjectUniqueName3 = IdentityServer.EntityFramework\\IdentityServer.EntityFramework.csproj
+		SccProjectName3 = IdentityServer.EntityFramework
+		SccLocalPath3 = IdentityServer.EntityFramework
+		SccProjectUniqueName4 = IdentityServer.UnitOfWork\\IdentityServer.UnitOfWork.csproj
+		SccProjectName4 = IdentityServer.UnitOfWork
+		SccLocalPath4 = IdentityServer.UnitOfWork
+		SccProjectUniqueName5 = IdentityServer.Services\\IdentityServer.Services.csproj
+		SccProjectName5 = IdentityServer.Services
+		SccLocalPath5 = IdentityServer.Services
+		SccProjectUniqueName6 = IdentityServer.Tests\\IdentityServer.Tests.csproj
+		SccProjectName6 = IdentityServer.Tests
+		SccLocalPath6 = IdentityServer.Tests
+		SccProjectUniqueName7 = IdentityServer.EmailService\\IdentityServer.EmailService.csproj
+		SccProjectName7 = IdentityServer.EmailService
+		SccLocalPath7 = IdentityServer.EmailService
+		SccProjectUniqueName8 = IdentityServer.IntegrationTests\\IdentityServer.IntegrationTests.csproj
+		SccProjectName8 = IdentityServer.IntegrationTests
+		SccLocalPath8 = IdentityServer.IntegrationTests
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,10 +63,6 @@ Global
 		{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF84E13B-2FAF-47DF-8640-704C265064D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56B09B36-5CBB-47A9-8AFF-597C4D00104D}.Release|Any CPU.ActiveCfg = Release|Any CPU
