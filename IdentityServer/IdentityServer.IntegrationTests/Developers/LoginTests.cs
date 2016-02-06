@@ -23,8 +23,8 @@ namespace IdentityServer.IntegrationTests.Developers
             string password = "12Budapest99";
             Developer developer = await Operations.RegisterAndActivateDeveloper(_fixture.Context, password);
 
-            DeveloperLogin login = new DeveloperLogin(_fixture.Context);
-            bool result = await login.ValidateLogin(developer.Email, password);
+            DeveloperLogin login = new DeveloperLogin(_fixture.Context, developer.Email, password);
+            bool result = await login.Do();
 
             Assert.True(result);
         }
@@ -35,8 +35,8 @@ namespace IdentityServer.IntegrationTests.Developers
             string password = "12Budapest99";
             Developer developer = await Operations.RegisterDeveloper(_fixture.Context, password);
 
-            DeveloperLogin login = new DeveloperLogin(_fixture.Context);
-            bool result = await login.ValidateLogin(developer.Email, password);
+            DeveloperLogin login = new DeveloperLogin(_fixture.Context, developer.Email, password);
+            bool result = await login.Do();
 
             Assert.False(result);
         }
@@ -51,8 +51,8 @@ namespace IdentityServer.IntegrationTests.Developers
             _fixture.Context.Entry(developer).State = EntityState.Modified;
             await _fixture.Context.SaveChangesAsync();
 
-            DeveloperLogin login = new DeveloperLogin(_fixture.Context);
-            bool result = await login.ValidateLogin(developer.Email, password);
+            DeveloperLogin login = new DeveloperLogin(_fixture.Context, developer.Email, password);
+            bool result = await login.Do();
 
             Assert.False(result);
         }

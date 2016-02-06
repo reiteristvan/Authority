@@ -33,8 +33,8 @@ namespace IdentityServer.IntegrationTests.Common
             Developer developer = await registration.Do();
             await registration.CommitAsync();
 
-            DeveloperActivation activation = new DeveloperActivation(context);
-            await activation.Activation(developer.PendingRegistrationId);
+            DeveloperActivation activation = new DeveloperActivation(context, developer.PendingRegistrationId);
+            await activation.Do();
             await activation.CommitAsync();
 
             return developer;

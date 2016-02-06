@@ -23,8 +23,8 @@ namespace IdentityServer.IntegrationTests.Developers
         {
             Developer developer = await Operations.RegisterDeveloper(_fixture.Context);
 
-            DeveloperActivation activationOperation = new DeveloperActivation(_fixture.Context);
-            await activationOperation.Activation(developer.PendingRegistrationId);
+            DeveloperActivation activationOperation = new DeveloperActivation(_fixture.Context, developer.PendingRegistrationId);
+            await activationOperation.Do();
 
             await activationOperation.CommitAsync();
 
@@ -39,8 +39,8 @@ namespace IdentityServer.IntegrationTests.Developers
         {
             await AssertExtensions.ThrowAsync<RequirementFailedException>(async () =>
             {
-                DeveloperActivation operation = new DeveloperActivation(_fixture.Context);
-                await operation.Activation(Guid.Empty);
+                DeveloperActivation operation = new DeveloperActivation(_fixture.Context, Guid.Empty);
+                await operation.Do();
             }); 
         }
     }

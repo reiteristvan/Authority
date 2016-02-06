@@ -59,9 +59,9 @@ namespace IdentityServer.Services
         public async Task<LoginResult> Login(string email, string password)
         {
             LoginResult result = new LoginResult();
-            DeveloperLogin operation = new DeveloperLogin(_identityServerContext);
+            DeveloperLogin operation = new DeveloperLogin(_identityServerContext, email, password);
             
-            if (!await operation.ValidateLogin(email, password))
+            if (!await operation.Do())
             {
                 return result;
             }
@@ -77,8 +77,8 @@ namespace IdentityServer.Services
 
         public async Task Activation(Guid activationCode)
         {
-            DeveloperActivation operation = new DeveloperActivation(_identityServerContext);
-            await operation.Activation(activationCode);
+            DeveloperActivation operation = new DeveloperActivation(_identityServerContext, activationCode);
+            await operation.Do();
             await operation.CommitAsync();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Threading.Tasks;
 using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork
@@ -24,5 +25,28 @@ namespace IdentityServer.UnitOfWork
         }
 
         public abstract void Do();
+    }
+
+    public abstract class OperationWithNoReturnAsync : Operation
+    {
+        protected OperationWithNoReturnAsync(IIdentityServerContext identityServerContext,
+                            IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
+            : base(identityServerContext, isolationLevel)
+        {
+
+        }
+
+        public abstract Task Do();
+    }
+
+    public abstract class SafeOperationWithNoReturnAsync : SafeOperation
+    {
+        protected SafeOperationWithNoReturnAsync(IIdentityServerContext identityServerContext)
+            : base(identityServerContext)
+        {
+
+        }
+
+        public abstract Task Do();
     }
 }
