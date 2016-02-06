@@ -6,29 +6,18 @@ using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork.Policies
 {
-    public class CreatePolicy : Operation
+    public class CreatePolicy : OperationWithReturnValueAsync<Policy>
     {
-        public CreatePolicy(IIdentityServerContext identityServerContext)
+        private readonly Guid _userId;
+        private readonly Guid _productId;
+        private readonly string _name;
+
+        public CreatePolicy(IIdentityServerContext identityServerContext, Guid userId, Guid productId, string name)
             : base(identityServerContext)
         {
-            
-        }
-
-        public async Task<Policy> Create(Guid userId, Guid productId, string name)
-        {
-            Product product = await Context.Products
-                .FirstOrDefaultAsync(p => p.Id == productId);
-
-            Check(() => IsUserOwnsProduct(userId, product), PolicyErrorCodes.UnAuthorizedAccess);
-
-            Policy policy = new Policy
-            {
-                Name = name
-            };
-
-            Context.Policies.Add(policy);
-
-            return policy;
+            _userId = userId;
+            _productId = productId;
+            _name = name;
         }
 
         public bool IsUserOwnsProduct(Guid userId, Product product)
@@ -39,6 +28,23 @@ namespace IdentityServer.UnitOfWork.Policies
             }
 
             return product.OwnerId == userId;
+        }
+
+        public override async Task<Policy> Do()
+        {
+            Product product = await Context.Products
+                .FirstOrDefaultAsync(p => p.Id == _productId);
+
+            Check(() => IsUserOwnsProduct(_userId, product), PolicyErrorCodes.UnAuthorizedAccess);
+
+            Policy policy = new Policy
+            {
+                Name = _name
+            };
+
+            Context.Policies.Add(policy);
+
+            return policy;
         }
     }
 }

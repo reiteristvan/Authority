@@ -22,8 +22,8 @@ namespace IdentityServer.Services
 
         public async Task<Guid> CreatePolicy(Guid userId, Guid productId, string name)
         {
-            CreatePolicy operation = new CreatePolicy(_identityServerContext);
-            Policy policy = await operation.Create(userId, productId, name);
+            CreatePolicy operation = new CreatePolicy(_identityServerContext, userId, productId, name);
+            Policy policy = await operation.Do();
 
             await operation.CommitAsync();
             return policy.Id;
