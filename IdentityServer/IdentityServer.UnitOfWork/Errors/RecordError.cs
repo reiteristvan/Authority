@@ -4,21 +4,27 @@ using IdentityServer.EntityFramework;
 
 namespace IdentityServer.UnitOfWork.Errors
 {
-    public sealed class RecordError : Operation
+    public sealed class RecordError : OperationWithReturnValue<Guid>
     {
-        public RecordError(IIdentityServerContext identityServerContext)
+        private readonly string _type;
+        private readonly string _message;
+        private readonly string _stacktrace;
+
+        public RecordError(IIdentityServerContext identityServerContext, string type, string message, string stacktrace)
             : base(identityServerContext)
         {
-            
+            _type = type;
+            _message = message;
+            _stacktrace = stacktrace;
         }
 
-        public Guid Record(string type, string message, string stackTrace)
+        public override Guid Do()
         {
             Error error = new Error
             {
-                Message = message,
-                StackTrace = stackTrace,
-                Type = type,
+                Message = _message,
+                StackTrace = _stacktrace,
+                Type = _type,
                 Date = DateTime.UtcNow
             };
 
