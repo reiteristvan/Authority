@@ -57,7 +57,7 @@ namespace IdentityServer.IntegrationTests.Developers
         }
 
         [Fact]
-        public async Task RegistrationDuplicateUsernameShoudlFail()
+        public async Task RegistrationDuplicateUsernameShouldFail()
         {
             string email = RandomData.Email();
             string username = RandomData.RandomString();
@@ -65,6 +65,8 @@ namespace IdentityServer.IntegrationTests.Developers
 
             DeveloperRegistration operation = new DeveloperRegistration(_fixture.Context, email, username, password);
             Developer developer = await operation.Do();
+
+            Assert.True(developer.Email == email);
 
             await operation.CommitAsync();
 
