@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +16,8 @@ namespace IdentityServer.Web.Controllers
     [RoutePrefix("developers")]
     public class DevelopersController : Controller
     {
+        private const string ActivationSuccessQuerystringParameter = "activated";
+
         private readonly IDeveloperService _developerService;
         private readonly IProductService _productService;
 
@@ -61,7 +65,7 @@ namespace IdentityServer.Web.Controllers
         {
             await _developerService.Activation(activationCode);
 
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", new { activated = true });
         }
 
         [AllowAnonymous]
@@ -69,6 +73,14 @@ namespace IdentityServer.Web.Controllers
         [Route("login")]
         public ActionResult Login()
         {
+            NameValueCollection queryStringValues = HttpContext.Request.QueryString;
+
+            if (queryStringValues.AllKeys.Contains(ActivationSuccessQuerystringParameter))
+            {
+                ViewBag.Message = queryStringValues[ActivationSuccessQuerystringParameter] == "true" ? 
+                    "Activation successfull, please log in" : "";
+            }
+
             return View();
         }
 
