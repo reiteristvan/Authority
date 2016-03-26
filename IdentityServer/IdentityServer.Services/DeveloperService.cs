@@ -11,11 +11,6 @@ namespace IdentityServer.Services
 {
     public sealed class LoginResult
     {
-        public LoginResult()
-        {
-            IsSuccess = false;
-        }
-
         public bool IsSuccess { get; set; }
         public string Email { get; set; }
         public Guid Id { get; set; }
@@ -58,7 +53,11 @@ namespace IdentityServer.Services
 
         public async Task<LoginResult> Login(string email, string password)
         {
-            LoginResult result = new LoginResult();
+            LoginResult result = new LoginResult
+            {
+                IsSuccess = false
+            };
+
             DeveloperLogin operation = new DeveloperLogin(_identityServerContext, email, password);
             
             if (!await operation.Do())
