@@ -161,6 +161,7 @@
     <Compile Include="Infrastructure\DependencyRegistrations.cs" />
     <Compile Include="Infrastructure\EmailSettingsProvider.cs" />
     <Compile Include="Infrastructure\ErrorHandlerFilter.cs" />
+    <Compile Include="Infrastructure\HtmlHelpers\HtmlExtensions.cs" />
     <Compile Include="Infrastructure\Identity\CookieProvider.cs" />
     <Compile Include="Infrastructure\Identity\DeveloperPrincipal.cs" />
     <Compile Include="Infrastructure\Identity\DeveloperPrincipalSerializable.cs" />
