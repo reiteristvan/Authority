@@ -1,11 +1,10 @@
 ﻿@using IdentityServer.Services.Dto
-@model IEnumerable<IdentityServer.Services.Dto.ProductSimpleDto>
+@using IdentityServer.Web.Infrastructure.HtmlHelpers
+@model IEnumerable<ProductSimpleDto>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Developer Dashboard";
 }
-
-<h2>Index</h2>
 
 <h3>Your products</h3>
 
@@ -13,11 +12,11 @@
     @foreach (ProductSimpleDto product in Model)
     {
         <li>
-            @product.Name
+            @Html.RestLink(product.Name, "products/details/{0}", product.Id)
         </li>
     }
 </ul>
 
 <h3>Create a new Product</h3>
 
-@Html.ActionLink("New Product", "Create", "Product")
+@Html.RestLink("New product", "products/new")
