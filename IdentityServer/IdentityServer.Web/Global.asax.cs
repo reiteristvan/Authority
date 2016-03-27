@@ -8,6 +8,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using IdentityServer.Services;
 using IdentityServer.Web.Infrastructure;
+using IdentityServer.Web.Infrastructure.Filters;
 using IdentityServer.Web.Infrastructure.Identity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Mvc;
