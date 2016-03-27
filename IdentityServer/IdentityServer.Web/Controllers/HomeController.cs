@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using IdentityServer.Web.Infrastructure.Identity;
 
 namespace IdentityServer.Web.Controllers
 {
@@ -8,6 +9,11 @@ namespace IdentityServer.Web.Controllers
         [Route]
         public ActionResult Index()
         {
+            if (User != null && User is DeveloperPrincipal)
+            {
+                return Redirect("/developers/index");
+            }
+
             return View();
         }
     }
