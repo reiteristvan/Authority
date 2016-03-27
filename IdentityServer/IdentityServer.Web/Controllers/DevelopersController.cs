@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using IdentityServer.Services;
 using IdentityServer.Services.Dto;
+using IdentityServer.Web.Infrastructure.Filters;
 using IdentityServer.Web.Infrastructure.Identity;
 using IdentityServer.Web.Models.Developers;
 
@@ -27,7 +28,7 @@ namespace IdentityServer.Web.Controllers
             _productService = productService;
         }
 
-        [Authorize]
+        [IdentityServerAuthorization]
         [HttpGet]
         [Route]
         [Route("index")]
@@ -103,7 +104,7 @@ namespace IdentityServer.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize]
+        [IdentityServerAuthorization]
         [HttpGet]
         [Route("logout")]
         public ActionResult LogOut()

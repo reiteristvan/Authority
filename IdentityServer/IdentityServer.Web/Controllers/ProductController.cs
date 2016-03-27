@@ -4,12 +4,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using IdentityServer.Services;
 using IdentityServer.Services.Dto;
+using IdentityServer.Web.Infrastructure.Filters;
 using IdentityServer.Web.Infrastructure.Identity;
 using IdentityServer.Web.Models.Products;
 
 namespace IdentityServer.Web.Controllers
 {
-    [Authorize]
+    [IdentityServerAuthorization]
     [RoutePrefix("products")]
     public class ProductController : Controller
     {
