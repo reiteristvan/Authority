@@ -50,7 +50,7 @@ namespace IdentityServer.Web.Controllers
         }
 
         [HttpGet]
-        [Route("details/{id}")]
+        [Route("edit/{id}")]
         public async Task<ActionResult> Details(Guid id)
         {
             Guid userId = HttpContext.User.GetUserId();
@@ -59,14 +59,14 @@ namespace IdentityServer.Web.Controllers
             return View(product);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("edit/{id}")]
-        public async Task<ActionResult> Edit(Guid id)
+        public async Task<ActionResult> Edit(Guid id, EditProductModel model)
         {
             Guid userId = HttpContext.User.GetUserId();
             ProductDto product = await _productService.GetProductDetails(userId, id);
 
-            return View(product);
+            return Redirect("edit/" + id);
         }
     }
 }

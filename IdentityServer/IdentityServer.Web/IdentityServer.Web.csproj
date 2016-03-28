@@ -172,6 +172,7 @@
     <Compile Include="Models\Developers\RegisterModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Policies\NewPolicyModel.cs" />
+    <Compile Include="Models\Products\EditProductModel.cs" />
     <Compile Include="Models\Products\NewProductModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,7 +222,6 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Policy\New.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Policy\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
