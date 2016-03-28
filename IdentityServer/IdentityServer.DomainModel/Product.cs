@@ -14,6 +14,8 @@ namespace IdentityServer.DomainModel
         public string Name { get; set; }
         public bool IsPublic { get; set; }
         public bool IsActive { get; set; }
+        public string SiteUrl { get; set; }
+        public string LandingPage { get; set; }
 
         public ICollection<Policy> Policies { get; set; }
         public ICollection<Claim> Claims { get; set; }

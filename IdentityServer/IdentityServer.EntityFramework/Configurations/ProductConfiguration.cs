@@ -15,6 +15,8 @@ namespace IdentityServer.EntityFramework.Configurations
             Property(p => p.Name).IsRequired().HasMaxLength(128);
             Property(p => p.IsPublic).IsRequired();
             Property(p => p.IsActive).IsRequired();
+            Property(p => p.SiteUrl).HasMaxLength(128).IsRequired();
+            Property(p => p.LandingPage).HasMaxLength(128).IsRequired();
 
             HasMany(p => p.Policies);
             HasMany(p => p.Claims).WithOptional().WillCascadeOnDelete(false);
