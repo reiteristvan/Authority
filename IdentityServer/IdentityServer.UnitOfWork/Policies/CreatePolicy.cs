@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Policies
+namespace Authority.UnitOfWork.Policies
 {
     public class CreatePolicy : OperationWithReturnValueAsync<Policy>
     {
@@ -12,8 +12,8 @@ namespace IdentityServer.UnitOfWork.Policies
         private readonly Guid _productId;
         private readonly string _name;
 
-        public CreatePolicy(IIdentityServerContext identityServerContext, Guid userId, Guid productId, string name)
-            : base(identityServerContext)
+        public CreatePolicy(IAuthorityContext AuthorityContext, Guid userId, Guid productId, string name)
+            : base(AuthorityContext)
         {
             _userId = userId;
             _productId = productId;

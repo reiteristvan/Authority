@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.Tests.Common;
-using IdentityServer.UnitOfWork.Products;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.Tests.Common;
+using Authority.UnitOfWork.Products;
 using Moq;
 using Xunit;
 
-namespace IdentityServer.Tests.Products
+namespace Authority.Tests.Products
 {
     public sealed class GetProductDetailsTests
     {
@@ -44,7 +44,7 @@ namespace IdentityServer.Tests.Products
                 }
             };
 
-            Mock<IIdentityServerContext> mockContext = EntityFrameworkTest.CreateMockContext();
+            Mock<IAuthorityContext> mockContext = EntityFrameworkTest.CreateMockContext();
             mockContext.Setup(m => m.Products)
                 .Returns(EntityFrameworkTest.CreateDbSetWithData(products));
             mockContext.Setup(m => m.Policies)

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IdentityServer.Web.Models.Products
+namespace Authority.Web.Models.Products
 {
     public sealed class EditProductModel
     {

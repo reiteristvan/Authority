@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace IdentityServer.Web.Infrastructure.Filters
+namespace Authority.Web.Infrastructure.Filters
 {
-    public sealed class IdentityServerAuthorizationAttribute : AuthorizeAttribute
+    public sealed class AuthorityAuthorizationAttribute : AuthorizeAttribute
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {

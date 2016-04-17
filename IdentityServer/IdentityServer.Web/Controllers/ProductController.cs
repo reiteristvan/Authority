@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using IdentityServer.Services;
-using IdentityServer.Services.Dto;
-using IdentityServer.Web.Infrastructure.Filters;
-using IdentityServer.Web.Infrastructure.Identity;
-using IdentityServer.Web.Models.Products;
+using Authority.Services;
+using Authority.Services.Dto;
+using Authority.Web.Infrastructure.Filters;
+using Authority.Web.Infrastructure.Identity;
+using Authority.Web.Models.Products;
 
-namespace IdentityServer.Web.Controllers
+namespace Authority.Web.Controllers
 {
-    [IdentityServerAuthorization]
+    [AuthorityAuthorization]
     [RoutePrefix("products")]
     public class ProductController : Controller
     {

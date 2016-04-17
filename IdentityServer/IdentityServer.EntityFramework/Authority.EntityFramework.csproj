@@ -114,9 +114,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer.DomainModel\IdentityServer.DomainModel.csproj">
+    <ProjectReference Include="..\IdentityServer.DomainModel\Authority.DomainModel.csproj">
       <Project>{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}</Project>
-      <Name>IdentityServer.DomainModel</Name>
+      <Name>Authority.DomainModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

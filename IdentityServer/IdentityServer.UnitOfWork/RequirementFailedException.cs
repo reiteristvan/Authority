@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IdentityServer.UnitOfWork
+namespace Authority.UnitOfWork
 {
     public sealed class RequirementFailedException : Exception
     {

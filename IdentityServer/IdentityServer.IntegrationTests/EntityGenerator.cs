@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
+using Authority.DomainModel;
 
-namespace IdentityServer.IntegrationTests
+namespace Authority.IntegrationTests
 {
     public static class EntityGenerator
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Errors;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Errors;
 
-namespace IdentityServer.Services
+namespace Authority.Services
 {
     public interface IErrorService : IService
     {
@@ -11,16 +11,16 @@ namespace IdentityServer.Services
 
     public class ErrorService : IErrorService
     {
-        private readonly IIdentityServerContext _identityServerContext;
+        private readonly IAuthorityContext _AuthorityContext;
 
-        public ErrorService(IIdentityServerContext identityServerContext)
+        public ErrorService(IAuthorityContext AuthorityContext)
         {
-            _identityServerContext = identityServerContext;
+            _AuthorityContext = AuthorityContext;
         }
 
         public Guid RecordError(string type, string message, string stacktrace)
         {
-            RecordError operation = new RecordError(_identityServerContext, type, message, stacktrace);
+            RecordError operation = new RecordError(_AuthorityContext, type, message, stacktrace);
             Guid id = operation.Do();
             operation.Commit();
 

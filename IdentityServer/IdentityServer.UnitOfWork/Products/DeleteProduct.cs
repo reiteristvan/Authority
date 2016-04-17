@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.EntityFramework;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Products
+namespace Authority.UnitOfWork.Products
 {
     public sealed class DeleteProduct : Operation
     {
-        public DeleteProduct(IIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        public DeleteProduct(IAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
             
         }

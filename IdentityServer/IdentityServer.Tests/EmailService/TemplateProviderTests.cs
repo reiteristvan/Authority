@@ -1,7 +1,7 @@
-﻿using IdentityServer.Tests.EmailService.Models;
+﻿using Authority.Tests.EmailService.Models;
 using Xunit;
 
-namespace IdentityServer.Tests.EmailService
+namespace Authority.Tests.EmailService
 {
     public sealed class TemplateProviderTests : IClassFixture<TemplateTestFixture>
     {

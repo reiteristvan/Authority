@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IdentityServer.Tests.Common
+namespace Authority.Tests.Common
 {
 internal class TestDbAsyncQueryProvider<TEntity> : IDbAsyncQueryProvider 
     { 

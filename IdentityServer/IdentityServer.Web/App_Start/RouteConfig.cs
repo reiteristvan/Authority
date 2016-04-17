@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace IdentityServer.Web
+namespace Authority.Web
 {
     public class RouteConfig
     {
@@ -15,7 +15,7 @@ namespace IdentityServer.Web
             //    "Default",
             //    "{controller}/{action}/{id}",
             //    new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-            //    new[] { "IdentityServer.Web.Controllers" }
+            //    new[] { "Authority.Web.Controllers" }
             //);
         }
     }

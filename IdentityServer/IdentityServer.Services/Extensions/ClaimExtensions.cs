@@ -1,7 +1,7 @@
-﻿using IdentityServer.DomainModel;
-using IdentityServer.Services.Dto;
+﻿using Authority.DomainModel;
+using Authority.Services.Dto;
 
-namespace IdentityServer.Services.Extensions
+namespace Authority.Services.Extensions
 {
     public static class ClaimExtensions
     {

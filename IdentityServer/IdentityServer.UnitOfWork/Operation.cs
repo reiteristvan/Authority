@@ -1,28 +1,28 @@
 ﻿using System;
 using System.Data;
 using System.Threading.Tasks;
-using IdentityServer.EntityFramework;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork
+namespace Authority.UnitOfWork
 {
     public abstract class Operation
     {
-        private readonly IIdentityServerContext _identityServerContext;
+        private readonly IAuthorityContext _AuthorityContext;
 
-        protected Operation(IIdentityServerContext identityServerContext,
+        protected Operation(IAuthorityContext AuthorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            _identityServerContext = identityServerContext;
-            _identityServerContext.BeginTransaction(isolationLevel);
+            _AuthorityContext = AuthorityContext;
+            _AuthorityContext.BeginTransaction(isolationLevel);
         }
 
-        protected ISafeIdentityServerContext Context { get { return _identityServerContext; } }
+        protected ISafeAuthorityContext Context { get { return _AuthorityContext; } }
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)
         {
             if (!(await condition()))
             {
-                _identityServerContext.RollbackTransaction();
+                _AuthorityContext.RollbackTransaction();
                 throw new RequirementFailedException(errorCode);
             }
         }
@@ -31,7 +31,7 @@ namespace IdentityServer.UnitOfWork
         {
             if (!condition())
             {
-                _identityServerContext.RollbackTransaction();
+                _AuthorityContext.RollbackTransaction();
                 throw new RequirementFailedException(errorCode);
             }
         }
@@ -40,12 +40,12 @@ namespace IdentityServer.UnitOfWork
         {
             try
             {
-                await _identityServerContext.SaveChangesAsync();
-                _identityServerContext.CommitTransaction();
+                await _AuthorityContext.SaveChangesAsync();
+                _AuthorityContext.CommitTransaction();
             }
             catch (Exception)
             {
-                _identityServerContext.RollbackTransaction();
+                _AuthorityContext.RollbackTransaction();
                 throw;
             }
         }
@@ -54,12 +54,12 @@ namespace IdentityServer.UnitOfWork
         {
             try
             {
-                _identityServerContext.SaveChanges();
-                _identityServerContext.CommitTransaction();
+                _AuthorityContext.SaveChanges();
+                _AuthorityContext.CommitTransaction();
             }
             catch (Exception)
             {
-                _identityServerContext.RollbackTransaction();
+                _AuthorityContext.RollbackTransaction();
                 throw;
             }
         }

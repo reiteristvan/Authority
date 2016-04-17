@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.EmailService.cs.Models
+﻿namespace Authority.EmailService.cs.Models
 {
     [EmailTemplateName("DeveloperActivation")]
     public sealed class DeveloperActivationModel

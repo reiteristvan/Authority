@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Policies;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Policies;
 
-namespace IdentityServer.Services
+namespace Authority.Services
 {
     public interface IPolicyService
     {
@@ -13,16 +13,16 @@ namespace IdentityServer.Services
 
     public sealed class PolicyService : IPolicyService
     {
-        private readonly IIdentityServerContext _identityServerContext;
+        private readonly IAuthorityContext _AuthorityContext;
 
-        public PolicyService(IIdentityServerContext identityServerContext)
+        public PolicyService(IAuthorityContext AuthorityContext)
         {
-            _identityServerContext = identityServerContext;
+            _AuthorityContext = AuthorityContext;
         }
 
         public async Task<Guid> CreatePolicy(Guid userId, Guid productId, string name)
         {
-            CreatePolicy operation = new CreatePolicy(_identityServerContext, userId, productId, name);
+            CreatePolicy operation = new CreatePolicy(_AuthorityContext, userId, productId, name);
             Policy policy = await operation.Do();
 
             await operation.CommitAsync();

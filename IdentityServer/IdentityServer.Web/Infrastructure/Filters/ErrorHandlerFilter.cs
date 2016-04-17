@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Routing;
-using IdentityServer.Services;
+using Authority.Services;
 
-namespace IdentityServer.Web.Infrastructure.Filters
+namespace Authority.Web.Infrastructure.Filters
 {
     public class ErrorHandler : IExceptionFilter
     {

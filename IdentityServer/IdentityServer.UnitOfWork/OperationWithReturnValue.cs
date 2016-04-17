@@ -1,14 +1,14 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
-using IdentityServer.EntityFramework;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork
+namespace Authority.UnitOfWork
 {
     public abstract class OperationWithReturnValue<TReturn> : Operation
     {
-        protected OperationWithReturnValue(IIdentityServerContext identityServerContext,
+        protected OperationWithReturnValue(IAuthorityContext AuthorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-            : base(identityServerContext, isolationLevel)
+            : base(AuthorityContext, isolationLevel)
         {
             
         }
@@ -18,8 +18,8 @@ namespace IdentityServer.UnitOfWork
 
     public abstract class SafeOperationWithReturnValue<TReturn> : SafeOperation
     {
-        protected SafeOperationWithReturnValue(ISafeIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        protected SafeOperationWithReturnValue(ISafeAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
 
         }
@@ -29,9 +29,9 @@ namespace IdentityServer.UnitOfWork
 
     public abstract class OperationWithReturnValueAsync<TReturn> : Operation
     {
-        protected OperationWithReturnValueAsync(IIdentityServerContext identityServerContext,
+        protected OperationWithReturnValueAsync(IAuthorityContext AuthorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-            : base(identityServerContext, isolationLevel)
+            : base(AuthorityContext, isolationLevel)
         {
 
         }
@@ -41,8 +41,8 @@ namespace IdentityServer.UnitOfWork
 
     public abstract class SafeOperationWithReturnValueAsync<TReturn> : SafeOperation
     {
-        protected SafeOperationWithReturnValueAsync(ISafeIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        protected SafeOperationWithReturnValueAsync(ISafeAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
 
         }

@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.UnitOfWork.Policies
+﻿namespace Authority.UnitOfWork.Policies
 {
     public static class PolicyErrorCodes
     {

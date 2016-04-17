@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.UnitOfWork.Developers
+﻿namespace Authority.UnitOfWork.Developers
 {
     // 2XXX
     public sealed class DevelopersErrorCodes

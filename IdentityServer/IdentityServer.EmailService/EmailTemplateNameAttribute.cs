@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IdentityServer.EmailService
+namespace Authority.EmailService
 {
     public sealed class EmailTemplateNameAttribute : Attribute
     {

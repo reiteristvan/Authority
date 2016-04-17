@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using IdentityServer.EmailService.cs.Models;
+using Authority.EmailService.cs.Models;
 
-namespace IdentityServer.EmailService
+namespace Authority.EmailService
 {
     public interface IEmailService
     {

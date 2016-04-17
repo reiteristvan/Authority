@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using IdentityServer.EntityFramework;
+using Authority.EntityFramework;
 
-namespace IdentityServer.IntegrationTests.Fixtures
+namespace Authority.IntegrationTests.Fixtures
 {
     public class SimpleFixture : IDisposable
     {
         public SimpleFixture()
         {
-            Context = new IdentityServerContext();
+            Context = new AuthorityContext();
         }
 
-        public IdentityServerContext Context { get; private set; }
+        public AuthorityContext Context { get; private set; }
 
         public void Dispose()
         {

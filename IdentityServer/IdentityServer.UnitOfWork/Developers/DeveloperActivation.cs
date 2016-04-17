@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Developers
+namespace Authority.UnitOfWork.Developers
 {
     public sealed class DeveloperActivation : OperationWithNoReturnAsync
     {
         private readonly Guid _activationCode;
 
-        public DeveloperActivation(IIdentityServerContext identityServerContext, Guid activationCode)
-            : base(identityServerContext)
+        public DeveloperActivation(IAuthorityContext AuthorityContext, Guid activationCode)
+            : base(AuthorityContext)
         {
             _activationCode = activationCode;
         }

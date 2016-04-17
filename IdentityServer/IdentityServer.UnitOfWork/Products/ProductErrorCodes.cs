@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.UnitOfWork.Products
+﻿namespace Authority.UnitOfWork.Products
 {
     public static class ProductErrorCodes
     {

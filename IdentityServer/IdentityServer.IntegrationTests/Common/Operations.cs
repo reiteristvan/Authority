@@ -1,13 +1,13 @@
 ﻿using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Developers;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Developers;
 
-namespace IdentityServer.IntegrationTests.Common
+namespace Authority.IntegrationTests.Common
 {
     public static class Operations
     {
-        public static async Task<Developer> RegisterDeveloper(IdentityServerContext context, string password = "")
+        public static async Task<Developer> RegisterDeveloper(AuthorityContext context, string password = "")
         {
             string email = RandomData.Email();
             string username = RandomData.RandomString();
@@ -22,7 +22,7 @@ namespace IdentityServer.IntegrationTests.Common
         }
 
         public static async Task<Developer> RegisterAndActivateDeveloper(
-            IdentityServerContext context,
+            AuthorityContext context,
             string password = "")
         {
             string email = RandomData.Email();

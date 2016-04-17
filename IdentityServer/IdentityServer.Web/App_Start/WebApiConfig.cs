@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 
-namespace IdentityServer.Web
+namespace Authority.Web
 {
     public static class WebApiConfig
     {

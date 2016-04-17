@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using IdentityServer.Web.Models;
+using Authority.Web.Models;
 
-namespace IdentityServer.Web.Controllers
+namespace Authority.Web.Controllers
 {
     [RoutePrefix("oauth")]
     public class OAuthController : Controller

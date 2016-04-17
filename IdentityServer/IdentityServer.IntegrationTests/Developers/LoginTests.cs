@@ -1,12 +1,12 @@
 ﻿using System.Data.Entity;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.IntegrationTests.Common;
-using IdentityServer.IntegrationTests.Fixtures;
-using IdentityServer.UnitOfWork.Developers;
+using Authority.DomainModel;
+using Authority.IntegrationTests.Common;
+using Authority.IntegrationTests.Fixtures;
+using Authority.UnitOfWork.Developers;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Developers
+namespace Authority.IntegrationTests.Developers
 {
     public sealed class LoginTests : IClassFixture<SimpleFixture>
     {

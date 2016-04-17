@@ -2,11 +2,11 @@
 using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Utilities;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Utilities;
 
-namespace IdentityServer.UnitOfWork.Developers
+namespace Authority.UnitOfWork.Developers
 {
     public sealed class DeveloperLogin : SafeOperationWithReturnValueAsync<bool>
     {
@@ -14,8 +14,8 @@ namespace IdentityServer.UnitOfWork.Developers
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public DeveloperLogin(ISafeIdentityServerContext identityServerContext, string email, string password)
-            : base(identityServerContext)
+        public DeveloperLogin(ISafeAuthorityContext AuthorityContext, string email, string password)
+            : base(AuthorityContext)
         {
             _email = email;
             _password = password;
@@ -24,7 +24,7 @@ namespace IdentityServer.UnitOfWork.Developers
 
         public override async Task<bool> Do()
         {
-            Developer user = await _identityServerContext.Developers.FirstOrDefaultAsync(u => u.Email == _email);
+            Developer user = await _AuthorityContext.Developers.FirstOrDefaultAsync(u => u.Email == _email);
 
             if (user == null || user.IsPending || !user.IsActive)
             {

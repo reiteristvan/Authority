@@ -2,15 +2,15 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Products
+namespace Authority.UnitOfWork.Products
 {
     public sealed class CreateClaimForProduct : Operation
     {
-        public CreateClaimForProduct(IIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        public CreateClaimForProduct(IAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
             
         }

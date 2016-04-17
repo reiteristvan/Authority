@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
 
-namespace IdentityServer.EntityFramework
+namespace Authority.EntityFramework
 {
-    public interface IIdentityServerContext : ISafeIdentityServerContext
+    public interface IAuthorityContext : ISafeAuthorityContext
     {
         int SaveChanges();
         Task<int> SaveChangesAsync();
