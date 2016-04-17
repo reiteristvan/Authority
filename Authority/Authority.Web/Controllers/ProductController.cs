@@ -45,7 +45,7 @@ namespace Authority.Web.Controllers
         public async Task<ActionResult> Create(NewProductModel model)
         {
             Guid userId = HttpContext.User.GetUserId();
-            await _productService.Create(userId, model.Name);
+            await _productService.Create(userId, model.Name, model.SiteUrl, model.LandingPage);
             return RedirectToAction("Index");
         }
 

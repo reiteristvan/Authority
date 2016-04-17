@@ -14,7 +14,7 @@ namespace Authority.Services
     public interface IProductService
     {
         Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId);
-        Task<Guid> Create(Guid ownerId, string name);
+        Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage);
         Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
     }
 
@@ -35,10 +35,10 @@ namespace Authority.Services
             return products.Select(p => p.ToSimpleDto());
         }
 
-        public async Task<Guid> Create(Guid ownerId, string name)
+        public async Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage)
         {
             CreateProduct operation = new CreateProduct(_AuthorityContext);
-            Guid id = await operation.Create(ownerId, name);
+            Guid id = await operation.Create(ownerId, name, siteUrl, landingPage);
             await operation.CommitAsync();
 
             return id;
