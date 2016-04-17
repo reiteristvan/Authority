@@ -6,5 +6,11 @@ namespace Authority.Web.Models.Products
     {
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public string SiteUrl { get; set; }
+
+        [Required]
+        public string LandingPage { get; set; }
     }
 }

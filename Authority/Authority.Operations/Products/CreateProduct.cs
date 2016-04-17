@@ -14,7 +14,7 @@ namespace Authority.Operations.Products
             
         }
 
-        public async Task<Guid> Create(Guid ownerId, string name)
+        public async Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage)
         {
             await Check(() => IsNameAvailable(name), ProductErrorCodes.NameNotAvailable);
 
@@ -23,7 +23,9 @@ namespace Authority.Operations.Products
                 OwnerId = ownerId,
                 Name = name,
                 IsActive = true,
-                IsPublic = false
+                IsPublic = false,
+                SiteUrl = siteUrl,
+                LandingPage = landingPage
             };
 
             Context.Products.Add(product);
