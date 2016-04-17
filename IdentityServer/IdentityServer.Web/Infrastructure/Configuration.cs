@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
-using IdentityServer.Services;
+using Authority.Services;
 
-namespace IdentityServer.Web.Infrastructure
+namespace Authority.Web.Infrastructure
 {
     public sealed class Configuration : IConfiguration
     {

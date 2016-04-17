@@ -1,8 +1,8 @@
 ﻿using System.Configuration;
 using System.Web.Hosting;
-using IdentityServer.EmailService;
+using Authority.EmailService;
 
-namespace IdentityServer.Web.Infrastructure
+namespace Authority.Web.Infrastructure
 {
     public sealed class EmailSettingsProvider : IEmailSettingsProvider
     {

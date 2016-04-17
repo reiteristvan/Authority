@@ -1,9 +1,9 @@
-﻿using IdentityServer.EmailService;
-using IdentityServer.EntityFramework;
-using IdentityServer.Services;
+﻿using Authority.EmailService;
+using Authority.EntityFramework;
+using Authority.Services;
 using Microsoft.Practices.Unity;
 
-namespace IdentityServer.Web.Infrastructure
+namespace Authority.Web.Infrastructure
 {
     public static class DependencyRegistrations
     {
@@ -13,8 +13,8 @@ namespace IdentityServer.Web.Infrastructure
 
             container.RegisterType<IErrorService, ErrorService>(new ContainerControlledLifetimeManager());
 
-            container.RegisterType<IIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
-            container.RegisterType<ISafeIdentityServerContext, IdentityServerContext>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IAuthorityContext, AuthorityContext>(new ContainerControlledLifetimeManager());
+            container.RegisterType<ISafeAuthorityContext, AuthorityContext>(new ContainerControlledLifetimeManager());
 
             container.RegisterType<IEmailService, EmailService.EmailService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IEmailSettingsProvider, EmailSettingsProvider>(new ContainerControlledLifetimeManager());

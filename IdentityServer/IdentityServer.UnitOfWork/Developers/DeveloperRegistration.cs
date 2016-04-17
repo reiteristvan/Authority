@@ -2,11 +2,11 @@
 using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Utilities;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Utilities;
 
-namespace IdentityServer.UnitOfWork.Developers
+namespace Authority.UnitOfWork.Developers
 {
     public sealed class DeveloperRegistration : OperationWithReturnValueAsync<Developer>
     {
@@ -15,8 +15,8 @@ namespace IdentityServer.UnitOfWork.Developers
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public DeveloperRegistration(IIdentityServerContext identityServerContext, string email, string displayname, string password)
-            : base(identityServerContext)
+        public DeveloperRegistration(IAuthorityContext AuthorityContext, string email, string displayname, string password)
+            : base(AuthorityContext)
         {
             _email = email;
             _displayname = displayname;

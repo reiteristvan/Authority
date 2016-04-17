@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Principal;
 
-namespace IdentityServer.Web.Infrastructure.Identity
+namespace Authority.Web.Infrastructure.Identity
 {
     public static class IPrincipalExtensions
     {

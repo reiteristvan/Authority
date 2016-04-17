@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using IdentityServer.DomainModel;
+using Authority.DomainModel;
 
-namespace IdentityServer.IntegrationTests.Common
+namespace Authority.IntegrationTests.Common
 {
     public static class DbContextExtensions
     {

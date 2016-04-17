@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace IdentityServer.Web.Infrastructure.HtmlHelpers
+namespace Authority.Web.Infrastructure.HtmlHelpers
 {
     public static class HtmlExtensions
     {

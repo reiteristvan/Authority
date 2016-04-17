@@ -1,6 +1,6 @@
-﻿using IdentityServer.EmailService;
+﻿using Authority.EmailService;
 
-namespace IdentityServer.Tests.EmailService
+namespace Authority.Tests.EmailService
 {
     public sealed class TestEmailSettingsProvider : IEmailSettingsProvider
     {

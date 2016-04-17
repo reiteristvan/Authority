@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IdentityServer.UnitOfWork.Extensions
+namespace Authority.UnitOfWork.Extensions
 {
     public static class IEnumerableExtensions
     {

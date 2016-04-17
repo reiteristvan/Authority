@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IdentityServer.DomainModel
+namespace Authority.DomainModel
 {
     public sealed class Error : EntityBase
     {

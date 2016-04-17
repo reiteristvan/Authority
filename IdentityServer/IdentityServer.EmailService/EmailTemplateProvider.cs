@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
-using IdentityServer.EmailService.cs;
+using Authority.EmailService.cs;
 using RazorEngine;
 using RazorEngine.Templating;
 
-namespace IdentityServer.EmailService
+namespace Authority.EmailService
 {
     public class EmailTemplateProvider
     {

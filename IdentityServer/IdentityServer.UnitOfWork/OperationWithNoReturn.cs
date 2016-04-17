@@ -1,14 +1,14 @@
 ﻿using System.Data;
 using System.Threading.Tasks;
-using IdentityServer.EntityFramework;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork
+namespace Authority.UnitOfWork
 {
     public abstract class OperationWithNoReturn : Operation
     {
-        protected OperationWithNoReturn(IIdentityServerContext identityServerContext,
+        protected OperationWithNoReturn(IAuthorityContext AuthorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-            : base(identityServerContext, isolationLevel)
+            : base(AuthorityContext, isolationLevel)
         {
             
         }
@@ -18,8 +18,8 @@ namespace IdentityServer.UnitOfWork
 
     public abstract class SafeOperationWithNoReturn : SafeOperation
     {
-        protected SafeOperationWithNoReturn(IIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        protected SafeOperationWithNoReturn(IAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
 
         }
@@ -29,9 +29,9 @@ namespace IdentityServer.UnitOfWork
 
     public abstract class OperationWithNoReturnAsync : Operation
     {
-        protected OperationWithNoReturnAsync(IIdentityServerContext identityServerContext,
+        protected OperationWithNoReturnAsync(IAuthorityContext AuthorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-            : base(identityServerContext, isolationLevel)
+            : base(AuthorityContext, isolationLevel)
         {
 
         }
@@ -41,8 +41,8 @@ namespace IdentityServer.UnitOfWork
 
     public abstract class SafeOperationWithNoReturnAsync : SafeOperation
     {
-        protected SafeOperationWithNoReturnAsync(IIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        protected SafeOperationWithNoReturnAsync(IAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
 
         }

@@ -1,6 +1,6 @@
-﻿using IdentityServer.EmailService;
+﻿using Authority.EmailService;
 
-namespace IdentityServer.Tests.EmailService.Models
+namespace Authority.Tests.EmailService.Models
 {
     [EmailTemplateName("TestActivation")]
     public class TestActivation

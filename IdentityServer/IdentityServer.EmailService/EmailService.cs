@@ -3,10 +3,10 @@ using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using IdentityServer.EmailService.cs.Models;
+using Authority.EmailService.cs.Models;
 using SendGrid;
 
-namespace IdentityServer.EmailService
+namespace Authority.EmailService
 {
     public sealed class EmailService : IEmailService
     {
@@ -22,7 +22,7 @@ namespace IdentityServer.EmailService
         public async Task SendDeveloperActivation(string recipient, DeveloperActivationModel model)
         {
             string body = _templateProvider.Load(model);
-            await Send(recipient, "Activate your account at IdentityServer", body);
+            await Send(recipient, "Activate your account at Authority", body);
         }
 
         private async Task Send(string recipient, string subject, string body)

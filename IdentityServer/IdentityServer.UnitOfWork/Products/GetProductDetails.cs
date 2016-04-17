@@ -2,22 +2,22 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Products
+namespace Authority.UnitOfWork.Products
 {
     public sealed class GetProductDetails : SafeOperation
     {
-        public GetProductDetails(ISafeIdentityServerContext safeIdentityServerContext)
-            : base(safeIdentityServerContext)
+        public GetProductDetails(ISafeAuthorityContext safeAuthorityContext)
+            : base(safeAuthorityContext)
         {
             
         }
 
         public async Task<Product> GetDetails(Guid userId, Guid productId)
         {
-            Product product = await _identityServerContext.Products
+            Product product = await _AuthorityContext.Products
                 .Include(p => p.Policies)
                 .Include(p => p.Policies.Select(po => po.Claims))
                 .FirstOrDefaultAsync(p => p.Id == productId);

@@ -1,4 +1,4 @@
-namespace IdentityServer.EntityFramework.Migrations
+namespace Authority.EntityFramework.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

@@ -5,17 +5,17 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework.Configurations;
+using Authority.DomainModel;
+using Authority.EntityFramework.Configurations;
 
-namespace IdentityServer.EntityFramework
+namespace Authority.EntityFramework
 {
-    public sealed class IdentityServerContext : DbContext, IIdentityServerContext
+    public sealed class AuthorityContext : DbContext, IAuthorityContext
     {
         private DbContextTransaction _transaction;
 
-        public IdentityServerContext()
-            : base("IdentityServerConnection")
+        public AuthorityContext()
+            : base("AuthorityConnection")
         {
 
         }

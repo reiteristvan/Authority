@@ -5,17 +5,17 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 using Moq;
 
-namespace IdentityServer.Tests.Common
+namespace Authority.Tests.Common
 {
     public static class EntityFrameworkTest
     {
-        public static Mock<IIdentityServerContext> CreateMockContext()
+        public static Mock<IAuthorityContext> CreateMockContext()
         {
-            Mock<IIdentityServerContext> mockContext = new Mock<IIdentityServerContext>();
+            Mock<IAuthorityContext> mockContext = new Mock<IAuthorityContext>();
             mockContext.Setup(m => m.BeginTransaction(It.IsAny<IsolationLevel>())).Verifiable();
             mockContext.Setup(m => m.CommitTransaction()).Verifiable();
             mockContext.Setup(m => m.RollbackTransaction()).Verifiable();

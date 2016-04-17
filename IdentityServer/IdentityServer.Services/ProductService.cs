@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.Services.Dto;
-using IdentityServer.Services.Extensions;
-using IdentityServer.UnitOfWork.Products;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.Services.Dto;
+using Authority.Services.Extensions;
+using Authority.UnitOfWork.Products;
 
-namespace IdentityServer.Services
+namespace Authority.Services
 {
     public interface IProductService
     {
@@ -20,16 +20,16 @@ namespace IdentityServer.Services
 
     public sealed class ProductService : IProductService
     {
-        private readonly IIdentityServerContext _identityServerContext;
+        private readonly IAuthorityContext _AuthorityContext;
 
-        public ProductService(IIdentityServerContext identityServerContext)
+        public ProductService(IAuthorityContext AuthorityContext)
         {
-            _identityServerContext = identityServerContext;
+            _AuthorityContext = AuthorityContext;
         }
 
         public async Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId)
         {
-            List<Product> products = await _identityServerContext.Products
+            List<Product> products = await _AuthorityContext.Products
                 .Where(p => p.OwnerId == ownerId)
                 .ToListAsync();
             return products.Select(p => p.ToSimpleDto());
@@ -37,7 +37,7 @@ namespace IdentityServer.Services
 
         public async Task<Guid> Create(Guid ownerId, string name)
         {
-            CreateProduct operation = new CreateProduct(_identityServerContext);
+            CreateProduct operation = new CreateProduct(_AuthorityContext);
             Guid id = await operation.Create(ownerId, name);
             await operation.CommitAsync();
 
@@ -46,7 +46,7 @@ namespace IdentityServer.Services
 
         public async Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId)
         {
-            GetProductDetails operation = new GetProductDetails(_identityServerContext);
+            GetProductDetails operation = new GetProductDetails(_AuthorityContext);
             Product product = await operation.GetDetails(ownerId, proudctId);
 
             return product.ToDto();

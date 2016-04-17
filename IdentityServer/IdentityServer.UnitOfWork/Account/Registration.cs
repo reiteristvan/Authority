@@ -2,11 +2,11 @@
 using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Utilities;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Utilities;
 
-namespace IdentityServer.UnitOfWork.Account
+namespace Authority.UnitOfWork.Account
 {
     public sealed class Registration : OperationWithReturnValueAsync<User>
     {
@@ -15,8 +15,8 @@ namespace IdentityServer.UnitOfWork.Account
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public Registration(IIdentityServerContext identityServerContext, string email, string username, string password)
-            : base(identityServerContext)
+        public Registration(IAuthorityContext AuthorityContext, string email, string username, string password)
+            : base(AuthorityContext)
         {
             _email = email;
             _username = username;

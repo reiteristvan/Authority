@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using IdentityServer.Services;
-using IdentityServer.Services.Dto;
-using IdentityServer.Web.Infrastructure.Filters;
-using IdentityServer.Web.Infrastructure.Identity;
-using IdentityServer.Web.Models.Developers;
+using Authority.Services;
+using Authority.Services.Dto;
+using Authority.Web.Infrastructure.Filters;
+using Authority.Web.Infrastructure.Identity;
+using Authority.Web.Models.Developers;
 
-namespace IdentityServer.Web.Controllers
+namespace Authority.Web.Controllers
 {
     [RoutePrefix("developers")]
     public class DevelopersController : Controller
@@ -28,7 +28,7 @@ namespace IdentityServer.Web.Controllers
             _productService = productService;
         }
 
-        [IdentityServerAuthorization]
+        [AuthorityAuthorization]
         [HttpGet]
         [Route]
         [Route("index")]
@@ -104,7 +104,7 @@ namespace IdentityServer.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [IdentityServerAuthorization]
+        [AuthorityAuthorization]
         [HttpGet]
         [Route("logout")]
         public ActionResult LogOut()

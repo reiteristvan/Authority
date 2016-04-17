@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IdentityServer.DomainModel
+namespace Authority.DomainModel
 {
     public class User : EntityBase
     {

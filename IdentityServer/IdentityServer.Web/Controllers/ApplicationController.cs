@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IdentityServer.Web.Controllers
+namespace Authority.Web.Controllers
 {
     [RoutePrefix("applications")]
     public class ApplicationController : Controller

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace IdentityServer.IntegrationTests
+namespace Authority.IntegrationTests
 {
     public static class RandomData
     {

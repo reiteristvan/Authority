@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace IdentityServer.DomainModel
+namespace Authority.DomainModel
 {
     public sealed class Policy : EntityBase
     {

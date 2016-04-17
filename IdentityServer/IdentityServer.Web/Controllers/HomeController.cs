@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using IdentityServer.Web.Infrastructure.Identity;
+using Authority.Web.Infrastructure.Identity;
 
-namespace IdentityServer.Web.Controllers
+namespace Authority.Web.Controllers
 {
     [Route]
     public class HomeController : Controller

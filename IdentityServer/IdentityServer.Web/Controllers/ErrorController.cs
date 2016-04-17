@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace IdentityServer.Web.Controllers
+namespace Authority.Web.Controllers
 {
     [RoutePrefix("error")]
     public class ErrorController : Controller

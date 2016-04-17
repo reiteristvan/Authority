@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.DomainModel
+﻿namespace Authority.DomainModel
 {
     public sealed class ClientApplication : EntityBase
     {

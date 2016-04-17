@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Extensions;
+using Authority.DomainModel;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Extensions;
 
-namespace IdentityServer.UnitOfWork.Products
+namespace Authority.UnitOfWork.Products
 {
     public sealed class GetClaimsOfProduct : SafeOperation
     {
-        public GetClaimsOfProduct(ISafeIdentityServerContext identityServerContext)
-            : base(identityServerContext)
+        public GetClaimsOfProduct(ISafeAuthorityContext AuthorityContext)
+            : base(AuthorityContext)
         {
             
         }
 
         public async Task<IEnumerable<Claim>>  Retrieve(Guid userId, Guid productId)
         {
-            Product product = await _identityServerContext.Products
+            Product product = await _AuthorityContext.Products
                 .Include(p => p.Policies)
                 .Include(p => p.Policies.Select(po => po.Claims))
                 .FirstOrDefaultAsync(p => p.Id == productId);

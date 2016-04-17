@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Security;
 using Newtonsoft.Json;
 
-namespace IdentityServer.Web.Infrastructure.Identity
+namespace Authority.Web.Infrastructure.Identity
 {
     public static  class CookieProvider
     {

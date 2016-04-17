@@ -87,21 +87,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IdentityServer.DomainModel\IdentityServer.DomainModel.csproj">
+    <ProjectReference Include="..\IdentityServer.DomainModel\Authority.DomainModel.csproj">
       <Project>{ea0a007e-85b0-4048-8b54-b4b712c4edc7}</Project>
-      <Name>IdentityServer.DomainModel</Name>
+      <Name>Authority.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IdentityServer.EntityFramework\IdentityServer.EntityFramework.csproj">
+    <ProjectReference Include="..\IdentityServer.EntityFramework\Authority.EntityFramework.csproj">
       <Project>{56b09b36-5cbb-47a9-8aff-597c4d00104d}</Project>
-      <Name>IdentityServer.EntityFramework</Name>
+      <Name>Authority.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IdentityServer.Services\IdentityServer.Services.csproj">
+    <ProjectReference Include="..\IdentityServer.Services\Authority.Services.csproj">
       <Project>{25c54590-0c96-4878-8e6d-c0496d77d45b}</Project>
-      <Name>IdentityServer.Services</Name>
+      <Name>Authority.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IdentityServer.UnitOfWork\IdentityServer.UnitOfWork.csproj">
+    <ProjectReference Include="..\IdentityServer.UnitOfWork\Authority.UnitOfWork.csproj">
       <Project>{8749794c-e17f-4ba4-9ab4-f8e9c2e60a12}</Project>
-      <Name>IdentityServer.UnitOfWork</Name>
+      <Name>Authority.UnitOfWork</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

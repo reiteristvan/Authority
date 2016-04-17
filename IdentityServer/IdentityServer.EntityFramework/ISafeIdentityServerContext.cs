@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using IdentityServer.DomainModel;
+using Authority.DomainModel;
 
-namespace IdentityServer.EntityFramework
+namespace Authority.EntityFramework
 {
-    public interface ISafeIdentityServerContext
+    public interface ISafeAuthorityContext
     {
         DbSet<User> Users { get; set; }
         DbSet<Developer> Developers { get; set; }

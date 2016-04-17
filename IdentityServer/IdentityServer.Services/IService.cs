@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.Services
+﻿namespace Authority.Services
 {
     /// <summary>
     /// Marker interface

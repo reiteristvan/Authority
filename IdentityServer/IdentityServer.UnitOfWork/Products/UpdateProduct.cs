@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Products
+namespace Authority.UnitOfWork.Products
 {
     public sealed class UpdateProduct : OperationWithReturnValueAsync<Product>
     {
@@ -17,9 +17,9 @@ namespace IdentityServer.UnitOfWork.Products
         private readonly string _landingPage;
         private readonly bool _isActive;
 
-        public UpdateProduct(IIdentityServerContext identityServerContext, 
+        public UpdateProduct(IAuthorityContext AuthorityContext, 
             string name, bool isActive, bool isPublic, string siteUrl, string landingPage)
-            : base(identityServerContext)
+            : base(AuthorityContext)
         {
             _name = name;
             _isPublic = isPublic;

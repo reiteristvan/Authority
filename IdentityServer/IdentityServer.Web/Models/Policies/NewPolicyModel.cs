@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace IdentityServer.Web.Models.Policies
+namespace Authority.Web.Models.Policies
 {
     public sealed class NewPolicyModel
     {

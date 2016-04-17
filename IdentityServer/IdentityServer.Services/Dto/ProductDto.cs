@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IdentityServer.Services.Dto
+namespace Authority.Services.Dto
 {
     public class ProductSimpleDto
     {

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using IdentityServer.EntityFramework;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork
+namespace Authority.UnitOfWork
 {
     public abstract class SafeOperation
     {
-        protected readonly ISafeIdentityServerContext _identityServerContext;
+        protected readonly ISafeAuthorityContext _AuthorityContext;
 
-        protected SafeOperation(ISafeIdentityServerContext identityServerContext)
+        protected SafeOperation(ISafeAuthorityContext AuthorityContext)
         {
-            _identityServerContext = identityServerContext;
+            _AuthorityContext = AuthorityContext;
         }
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)

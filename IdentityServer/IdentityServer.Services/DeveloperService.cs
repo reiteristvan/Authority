@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using IdentityServer.DomainModel;
-using IdentityServer.EmailService;
-using IdentityServer.EmailService.cs.Models;
-using IdentityServer.EntityFramework;
-using IdentityServer.UnitOfWork.Developers;
+using Authority.DomainModel;
+using Authority.EmailService;
+using Authority.EmailService.cs.Models;
+using Authority.EntityFramework;
+using Authority.UnitOfWork.Developers;
 
-namespace IdentityServer.Services
+namespace Authority.Services
 {
     public sealed class LoginResult
     {
@@ -25,23 +25,23 @@ namespace IdentityServer.Services
 
     public sealed class DeveloperService : IDeveloperService
     {
-        private readonly IIdentityServerContext _identityServerContext;
+        private readonly IAuthorityContext _AuthorityContext;
         private readonly IEmailService _emailService;
         private readonly IConfiguration _configuration;
 
         public DeveloperService(
-            IIdentityServerContext identityServerContext, 
+            IAuthorityContext AuthorityContext, 
             IEmailService emailService, 
             IConfiguration configuration)
         {
-            _identityServerContext = identityServerContext;
+            _AuthorityContext = AuthorityContext;
             _emailService = emailService;
             _configuration = configuration;
         }
 
         public async Task Register(string email, string displayName, string password)
         {
-            DeveloperRegistration operation = new DeveloperRegistration(_identityServerContext, email, displayName, password);
+            DeveloperRegistration operation = new DeveloperRegistration(_AuthorityContext, email, displayName, password);
             Developer developer = await operation.Do();
             await operation.CommitAsync();
 
@@ -58,7 +58,7 @@ namespace IdentityServer.Services
                 IsSuccess = false
             };
 
-            DeveloperLogin operation = new DeveloperLogin(_identityServerContext, email, password);
+            DeveloperLogin operation = new DeveloperLogin(_AuthorityContext, email, password);
             
             if (!await operation.Do())
             {
@@ -68,7 +68,7 @@ namespace IdentityServer.Services
             result.IsSuccess = true;
             result.Email = email;
 
-            Developer developer = await _identityServerContext.Developers.FirstAsync(d => d.Email == email);
+            Developer developer = await _AuthorityContext.Developers.FirstAsync(d => d.Email == email);
             result.Id = developer.Id;
 
             return result;
@@ -76,7 +76,7 @@ namespace IdentityServer.Services
 
         public async Task Activation(Guid activationCode)
         {
-            DeveloperActivation operation = new DeveloperActivation(_identityServerContext, activationCode);
+            DeveloperActivation operation = new DeveloperActivation(_AuthorityContext, activationCode);
             await operation.Do();
             await operation.CommitAsync();
         }

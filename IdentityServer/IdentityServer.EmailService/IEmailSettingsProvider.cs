@@ -1,4 +1,4 @@
-﻿namespace IdentityServer.EmailService
+﻿namespace Authority.EmailService
 {
     public interface IEmailSettingsProvider
     {

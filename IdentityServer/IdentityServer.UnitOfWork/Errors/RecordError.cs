@@ -1,8 +1,8 @@
 ﻿using System;
-using IdentityServer.DomainModel;
-using IdentityServer.EntityFramework;
+using Authority.DomainModel;
+using Authority.EntityFramework;
 
-namespace IdentityServer.UnitOfWork.Errors
+namespace Authority.UnitOfWork.Errors
 {
     public sealed class RecordError : OperationWithReturnValue<Guid>
     {
@@ -10,8 +10,8 @@ namespace IdentityServer.UnitOfWork.Errors
         private readonly string _message;
         private readonly string _stacktrace;
 
-        public RecordError(IIdentityServerContext identityServerContext, string type, string message, string stacktrace)
-            : base(identityServerContext)
+        public RecordError(IAuthorityContext AuthorityContext, string type, string message, string stacktrace)
+            : base(AuthorityContext)
         {
             _type = type;
             _message = message;
