@@ -6,9 +6,9 @@ namespace Authority.Operations
 {
     public abstract class OperationWithReturnValue<TReturn> : Operation
     {
-        protected OperationWithReturnValue(IAuthorityContext AuthorityContext,
+        protected OperationWithReturnValue(IAuthorityContext authorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-            : base(AuthorityContext, isolationLevel)
+            : base(authorityContext, isolationLevel)
         {
             
         }
@@ -18,8 +18,8 @@ namespace Authority.Operations
 
     public abstract class SafeOperationWithReturnValue<TReturn> : SafeOperation
     {
-        protected SafeOperationWithReturnValue(ISafeAuthorityContext AuthorityContext)
-            : base(AuthorityContext)
+        protected SafeOperationWithReturnValue(ISafeAuthorityContext authorityContext)
+            : base(authorityContext)
         {
 
         }
@@ -29,9 +29,9 @@ namespace Authority.Operations
 
     public abstract class OperationWithReturnValueAsync<TReturn> : Operation
     {
-        protected OperationWithReturnValueAsync(IAuthorityContext AuthorityContext,
+        protected OperationWithReturnValueAsync(IAuthorityContext authorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
-            : base(AuthorityContext, isolationLevel)
+            : base(authorityContext, isolationLevel)
         {
 
         }
@@ -41,8 +41,8 @@ namespace Authority.Operations
 
     public abstract class SafeOperationWithReturnValueAsync<TReturn> : SafeOperation
     {
-        protected SafeOperationWithReturnValueAsync(ISafeAuthorityContext AuthorityContext)
-            : base(AuthorityContext)
+        protected SafeOperationWithReturnValueAsync(ISafeAuthorityContext authorityContext)
+            : base(authorityContext)
         {
 
         }

@@ -16,20 +16,21 @@ namespace Authority.Services
         Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId);
         Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage);
         Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
+        Task ToggleProductPublish(Guid ownerId, Guid productId);
     }
 
     public sealed class ProductService : IProductService
     {
-        private readonly IAuthorityContext _AuthorityContext;
+        private readonly IAuthorityContext _authorityContext;
 
-        public ProductService(IAuthorityContext AuthorityContext)
+        public ProductService(IAuthorityContext authorityContext)
         {
-            _AuthorityContext = AuthorityContext;
+            _authorityContext = authorityContext;
         }
 
         public async Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId)
         {
-            List<Product> products = await _AuthorityContext.Products
+            List<Product> products = await _authorityContext.Products
                 .Where(p => p.OwnerId == ownerId)
                 .ToListAsync();
             return products.Select(p => p.ToSimpleDto());
@@ -37,7 +38,7 @@ namespace Authority.Services
 
         public async Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage)
         {
-            CreateProduct operation = new CreateProduct(_AuthorityContext, ownerId, name, siteUrl, landingPage);
+            CreateProduct operation = new CreateProduct(_authorityContext, ownerId, name, siteUrl, landingPage);
             Guid id = await operation.Do();
             await operation.CommitAsync();
 
@@ -46,10 +47,17 @@ namespace Authority.Services
 
         public async Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId)
         {
-            GetProductDetails operation = new GetProductDetails(_AuthorityContext);
+            GetProductDetails operation = new GetProductDetails(_authorityContext);
             Product product = await operation.GetDetails(ownerId, proudctId);
 
             return product.ToDto();
+        }
+
+        public async Task ToggleProductPublish(Guid ownerId, Guid productId)
+        {
+            ToggleProductPublish operation = new ToggleProductPublish(_authorityContext, ownerId, productId);
+            await operation.Do();
+            await operation.CommitAsync();
         }
     }
 }

@@ -6,11 +6,11 @@ namespace Authority.Operations
 {
     public abstract class SafeOperation
     {
-        protected readonly ISafeAuthorityContext _AuthorityContext;
+        protected readonly ISafeAuthorityContext _authorityContext;
 
-        protected SafeOperation(ISafeAuthorityContext AuthorityContext)
+        protected SafeOperation(ISafeAuthorityContext authorityContext)
         {
-            _AuthorityContext = AuthorityContext;
+            _authorityContext = authorityContext;
         }
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)
