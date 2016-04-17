@@ -6,7 +6,7 @@ using Authority.DomainModel;
 using Authority.EntityFramework;
 using Authority.Services.Dto;
 using Authority.Services.Extensions;
-using Authority.UnitOfWork.Products;
+using Authority.Operations.Products;
 
 namespace Authority.Services
 {

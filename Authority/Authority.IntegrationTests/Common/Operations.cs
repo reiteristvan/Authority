@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EntityFramework;
-using Authority.UnitOfWork.Developers;
+using Authority.Operations.Developers;
 
 namespace Authority.IntegrationTests.Common
 {
-    public static class Operations
+    public static class TestOperations
     {
         public static async Task<Developer> RegisterDeveloper(AuthorityContext context, string password = "")
         {

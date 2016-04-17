@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EntityFramework;
-using Authority.UnitOfWork.Policies;
+using Authority.Operations.Policies;
 
 namespace Authority.Services
 {

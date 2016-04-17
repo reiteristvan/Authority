@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.IntegrationTests.Common;
 using Authority.IntegrationTests.Fixtures;
-using Authority.UnitOfWork.Developers;
+using Authority.Operations.Developers;
 using Xunit;
 
 namespace Authority.IntegrationTests.Developers
@@ -21,7 +21,7 @@ namespace Authority.IntegrationTests.Developers
         public async Task LoginShouldSucceed()
         {
             string password = "12Budapest99";
-            Developer developer = await Operations.RegisterAndActivateDeveloper(_fixture.Context, password);
+            Developer developer = await TestOperations.RegisterAndActivateDeveloper(_fixture.Context, password);
 
             DeveloperLogin login = new DeveloperLogin(_fixture.Context, developer.Email, password);
             bool result = await login.Do();
@@ -33,7 +33,7 @@ namespace Authority.IntegrationTests.Developers
         public async Task LoginNotActivatedShouldFail()
         {
             string password = "12Budapest99";
-            Developer developer = await Operations.RegisterDeveloper(_fixture.Context, password);
+            Developer developer = await TestOperations.RegisterDeveloper(_fixture.Context, password);
 
             DeveloperLogin login = new DeveloperLogin(_fixture.Context, developer.Email, password);
             bool result = await login.Do();
@@ -45,7 +45,7 @@ namespace Authority.IntegrationTests.Developers
         public async Task LoginNotActiveShouldFail()
         {
             string password = "12Budapest99";
-            Developer developer = await Operations.RegisterAndActivateDeveloper(_fixture.Context, password);
+            Developer developer = await TestOperations.RegisterAndActivateDeveloper(_fixture.Context, password);
 
             developer.IsActive = false;
             _fixture.Context.Entry(developer).State = EntityState.Modified;
