@@ -6,26 +6,34 @@ using Authority.EntityFramework;
 
 namespace Authority.Operations.Products
 {
-    public sealed class CreateProduct : Operation
+    public sealed class CreateProduct : OperationWithReturnValueAsync<Guid>
     {
-        public CreateProduct(IAuthorityContext AuthorityContext)
+        private readonly Guid _ownerId;
+        private readonly string _name;
+        private readonly string _siteUrl;
+        private readonly string _landingPage;
+
+        public CreateProduct(IAuthorityContext AuthorityContext, Guid ownerId, string name, string siteUrl, string landingPage)
             : base(AuthorityContext)
         {
-            
+            _ownerId = ownerId;
+            _name = name;
+            _siteUrl = siteUrl;
+            _landingPage = landingPage;
         }
 
-        public async Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage)
+        public override async Task<Guid> Do()
         {
-            await Check(() => IsNameAvailable(name), ProductErrorCodes.NameNotAvailable);
+            await Check(() => IsNameAvailable(_name), ProductErrorCodes.NameNotAvailable);
 
             Product product = new Product
             {
-                OwnerId = ownerId,
-                Name = name,
+                OwnerId = _ownerId,
+                Name = _name,
                 IsActive = true,
                 IsPublic = false,
-                SiteUrl = siteUrl,
-                LandingPage = landingPage
+                SiteUrl = _siteUrl,
+                LandingPage = _landingPage
             };
 
             Context.Products.Add(product);
