@@ -24,7 +24,7 @@ namespace Authority.Operations.Developers
 
         public override async Task<bool> Do()
         {
-            Developer user = await _AuthorityContext.Developers.FirstOrDefaultAsync(u => u.Email == _email);
+            Developer user = await _authorityContext.Developers.FirstOrDefaultAsync(u => u.Email == _email);
 
             if (user == null || user.IsPending || !user.IsActive)
             {

@@ -7,22 +7,22 @@ namespace Authority.Operations
 {
     public abstract class Operation
     {
-        private readonly IAuthorityContext _AuthorityContext;
+        private readonly IAuthorityContext _authorityContext;
 
         protected Operation(IAuthorityContext AuthorityContext,
                             IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
-            _AuthorityContext = AuthorityContext;
-            _AuthorityContext.BeginTransaction(isolationLevel);
+            _authorityContext = AuthorityContext;
+            _authorityContext.BeginTransaction(isolationLevel);
         }
 
-        protected ISafeAuthorityContext Context { get { return _AuthorityContext; } }
+        protected ISafeAuthorityContext Context { get { return _authorityContext; } }
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)
         {
             if (!(await condition()))
             {
-                _AuthorityContext.RollbackTransaction();
+                _authorityContext.RollbackTransaction();
                 throw new RequirementFailedException(errorCode);
             }
         }
@@ -31,7 +31,7 @@ namespace Authority.Operations
         {
             if (!condition())
             {
-                _AuthorityContext.RollbackTransaction();
+                _authorityContext.RollbackTransaction();
                 throw new RequirementFailedException(errorCode);
             }
         }
@@ -40,12 +40,12 @@ namespace Authority.Operations
         {
             try
             {
-                await _AuthorityContext.SaveChangesAsync();
-                _AuthorityContext.CommitTransaction();
+                await _authorityContext.SaveChangesAsync();
+                _authorityContext.CommitTransaction();
             }
             catch (Exception)
             {
-                _AuthorityContext.RollbackTransaction();
+                _authorityContext.RollbackTransaction();
                 throw;
             }
         }
@@ -54,12 +54,12 @@ namespace Authority.Operations
         {
             try
             {
-                _AuthorityContext.SaveChanges();
-                _AuthorityContext.CommitTransaction();
+                _authorityContext.SaveChanges();
+                _authorityContext.CommitTransaction();
             }
             catch (Exception)
             {
-                _AuthorityContext.RollbackTransaction();
+                _authorityContext.RollbackTransaction();
                 throw;
             }
         }

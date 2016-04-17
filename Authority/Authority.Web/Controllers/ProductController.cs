@@ -68,5 +68,15 @@ namespace Authority.Web.Controllers
 
             return Redirect("edit/" + id);
         }
+
+        [HttpPost]
+        [Route("publish/{id}")]
+        public async Task<ActionResult> TogglePublish(Guid id)
+        {
+            Guid userId = HttpContext.User.GetUserId();
+            await _productService.ToggleProductPublish(userId, id);
+
+            return Redirect("/products/edit/" + id);
+        }
     }
 }
