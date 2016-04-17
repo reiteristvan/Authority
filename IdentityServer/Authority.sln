@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Web", "IdentityServer.Web\Authority.Web.csproj", "{A02F4439-1F33-4FBD-9DD3-6FE2F7A2339F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Web", "Authority.Web\Authority.Web.csproj", "{A02F4439-1F33-4FBD-9DD3-6FE2F7A2339F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.DomainModel", "IdentityServer.DomainModel\Authority.DomainModel.csproj", "{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.DomainModel", "Authority.DomainModel\Authority.DomainModel.csproj", "{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.EntityFramework", "IdentityServer.EntityFramework\Authority.EntityFramework.csproj", "{56B09B36-5CBB-47A9-8AFF-597C4D00104D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.EntityFramework", "Authority.EntityFramework\Authority.EntityFramework.csproj", "{56B09B36-5CBB-47A9-8AFF-597C4D00104D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.UnitOfWork", "IdentityServer.UnitOfWork\Authority.UnitOfWork.csproj", "{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.UnitOfWork", "Authority.UnitOfWork\Authority.UnitOfWork.csproj", "{8749794C-E17F-4BA4-9AB4-F8E9C2E60A12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Services", "IdentityServer.Services\Authority.Services.csproj", "{25C54590-0C96-4878-8E6D-C0496D77D45B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Services", "Authority.Services\Authority.Services.csproj", "{25C54590-0C96-4878-8E6D-C0496D77D45B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.EmailService", "IdentityServer.EmailService\Authority.EmailService.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.EmailService", "Authority.EmailService\Authority.EmailService.csproj", "{713F8D1A-3927-47C2-A37C-F9D36F28AE63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Tests", "IdentityServer.Tests\Authority.Tests.csproj", "{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Tests", "Authority.Tests\Authority.Tests.csproj", "{8FDC4E3F-39BB-4BAB-B590-CBFFDF3BCE0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.IntegrationTests", "IdentityServer.IntegrationTests\Authority.IntegrationTests.csproj", "{C84D9D95-247E-47B0-AD3D-DC12AE38F01C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.IntegrationTests", "Authority.IntegrationTests\Authority.IntegrationTests.csproj", "{C84D9D95-247E-47B0-AD3D-DC12AE38F01C}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -25,30 +25,30 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://reiteristvan.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = IdentityServer.DomainModel\\Authority.DomainModel.csproj
-		SccProjectName1 = IdentityServer.DomainModel
-		SccLocalPath1 = IdentityServer.DomainModel
-		SccProjectUniqueName2 = IdentityServer.EmailService\\Authority.EmailService.csproj
-		SccProjectName2 = IdentityServer.EmailService
-		SccLocalPath2 = IdentityServer.EmailService
-		SccProjectUniqueName3 = IdentityServer.EntityFramework\\Authority.EntityFramework.csproj
-		SccProjectName3 = IdentityServer.EntityFramework
-		SccLocalPath3 = IdentityServer.EntityFramework
-		SccProjectUniqueName4 = IdentityServer.IntegrationTests\\Authority.IntegrationTests.csproj
-		SccProjectName4 = IdentityServer.IntegrationTests
-		SccLocalPath4 = IdentityServer.IntegrationTests
-		SccProjectUniqueName5 = IdentityServer.Services\\Authority.Services.csproj
-		SccProjectName5 = IdentityServer.Services
-		SccLocalPath5 = IdentityServer.Services
-		SccProjectUniqueName6 = IdentityServer.Tests\\Authority.Tests.csproj
-		SccProjectName6 = IdentityServer.Tests
-		SccLocalPath6 = IdentityServer.Tests
-		SccProjectUniqueName7 = IdentityServer.UnitOfWork\\Authority.UnitOfWork.csproj
-		SccProjectName7 = IdentityServer.UnitOfWork
-		SccLocalPath7 = IdentityServer.UnitOfWork
-		SccProjectUniqueName8 = IdentityServer.Web\\Authority.Web.csproj
-		SccProjectName8 = IdentityServer.Web
-		SccLocalPath8 = IdentityServer.Web
+		SccProjectUniqueName1 = Authority.DomainModel\\Authority.DomainModel.csproj
+		SccProjectName1 = Authority.DomainModel
+		SccLocalPath1 = Authority.DomainModel
+		SccProjectUniqueName2 = Authority.EmailService\\Authority.EmailService.csproj
+		SccProjectName2 = Authority.EmailService
+		SccLocalPath2 = Authority.EmailService
+		SccProjectUniqueName3 = Authority.EntityFramework\\Authority.EntityFramework.csproj
+		SccProjectName3 = Authority.EntityFramework
+		SccLocalPath3 = Authority.EntityFramework
+		SccProjectUniqueName4 = Authority.IntegrationTests\\Authority.IntegrationTests.csproj
+		SccProjectName4 = Authority.IntegrationTests
+		SccLocalPath4 = Authority.IntegrationTests
+		SccProjectUniqueName5 = Authority.Services\\Authority.Services.csproj
+		SccProjectName5 = Authority.Services
+		SccLocalPath5 = Authority.Services
+		SccProjectUniqueName6 = Authority.Tests\\Authority.Tests.csproj
+		SccProjectName6 = Authority.Tests
+		SccLocalPath6 = Authority.Tests
+		SccProjectUniqueName7 = Authority.UnitOfWork\\Authority.UnitOfWork.csproj
+		SccProjectName7 = Authority.UnitOfWork
+		SccLocalPath7 = Authority.UnitOfWork
+		SccProjectUniqueName8 = Authority.Web\\Authority.Web.csproj
+		SccProjectName8 = Authority.Web
+		SccLocalPath8 = Authority.Web
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
