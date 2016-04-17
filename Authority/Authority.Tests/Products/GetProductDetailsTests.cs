@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EntityFramework;
 using Authority.Tests.Common;
-using Authority.UnitOfWork.Products;
+using Authority.Operations.Products;
 using Moq;
 using Xunit;
 

@@ -113,9 +113,9 @@
       <Project>{56b09b36-5cbb-47a9-8aff-597c4d00104d}</Project>
       <Name>Authority.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Authority.UnitOfWork\Authority.UnitOfWork.csproj">
+    <ProjectReference Include="..\Authority.Operations\Authority.Operations.csproj">
       <Project>{8749794c-e17f-4ba4-9ab4-f8e9c2e60a12}</Project>
-      <Name>Authority.UnitOfWork</Name>
+      <Name>Authority.Operations</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

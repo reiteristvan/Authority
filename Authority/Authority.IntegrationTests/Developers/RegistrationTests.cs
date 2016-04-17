@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.IntegrationTests.Common;
 using Authority.IntegrationTests.Fixtures;
-using Authority.UnitOfWork;
-using Authority.UnitOfWork.Developers;
+using Authority.Operations;
+using Authority.Operations.Developers;
 using Xunit;
 
 namespace Authority.IntegrationTests.Developers

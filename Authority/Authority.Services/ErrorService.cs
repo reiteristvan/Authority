@@ -1,6 +1,6 @@
 ﻿using System;
 using Authority.EntityFramework;
-using Authority.UnitOfWork.Errors;
+using Authority.Operations.Errors;
 
 namespace Authority.Services
 {

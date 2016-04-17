@@ -5,7 +5,7 @@ using Authority.DomainModel;
 using Authority.EmailService;
 using Authority.EmailService.cs.Models;
 using Authority.EntityFramework;
-using Authority.UnitOfWork.Developers;
+using Authority.Operations.Developers;
 
 namespace Authority.Services
 {
