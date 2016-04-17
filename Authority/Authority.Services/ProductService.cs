@@ -37,8 +37,8 @@ namespace Authority.Services
 
         public async Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage)
         {
-            CreateProduct operation = new CreateProduct(_AuthorityContext);
-            Guid id = await operation.Create(ownerId, name, siteUrl, landingPage);
+            CreateProduct operation = new CreateProduct(_AuthorityContext, ownerId, name, siteUrl, landingPage);
+            Guid id = await operation.Do();
             await operation.CommitAsync();
 
             return id;
