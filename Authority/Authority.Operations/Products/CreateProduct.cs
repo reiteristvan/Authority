@@ -38,6 +38,12 @@ namespace Authority.Operations.Products
                 ClientSecret = Guid.NewGuid()
             };
 
+            product.Style = new ProductStyle(product.Id)
+            {
+                Logo = new byte[10]
+            };
+
+            Context.ProductStyles.Add(product.Style);
             Context.Products.Add(product);
 
             return product.Id;

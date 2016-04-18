@@ -115,6 +115,18 @@
     <Compile Include="Migrations\201604181313278_AddedProductStyle.Designer.cs">
       <DependentUpon>201604181313278_AddedProductStyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604181915332_FixProductAndStyleRelation.cs" />
+    <Compile Include="Migrations\201604181915332_FixProductAndStyleRelation.Designer.cs">
+      <DependentUpon>201604181915332_FixProductAndStyleRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604181926076_FixProductAndStyleRelation2.cs" />
+    <Compile Include="Migrations\201604181926076_FixProductAndStyleRelation2.Designer.cs">
+      <DependentUpon>201604181926076_FixProductAndStyleRelation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604181932388_FixProductAndStyleRelation3.cs" />
+    <Compile Include="Migrations\201604181932388_FixProductAndStyleRelation3.Designer.cs">
+      <DependentUpon>201604181932388_FixProductAndStyleRelation3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,6 +179,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604181313278_AddedProductStyle.resx">
       <DependentUpon>201604181313278_AddedProductStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181915332_FixProductAndStyleRelation.resx">
+      <DependentUpon>201604181915332_FixProductAndStyleRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181926076_FixProductAndStyleRelation2.resx">
+      <DependentUpon>201604181926076_FixProductAndStyleRelation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181932388_FixProductAndStyleRelation3.resx">
+      <DependentUpon>201604181932388_FixProductAndStyleRelation3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

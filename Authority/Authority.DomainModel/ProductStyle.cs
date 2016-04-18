@@ -1,9 +1,16 @@
-﻿using Authority.DomainModel;
+﻿using System;
 
-namespace IdentityServer.DomainModel
+namespace Authority.DomainModel
 {
-    public sealed class ProductStyle : EntityBase
+    public class ProductStyle : EntityBase
     {
+        public ProductStyle(Guid productId)
+        {
+            Id = productId;
+        }
+
         public byte[] Logo { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

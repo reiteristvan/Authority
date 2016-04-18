@@ -1,5 +1,5 @@
 ﻿using System.Data.Entity.ModelConfiguration;
-using IdentityServer.DomainModel;
+using Authority.DomainModel;
 
 namespace IdentityServer.EntityFramework.Configurations
 {
