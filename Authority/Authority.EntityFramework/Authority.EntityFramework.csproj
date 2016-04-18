@@ -60,9 +60,9 @@
     <Compile Include="Configurations\ProductConfiguration.cs" />
     <Compile Include="Configurations\ProductStyleConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
-    <Compile Include="IdentityServerContext.cs" />
-    <Compile Include="IIdentityServerContext.cs" />
-    <Compile Include="ISafeIdentityServerContext.cs" />
+    <Compile Include="AuthorityContext.cs" />
+    <Compile Include="IAuthorityContext.cs" />
+    <Compile Include="ISafeAuthorityContext.cs" />
     <Compile Include="Migrations\201512251447578_Seed.cs" />
     <Compile Include="Migrations\201512251447578_Seed.Designer.cs">
       <DependentUpon>201512251447578_Seed.cs</DependentUpon>

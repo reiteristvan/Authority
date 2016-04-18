@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EntityFramework.Configurations;
+using IdentityServer.EntityFramework.Configurations;
 
 namespace Authority.EntityFramework
 {
@@ -35,6 +36,7 @@ namespace Authority.EntityFramework
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new DeveloperConfiguration());
             modelBuilder.Configurations.Add(new ProductConfiguration());
+            modelBuilder.Configurations.Add(new ProductStyleConfiguration());
             modelBuilder.Configurations.Add(new ClaimConfiguration());
             modelBuilder.Configurations.Add(new PolicyConfiguration());
             modelBuilder.Configurations.Add(new ClientApplicationConfiguration());
