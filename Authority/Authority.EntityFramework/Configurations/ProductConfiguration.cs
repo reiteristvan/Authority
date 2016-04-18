@@ -22,6 +22,7 @@ namespace Authority.EntityFramework.Configurations
 
             HasMany(p => p.Policies);
             HasMany(p => p.Claims).WithOptional().WillCascadeOnDelete(false);
+            HasRequired(p => p.Style).WithOptional().WillCascadeOnDelete(true);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Authority.Web.Infrastructure.HtmlHelpers
         {
             string imageBase64 = Convert.ToBase64String(image);
             string imageSource = string.Format("data:image/gif;base64,{0}", imageBase64);
-            return MvcHtmlString.Create($"<img src=\"{imageSource}\" />");
+            return MvcHtmlString.Create(string.Format("<img src=\"{0}\" />", imageSource));
         }
     }
 }
