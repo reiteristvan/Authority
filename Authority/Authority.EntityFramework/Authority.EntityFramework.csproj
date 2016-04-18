@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201604181146109_AddClientIdClientSecretToProduct.Designer.cs">
       <DependentUpon>201604181146109_AddClientIdClientSecretToProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604181313278_AddedProductStyle.cs" />
+    <Compile Include="Migrations\201604181313278_AddedProductStyle.Designer.cs">
+      <DependentUpon>201604181313278_AddedProductStyle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604181146109_AddClientIdClientSecretToProduct.resx">
       <DependentUpon>201604181146109_AddClientIdClientSecretToProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604181313278_AddedProductStyle.resx">
+      <DependentUpon>201604181313278_AddedProductStyle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
