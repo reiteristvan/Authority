@@ -33,7 +33,9 @@ namespace Authority.Operations.Products
                 IsActive = true,
                 IsPublic = false,
                 SiteUrl = _siteUrl,
-                LandingPage = _landingPage
+                LandingPage = _landingPage,
+                ClientId = Guid.NewGuid(),
+                ClientSecret = Guid.NewGuid()
             };
 
             Context.Products.Add(product);
