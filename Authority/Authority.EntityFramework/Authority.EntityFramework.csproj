@@ -58,6 +58,7 @@
     <Compile Include="Configurations\ErrorConfiguration.cs" />
     <Compile Include="Configurations\PolicyConfiguration.cs" />
     <Compile Include="Configurations\ProductConfiguration.cs" />
+    <Compile Include="Configurations\ProductStyleConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="IdentityServerContext.cs" />
     <Compile Include="IIdentityServerContext.cs" />
