@@ -10,6 +10,7 @@ namespace Authority.EntityFramework
         DbSet<User> Users { get; set; }
         DbSet<Developer> Developers { get; set; }
         DbSet<Product> Products { get; set; }
+        DbSet<ProductStyle> ProductStyles { get; set; }
         DbSet<Claim> Claims { get; set; }
         DbSet<Policy> Policies { get; set; }
         DbSet<ClientApplication> ClientApplications { get; set; }

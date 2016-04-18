@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using IdentityServer.DomainModel;
 
 namespace Authority.DomainModel
 {
-    public sealed class Product : EntityBase
+    public class Product : EntityBase
     {
         public Product()
         {
@@ -20,7 +19,7 @@ namespace Authority.DomainModel
         public Guid ClientId { get; set; }
         public Guid ClientSecret { get; set; }
 
-        public ProductStyle Style { get; set; }
+        public virtual ProductStyle Style { get; set; }
 
         public ICollection<Policy> Policies { get; set; }
         public ICollection<Claim> Claims { get; set; }
