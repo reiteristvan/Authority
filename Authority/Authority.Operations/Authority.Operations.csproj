@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\AccountErrorCodes.cs" />
-    <Compile Include="Account\Registration.cs" />
+    <Compile Include="Account\UserRegistration.cs" />
     <Compile Include="Developers\DeveloperActivation.cs" />
     <Compile Include="Developers\DeveloperLogin.cs" />
     <Compile Include="Developers\DeveloperRegistration.cs" />
