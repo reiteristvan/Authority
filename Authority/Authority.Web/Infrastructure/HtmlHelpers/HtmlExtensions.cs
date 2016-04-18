@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Authority.Web.Infrastructure.HtmlHelpers
@@ -13,6 +14,13 @@ namespace Authority.Web.Infrastructure.HtmlHelpers
 
             string url = baseUrl + string.Format(format, parameters);
             return MvcHtmlString.Create(string.Format("<a href='{0}'>{1}</a>", url, title));
+        }
+
+        public static MvcHtmlString ImageFormByteArray(byte[] image, string cssClass = "")
+        {
+            string imageBase64 = Convert.ToBase64String(image);
+            string imageSource = string.Format("data:image/gif;base64,{0}", imageBase64);
+            return MvcHtmlString.Create($"<img src=\"{imageSource}\" />");
         }
     }
 }
