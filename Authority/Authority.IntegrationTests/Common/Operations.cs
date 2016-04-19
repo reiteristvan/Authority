@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Data.Entity;
+using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EntityFramework;
 using Authority.Operations.Developers;
+using Authority.Operations.Products;
 
 namespace Authority.IntegrationTests.Common
 {
@@ -38,6 +41,16 @@ namespace Authority.IntegrationTests.Common
             await activation.CommitAsync();
 
             return developer;
+        }
+
+        public static async Task<Product> CreateProduct(AuthorityContext context)
+        {
+            CreateProduct operation = new CreateProduct(context, Guid.NewGuid(), "AwesomeProduct", "", "");
+            Guid productId = await operation.Do();
+            await operation.CommitAsync();
+
+            Product product = await context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            return product;
         }
     }
 }

@@ -10,14 +10,17 @@ namespace Authority.Operations.Account
 {
     public sealed class UserRegistration : OperationWithReturnValueAsync<User>
     {
+        private readonly Guid _clientId;
         private readonly string _email;
         private readonly string _username;
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public UserRegistration(IAuthorityContext AuthorityContext, string email, string username, string password)
+        public UserRegistration(IAuthorityContext AuthorityContext, 
+            Guid clientId, string email, string username, string password)
             : base(AuthorityContext)
         {
+            _clientId = clientId;
             _email = email;
             _username = username;
             _password = password;
@@ -41,6 +44,8 @@ namespace Authority.Operations.Account
             await Check(() => IsUserExist(), AccountErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(), AccountErrorCodes.UsernameNotAvailable);
 
+            Product product = await Context.Products.FirstOrDefaultAsync(p => p.ClientId == _clientId);
+
             byte[] passwordBytes = Encoding.UTF8.GetBytes(_password);
             byte[] saltBytes = _passwordService.CreateSalt();
             byte[] hashBytes = _passwordService.CreateHash(passwordBytes, saltBytes);
@@ -56,6 +61,8 @@ namespace Authority.Operations.Account
                 IsActive = true,
                 IsExternal = false
             };
+
+            product.Users.Add(user);
 
             return user;
         }
