@@ -20,10 +20,10 @@ namespace Authority.EntityFramework.Configurations
             Property(p => p.ClientId).IsRequired();
             Property(p => p.ClientSecret).IsRequired();
 
+            HasMany(p => p.Users);
             HasMany(p => p.Policies);
             HasMany(p => p.Claims).WithOptional().WillCascadeOnDelete(false);
             HasOptional(p => p.Style).WithRequired(ps => ps.Product).WillCascadeOnDelete(true);
-            //HasRequired(p => p.Style).WithOptional().WillCascadeOnDelete(true);
         }
     }
 }

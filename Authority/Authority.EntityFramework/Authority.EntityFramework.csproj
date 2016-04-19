@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201604190300097_ProductProductStyle.Designer.cs">
       <DependentUpon>201604190300097_ProductProductStyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604191823300_ProductUser.cs" />
+    <Compile Include="Migrations\201604191823300_ProductUser.Designer.cs">
+      <DependentUpon>201604191823300_ProductUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604190300097_ProductProductStyle.resx">
       <DependentUpon>201604190300097_ProductProductStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604191823300_ProductUser.resx">
+      <DependentUpon>201604191823300_ProductUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
