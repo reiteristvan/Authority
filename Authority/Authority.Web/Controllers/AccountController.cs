@@ -7,7 +7,7 @@ using IdentityServer.Services;
 
 namespace Authority.Web.Controllers
 {
-    [System.Web.Http.RoutePrefix("account")]
+    [System.Web.Mvc.RoutePrefix("account")]
     public sealed class AccountController : Controller
     {
         private readonly IAccountService _accountService;
@@ -24,9 +24,9 @@ namespace Authority.Web.Controllers
 
         [System.Web.Mvc.HttpGet]
         [System.Web.Mvc.Route("register")]
-        public async Task<ActionResult> Register(Guid clientId, string redirect_url, string state = "")
+        public async Task<ActionResult> Register(Guid client_id, string redirect_url, string state = "")
         {
-            if (!await _accountService.ValidateProduct(clientId, redirect_url))
+            if (!await _accountService.ValidateProduct(client_id, redirect_url))
             {
                 Redirect("/register");
             }
