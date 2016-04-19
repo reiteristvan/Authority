@@ -8,14 +8,14 @@ using Authority.Operations.Utilities;
 
 namespace Authority.Operations.Account
 {
-    public sealed class Registration : OperationWithReturnValueAsync<User>
+    public sealed class UserRegistration : OperationWithReturnValueAsync<User>
     {
         private readonly string _email;
         private readonly string _username;
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public Registration(IAuthorityContext AuthorityContext, string email, string username, string password)
+        public UserRegistration(IAuthorityContext AuthorityContext, string email, string username, string password)
             : base(AuthorityContext)
         {
             _email = email;

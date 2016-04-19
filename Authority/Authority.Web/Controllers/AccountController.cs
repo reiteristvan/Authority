@@ -37,8 +37,10 @@ namespace Authority.Web.Controllers
         [System.Web.Mvc.HttpPost]
         [System.Web.Mvc.Route("register")]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(Guid clientId, string redirect_url, [FromBody]RegisterModel model)
+        public async Task<ActionResult> Register(Guid clientId, string redirect_url, [FromBody]RegisterModel model)
         {
+            await _accountService.RegisterUser(model.Email, model.Username, model.Password);
+
             return View();
         }
 
