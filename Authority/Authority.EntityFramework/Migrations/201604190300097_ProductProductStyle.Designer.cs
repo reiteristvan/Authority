@@ -7,13 +7,13 @@ namespace Authority.EntityFramework.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class FixProductAndStyleRelation2 : IMigrationMetadata
+    public sealed partial class ProductProductStyle : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FixProductAndStyleRelation2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ProductProductStyle));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604181926076_FixProductAndStyleRelation2"; }
+            get { return "201604190300097_ProductProductStyle"; }
         }
         
         string IMigrationMetadata.Source
