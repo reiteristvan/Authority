@@ -10,26 +10,18 @@ namespace Authority.Operations.Account
 {
     public sealed class Registration : OperationWithReturnValueAsync<User>
     {
-        private readonly Guid _clientId;
         private readonly string _email;
         private readonly string _username;
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public Registration(IAuthorityContext AuthorityContext, Guid clientId, string email, string username, string password)
+        public Registration(IAuthorityContext AuthorityContext, string email, string username, string password)
             : base(AuthorityContext)
         {
-            _clientId = clientId;
             _email = email;
             _username = username;
             _password = password;
             _passwordService = new PasswordService();
-        }
-
-        private async Task<bool> IsProductAvailable()
-        {
-            Product product = await Context.Products.FirstOrDefaultAsync(p => p.ClientId == _clientId);
-            return product != null && product.IsPublic && product.IsActive;
         }
 
         private async Task<bool> IsUserExist()
@@ -46,7 +38,6 @@ namespace Authority.Operations.Account
 
         public override async Task<User> Do()
         {
-            await Check(() => IsProductAvailable(), AccountErrorCodes.ProductNotAvailable);
             await Check(() => IsUserExist(), AccountErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(), AccountErrorCodes.UsernameNotAvailable);
 
