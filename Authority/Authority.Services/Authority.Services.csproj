@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountService.cs" />
     <Compile Include="ClaimService.cs" />
     <Compile Include="DeveloperService.cs" />
     <Compile Include="Dto\ProductDto.cs" />

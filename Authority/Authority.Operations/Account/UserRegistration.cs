@@ -46,7 +46,7 @@ namespace Authority.Operations.Account
 
         public override async Task<User> Do()
         {
-            await Check(() => IsProductAvailable(), AccountErrorCodes.EmailAlreadyExists);
+            await Check(() => IsProductAvailable(), AccountErrorCodes.ProductNotAvailable);
             await Check(() => IsUserExist(), AccountErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(), AccountErrorCodes.UsernameNotAvailable);
 

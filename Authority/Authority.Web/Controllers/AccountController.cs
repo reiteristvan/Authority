@@ -1,35 +1,56 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Mvc;
 using Authority.Web.Models;
+using IdentityServer.Services;
 
 namespace Authority.Web.Controllers
 {
-    [RoutePrefix("account")]
+    [System.Web.Http.RoutePrefix("account")]
     public sealed class AccountController : Controller
     {
-        [HttpGet]
-        [Route("register")]
-        public ActionResult Register()
+        private readonly IAccountService _accountService;
+
+        public AccountController(IAccountService accountService)
         {
+            if (accountService == null)
+            {
+                throw new ArgumentNullException(nameof(accountService));
+            }
+
+            _accountService = accountService;
+        }
+
+        [System.Web.Mvc.HttpGet]
+        [System.Web.Mvc.Route("register")]
+        public async Task<ActionResult> Register(Guid clientId, string redirect_url, string state = "")
+        {
+            if (!await _accountService.ValidateProduct(clientId, redirect_url))
+            {
+                Redirect("/register");
+            }
+
             return View();
         }
 
-        [HttpPost]
-        [Route("register")]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.Route("register")]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(Guid clientId, string redirect_url, [FromBody]RegisterModel model)
         {
             return View();
         }
 
-        [HttpGet]
-        [Route("login")]
+        [System.Web.Mvc.HttpGet]
+        [System.Web.Mvc.Route("login")]
         public ActionResult Login()
         {
             return View();
         }
 
-        [HttpPost]
-        [Route("login")]
+        [System.Web.Mvc.HttpPost]
+        [System.Web.Mvc.Route("login")]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
