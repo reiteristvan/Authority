@@ -28,7 +28,7 @@ namespace IdentityServer.Services
         public async Task<bool> ValidateProduct(Guid clientId, string redirect_url)
         {
             Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
-            return product != null && product.LandingPage.Equals(redirect_url, StringComparison.InvariantCultureIgnoreCase);
+            return product != null && product.IsPublic && product.IsActive && product.LandingPage.Equals(redirect_url, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }
