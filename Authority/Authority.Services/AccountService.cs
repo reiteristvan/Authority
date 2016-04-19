@@ -10,7 +10,7 @@ namespace IdentityServer.Services
     public interface IAccountService
     {
         Task<bool> ValidateProduct(Guid clientId, string redirect_url);
-        Task RegisterUser(string email, string username, string password);
+        Task RegisterUser(Guid productId, string email, string username, string password);
     }
 
     public sealed class AccountService : IAccountService
@@ -33,9 +33,9 @@ namespace IdentityServer.Services
             return product != null && product.IsPublic && product.IsActive && product.LandingPage.Equals(redirect_url, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public async Task RegisterUser(string email, string username, string password)
+        public async Task RegisterUser(Guid clientId, string email, string username, string password)
         {
-            UserRegistration operation = new UserRegistration(_authorityContext, email, username, password);
+            UserRegistration operation = new UserRegistration(_authorityContext, clientId, email, username, password);
             await operation.Do();
             await operation.CommitAsync();
         }
