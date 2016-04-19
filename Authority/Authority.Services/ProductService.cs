@@ -17,6 +17,7 @@ namespace Authority.Services
         Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage);
         Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
         Task ToggleProductPublish(Guid ownerId, Guid productId);
+        Task<Guid> GetClientSecretForProduct(Guid ownerId, Guid productId);
     }
 
     public sealed class ProductService : IProductService
@@ -58,6 +59,14 @@ namespace Authority.Services
             ToggleProductPublish operation = new ToggleProductPublish(_authorityContext, ownerId, productId);
             await operation.Do();
             await operation.CommitAsync();
+        }
+
+        public async Task<Guid> GetClientSecretForProduct(Guid ownerId, Guid productId)
+        {
+            Product product = await _authorityContext.Products
+                .FirstOrDefaultAsync(p => p.Id == productId && p.OwnerId == ownerId);
+
+            return product.ClientSecret;
         }
     }
 }

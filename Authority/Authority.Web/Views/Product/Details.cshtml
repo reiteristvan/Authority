@@ -5,6 +5,18 @@
     ViewBag.Title = "Details";
 }
 
+<script type="text/javascript">
+    function getClientSecret() {
+        var requestUrl  = '/products/secret/' + '@Model.Id';
+        $.ajax({
+            method: 'GET',
+            url: requestUrl
+        }).done(function(response) {
+            $('#clientSecret').val(response);
+        });
+    };
+</script>
+
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>
@@ -27,6 +39,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.IsPublic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientId)
+        </dd>
+
+        <dt>
+            Client Secret
+        </dt>
+        <dd>
+            <input id="clientSecret" value=""/>
+            <button onclick="getClientSecret();">Get Secret</button>
         </dd>
     </dl>
 
