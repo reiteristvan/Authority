@@ -23,6 +23,8 @@ namespace Authority.Services.Extensions
             {
                 Id = product.Id,
                 IsPublic = product.IsPublic,
+                Site = product.SiteUrl,
+                LandingPage = product.LandingPage,
                 Name = product.Name,
                 ClientId = product.ClientId,
                 Policies = product.Policies.Select(p => p.ToDto()).ToList()
