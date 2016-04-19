@@ -16,7 +16,7 @@ namespace Authority.Web.Controllers
         {
             if (accountService == null)
             {
-                throw new ArgumentNullException(nameof(accountService));
+                throw new ArgumentNullException("accountService");
             }
 
             _accountService = accountService;
