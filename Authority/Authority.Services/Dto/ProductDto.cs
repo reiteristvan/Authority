@@ -16,7 +16,7 @@ namespace Authority.Services.Dto
         public Guid Id { get; set; }
         public string Name { get; set; }
         public bool IsPublic { get; set; }
-        public bool IsActive { get; set; }
+        public Guid ClientId { get; set; }
         public List<PolicyDto> Policies { get; set; } 
     }
 

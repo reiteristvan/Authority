@@ -22,9 +22,9 @@ namespace Authority.Services.Extensions
             return new ProductDto
             {
                 Id = product.Id,
-                IsActive = product.IsActive,
                 IsPublic = product.IsPublic,
                 Name = product.Name,
+                ClientId = product.ClientId,
                 Policies = product.Policies.Select(p => p.ToDto()).ToList()
             };
         }

@@ -78,5 +78,15 @@ namespace Authority.Web.Controllers
 
             return Redirect("/products/edit/" + id);
         }
+
+        [HttpGet]
+        [Route("secret/{productId}")]
+        public async Task<Guid> GetSecretOfProduct(Guid productId)
+        {
+            Guid userId = HttpContext.User.GetUserId();
+            Guid secret = await _productService.GetClientSecretForProduct(userId, productId);
+
+            return secret;
+        }
     }
 }
