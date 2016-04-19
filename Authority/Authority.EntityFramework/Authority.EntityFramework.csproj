@@ -111,21 +111,9 @@
     <Compile Include="Migrations\201604181146109_AddClientIdClientSecretToProduct.Designer.cs">
       <DependentUpon>201604181146109_AddClientIdClientSecretToProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201604181313278_AddedProductStyle.cs" />
-    <Compile Include="Migrations\201604181313278_AddedProductStyle.Designer.cs">
-      <DependentUpon>201604181313278_AddedProductStyle.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604181915332_FixProductAndStyleRelation.cs" />
-    <Compile Include="Migrations\201604181915332_FixProductAndStyleRelation.Designer.cs">
-      <DependentUpon>201604181915332_FixProductAndStyleRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604181926076_FixProductAndStyleRelation2.cs" />
-    <Compile Include="Migrations\201604181926076_FixProductAndStyleRelation2.Designer.cs">
-      <DependentUpon>201604181926076_FixProductAndStyleRelation2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604181932388_FixProductAndStyleRelation3.cs" />
-    <Compile Include="Migrations\201604181932388_FixProductAndStyleRelation3.Designer.cs">
-      <DependentUpon>201604181932388_FixProductAndStyleRelation3.cs</DependentUpon>
+    <Compile Include="Migrations\201604190300097_ProductProductStyle.cs" />
+    <Compile Include="Migrations\201604190300097_ProductProductStyle.Designer.cs">
+      <DependentUpon>201604190300097_ProductProductStyle.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,17 +165,8 @@
     <EmbeddedResource Include="Migrations\201604181146109_AddClientIdClientSecretToProduct.resx">
       <DependentUpon>201604181146109_AddClientIdClientSecretToProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604181313278_AddedProductStyle.resx">
-      <DependentUpon>201604181313278_AddedProductStyle.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604181915332_FixProductAndStyleRelation.resx">
-      <DependentUpon>201604181915332_FixProductAndStyleRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604181926076_FixProductAndStyleRelation2.resx">
-      <DependentUpon>201604181926076_FixProductAndStyleRelation2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604181932388_FixProductAndStyleRelation3.resx">
-      <DependentUpon>201604181932388_FixProductAndStyleRelation3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604190300097_ProductProductStyle.resx">
+      <DependentUpon>201604190300097_ProductProductStyle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

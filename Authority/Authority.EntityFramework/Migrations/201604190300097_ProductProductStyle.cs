@@ -3,7 +3,7 @@ namespace Authority.EntityFramework.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedProductStyle : DbMigration
+    public partial class ProductProductStyle : DbMigration
     {
         public override void Up()
         {
@@ -14,16 +14,16 @@ namespace Authority.EntityFramework.Migrations
                         Id = c.Guid(nullable: false),
                         Logo = c.Binary(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Products", t => t.Id, cascadeDelete: true)
+                .Index(t => t.Id);
             
-            CreateIndex("dbo.Products", "Id");
-            AddForeignKey("dbo.Products", "Id", "dbo.ProductStyles", "Id", cascadeDelete: true);
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Products", "Id", "dbo.ProductStyles");
-            DropIndex("dbo.Products", new[] { "Id" });
+            DropForeignKey("dbo.ProductStyles", "Id", "dbo.Products");
+            DropIndex("dbo.ProductStyles", new[] { "Id" });
             DropTable("dbo.ProductStyles");
         }
     }
