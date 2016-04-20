@@ -7,7 +7,7 @@ using Authority.EntityFramework;
 
 namespace Authority.Operations.Products
 {
-    public class ToggleProductPublish : OperationWithNoReturnAsync
+    public class ToggleProductPublish : OperationWithReturnValueAsync<bool>
     {
         private readonly Guid _ownerId;
         private readonly Guid _productId;
@@ -19,7 +19,7 @@ namespace Authority.Operations.Products
             _productId = productId;
         }
 
-        public override async Task Do()
+        public override async Task<bool> Do()
         {
             Product product = await Context.Products
                 .Include(p => p.Policies)
@@ -29,6 +29,8 @@ namespace Authority.Operations.Products
             Check(() => product.OwnerId == _ownerId, ProductErrorCodes.UnAuthorizedAccess);
 
             product.IsPublic = !product.IsPublic;
+
+            return product.IsPublic;
         }
     }
 }

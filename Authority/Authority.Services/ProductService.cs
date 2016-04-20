@@ -16,7 +16,7 @@ namespace Authority.Services
         Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId);
         Task<Guid> Create(Guid ownerId, string name, string siteUrl, string landingPage);
         Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
-        Task ToggleProductPublish(Guid ownerId, Guid productId);
+        Task<bool> ToggleProductPublish(Guid ownerId, Guid productId);
         Task<Guid> GetClientSecretForProduct(Guid ownerId, Guid productId);
     }
 
@@ -54,11 +54,13 @@ namespace Authority.Services
             return product.ToDto();
         }
 
-        public async Task ToggleProductPublish(Guid ownerId, Guid productId)
+        public async Task<bool> ToggleProductPublish(Guid ownerId, Guid productId)
         {
             ToggleProductPublish operation = new ToggleProductPublish(_authorityContext, ownerId, productId);
-            await operation.Do();
+            bool publishState = await operation.Do();
             await operation.CommitAsync();
+
+            return publishState;
         }
 
         public async Task<Guid> GetClientSecretForProduct(Guid ownerId, Guid productId)
