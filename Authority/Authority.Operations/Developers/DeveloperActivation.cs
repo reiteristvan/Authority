@@ -10,8 +10,8 @@ namespace Authority.Operations.Developers
     {
         private readonly Guid _activationCode;
 
-        public DeveloperActivation(IAuthorityContext AuthorityContext, Guid activationCode)
-            : base(AuthorityContext)
+        public DeveloperActivation(IAuthorityContext authorityContext, Guid activationCode)
+            : base(authorityContext)
         {
             _activationCode = activationCode;
         }
