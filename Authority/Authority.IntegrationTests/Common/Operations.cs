@@ -50,6 +50,11 @@ namespace Authority.IntegrationTests.Common
             await operation.CommitAsync();
 
             Product product = await context.Products.FirstOrDefaultAsync(p => p.Id == productId);
+
+            ToggleProductPublish publishOperation = new ToggleProductPublish(context, product.OwnerId, productId);
+            await publishOperation.Do();
+            await publishOperation.CommitAsync();
+
             return product;
         }
     }
