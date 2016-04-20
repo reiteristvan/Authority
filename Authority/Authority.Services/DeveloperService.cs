@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EmailService;
-using Authority.EmailService.cs.Models;
+using Authority.EmailService.Models;
 using Authority.EntityFramework;
 using Authority.Operations.Developers;
 
