@@ -12,7 +12,7 @@
     @foreach (ProductSimpleDto product in Model)
     {
         <li>
-            @Html.RestLink(product.Name, "products/details/{0}", product.Id)
+            @Html.RestLink(product.Name, "products/edit/{0}", product.Id)
         </li>
     }
 </ul>

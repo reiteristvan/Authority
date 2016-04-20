@@ -9,7 +9,7 @@ namespace Authority.Web.Controllers
         [Route]
         public ActionResult Index()
         {
-            if (User != null && User is DeveloperPrincipal)
+            if (User is DeveloperPrincipal)
             {
                 return Redirect("/developers/index");
             }
