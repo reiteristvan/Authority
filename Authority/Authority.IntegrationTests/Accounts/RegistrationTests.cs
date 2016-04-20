@@ -20,7 +20,7 @@ namespace IdentityServer.IntegrationTests.Accounts
         [Fact]
         public async Task RegistrationShuldSucceed()
         {
-            Product product = await TestOperations.CreateProduct(_fixture.Context);
+            Product product = await TestOperations.CreateProductAndPublish(_fixture.Context);
 
             string email = RandomData.Email();
             string username = RandomData.RandomString();

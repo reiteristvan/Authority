@@ -43,7 +43,7 @@ namespace Authority.IntegrationTests.Common
             return developer;
         }
 
-        public static async Task<Product> CreateProduct(AuthorityContext context)
+        public static async Task<Product> CreateProductAndPublish(AuthorityContext context)
         {
             CreateProduct operation = new CreateProduct(context, Guid.NewGuid(), "AwesomeProduct", "", "");
             Guid productId = await operation.Do();
