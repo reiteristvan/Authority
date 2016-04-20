@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.IntegrationTests;
 using Authority.IntegrationTests.Common;
 using Authority.IntegrationTests.Fixtures;
+using Authority.Operations.Account;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Accounts
@@ -21,13 +18,17 @@ namespace IdentityServer.IntegrationTests.Accounts
         }
 
         [Fact]
-        public async Task RegistrationShouldSucceed()
+        public async Task RegistrationShuldSucceed()
         {
             Product product = await TestOperations.CreateProduct(_fixture.Context);
 
             string email = RandomData.Email();
             string username = RandomData.RandomString();
             string password = RandomData.RandomString(12, true);
+
+            UserRegistration operation = new UserRegistration(_fixture.Context, product.ClientId, email, username, password);
+            await operation.Do();
+            await operation.CommitAsync();
         }
     }
 }

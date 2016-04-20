@@ -30,13 +30,13 @@ namespace Authority.Operations.Account
         private async Task<bool> IsUserExist()
         {
             User user = await Context.Users.FirstOrDefaultAsync(u => u.Email == _email);
-            return user != null;
+            return user == null;
         }
 
         private async Task<bool> IsUsernameAvailable()
         {
             User user = await Context.Users.FirstOrDefaultAsync(p => p.Username == _username);
-            return user != null;
+            return user == null;
         }
 
         public override async Task<User> Do()
