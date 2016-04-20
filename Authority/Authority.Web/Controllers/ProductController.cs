@@ -59,16 +59,6 @@ namespace Authority.Web.Controllers
             return View(product);
         }
 
-        [HttpPost]
-        [Route("edit/{id}")]
-        public async Task<ActionResult> Edit(Guid id, EditProductModel model)
-        {
-            Guid userId = HttpContext.User.GetUserId();
-            ProductDto product = await _productService.GetProductDetails(userId, id);
-
-            return Redirect("edit/" + id);
-        }
-
         [HttpPut]
         [Route("publish/{id}")]
         public async Task<bool> TogglePublish(Guid id)
