@@ -11,6 +11,7 @@ namespace Authority.EntityFramework.Configurations
 
             HasKey(e => e.Id);
 
+            Property(u => u.ProductId).IsRequired();
             Property(u => u.Email).IsRequired().HasMaxLength(128);
             Property(u => u.Username).IsRequired().HasMaxLength(64);
             Property(d => d.PasswordHash).IsRequired().HasMaxLength(128);

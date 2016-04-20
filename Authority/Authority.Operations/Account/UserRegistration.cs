@@ -52,6 +52,7 @@ namespace Authority.Operations.Account
 
             User user = new User
             {
+                ProductId = product.Id,
                 Email = _email,
                 Username = _username,
                 Salt = Convert.ToBase64String(saltBytes),
