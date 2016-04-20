@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using Authority.EmailService.cs.Models;
+using Authority.EmailService.Models;
 using SendGrid;
 
 namespace Authority.EmailService
@@ -20,6 +20,12 @@ namespace Authority.EmailService
         }
 
         public async Task SendDeveloperActivation(string recipient, DeveloperActivationModel model)
+        {
+            string body = _templateProvider.Load(model);
+            await Send(recipient, "Activate your account at Authority", body);
+        }
+
+        public async Task SendUserActivation(string recipient, UserActivationModel model)
         {
             string body = _templateProvider.Load(model);
             await Send(recipient, "Activate your account at Authority", body);
