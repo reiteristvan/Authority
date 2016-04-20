@@ -54,10 +54,9 @@
         </td>
         <td>
             <div>
-                @using (Html.BeginForm("TogglePublish/" + item.Id, "Product"))
-                {
+                @{
                     string style = "btn btn-" + (item.IsPublic ? "danger" : "success");
-                    <button class="@style" onclick="togglePublish('@item.Id');">Publish</button>
+                    <button id="publishButton" class="@style" onclick="togglePublish('@item.Id');">Publish</button>
                 }
             </div>
         </td>
