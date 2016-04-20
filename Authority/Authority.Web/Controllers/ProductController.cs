@@ -69,14 +69,13 @@ namespace Authority.Web.Controllers
             return Redirect("edit/" + id);
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("publish/{id}")]
-        public async Task<ActionResult> TogglePublish(Guid id)
+        public async Task<bool> TogglePublish(Guid id)
         {
             Guid userId = HttpContext.User.GetUserId();
-            await _productService.ToggleProductPublish(userId, id);
-
-            return Redirect("/products/edit/" + id);
+            bool publishState = await _productService.ToggleProductPublish(userId, id);
+            return publishState;
         }
 
         [HttpGet]

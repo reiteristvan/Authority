@@ -6,8 +6,23 @@
 }
 
 <script type="text/javascript">
+    function togglePublish(productId) {
+        var requestUrl = '/products/publish/' + productId;
+
+        $.ajax({
+            method: 'PUT',
+            url: requestUrl
+        }).done(function(response) {
+            var publishButtonStyle = 'btn btn-' + (response === 'True' ? 'danger' : 'success');
+            var $publishButton = $('#publishButton');
+            $publishButton.removeClass();
+            $publishButton.addClass(publishButtonStyle);
+        });
+    };
+
     function getClientSecret() {
-        var requestUrl  = '/products/secret/' + '@Model.Id';
+        var requestUrl = '/products/secret/' + '@Model.Id';
+
         $.ajax({
             method: 'GET',
             url: requestUrl
@@ -31,14 +46,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPublic)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsPublic)
         </dd>
 
         <dt>
@@ -95,10 +102,9 @@
     </div>
 
     <div>
-        @using (Html.BeginForm("TogglePublish", "Product"))
-        {
+        @{
             string style = "btn btn-" + (Model.IsPublic ? "danger" : "success");
-            <button class="@style">Publish</button>
+            <button id="publishButton" class="@style" onclick="togglePublish('@Model.Id');">Publish</button>
         }
     </div>
 </div>
