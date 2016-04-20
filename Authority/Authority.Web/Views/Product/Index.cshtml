@@ -32,9 +32,6 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsPublic)
-        </th>
-        <th>
         </th>
         <th>
             
@@ -45,9 +42,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsPublic)
         </td>
         <td>
             @Html.RestLink("Edit", "products/edit/{0}", item.Id)
