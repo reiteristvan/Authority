@@ -11,16 +11,16 @@ namespace Authority.Services
 
     public class ErrorService : IErrorService
     {
-        private readonly IAuthorityContext _AuthorityContext;
+        private readonly IAuthorityContext _authorityContext;
 
         public ErrorService(IAuthorityContext AuthorityContext)
         {
-            _AuthorityContext = AuthorityContext;
+            _authorityContext = AuthorityContext;
         }
 
         public Guid RecordError(string type, string message, string stacktrace)
         {
-            RecordError operation = new RecordError(_AuthorityContext, type, message, stacktrace);
+            RecordError operation = new RecordError(_authorityContext, type, message, stacktrace);
             Guid id = operation.Do();
             operation.Commit();
 
