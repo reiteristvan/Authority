@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Authority.EmailService.cs.Models;
+using Authority.EmailService.Models;
 
 namespace Authority.EmailService
 {

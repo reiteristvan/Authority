@@ -1,7 +1,7 @@
 ﻿namespace Authority.EmailService.Models
 {
-    [EmailTemplateName("DeveloperActivation")]
-    public sealed class DeveloperActivationModel
+    [EmailTemplateName("UserActivation")]
+    public sealed class UserActivationModel
     {
         public string ActivationUrl { get; set; }
     }

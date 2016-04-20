@@ -33,10 +33,9 @@ namespace Authority.Web.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(Guid client_id, string redirect_url, RegisterModel model)
         {
             await _accountService.RegisterUser(client_id, model.Email, model.Username, model.Password);

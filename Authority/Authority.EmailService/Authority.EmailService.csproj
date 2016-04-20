@@ -79,6 +79,7 @@
     <Compile Include="IEmailService.cs" />
     <Compile Include="IEmailSettingsProvider.cs" />
     <Compile Include="Models\DeveloperActivationModel.cs" />
+    <Compile Include="Models\UserActivationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
