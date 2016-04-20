@@ -6,7 +6,7 @@
 }
 
 <script type="text/javascript">
-    function togglePublish(productId) {
+    function togglePublish(sender, productId) {
         var requestUrl = '/products/publish/' + productId;
 
         $.ajax({
@@ -14,7 +14,7 @@
             url: requestUrl
         }).done(function (response) {
             var publishButtonStyle = 'btn btn-' + (response === 'True' ? 'danger' : 'success');
-            var $publishButton = $('#publishButton');
+            var $publishButton = $(sender);
             $publishButton.removeClass();
             $publishButton.addClass(publishButtonStyle);
         });
@@ -56,7 +56,7 @@
             <div>
                 @{
                     string style = "btn btn-" + (item.IsPublic ? "danger" : "success");
-                    <button id="publishButton" class="@style" onclick="togglePublish('@item.Id');">Publish</button>
+                    <button id="publishButton" class="@style" onclick="togglePublish(this,'@item.Id');">Publish</button>
                 }
             </div>
         </td>
