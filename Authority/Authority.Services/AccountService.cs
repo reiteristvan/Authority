@@ -11,6 +11,7 @@ namespace IdentityServer.Services
     {
         Task<bool> ValidateProduct(Guid clientId, string redirect_url);
         Task RegisterUser(Guid productId, string email, string username, string password);
+        Task ActivateUser(Guid activationCode);
     }
 
     public sealed class AccountService : IAccountService
@@ -36,6 +37,13 @@ namespace IdentityServer.Services
         public async Task RegisterUser(Guid clientId, string email, string username, string password)
         {
             UserRegistration operation = new UserRegistration(_authorityContext, clientId, email, username, password);
+            await operation.Do();
+            await operation.CommitAsync();
+        }
+
+        public async Task ActivateUser(Guid activationCode)
+        {
+            UserActivation operation = new UserActivation(_authorityContext, activationCode);
             await operation.Do();
             await operation.CommitAsync();
         }

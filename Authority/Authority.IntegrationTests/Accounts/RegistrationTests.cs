@@ -18,7 +18,7 @@ namespace IdentityServer.IntegrationTests.Accounts
         }
 
         [Fact]
-        public async Task RegistrationShuldSucceed()
+        public async Task RegistrationShouldSucceed()
         {
             Product product = await TestOperations.CreateProductAndPublish(_fixture.Context);
 
