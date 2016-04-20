@@ -33,10 +33,16 @@
             @Html.DisplayFor(modelItem => item.IsPublic)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
+            @Html.RestLink("Edit", "products/edit/{0}", item.Id)
         </td>
         <td>
-            @Html.RestLink("Edit", "products/edit/{0}", item.Id)
+            <div>
+                @using (Html.BeginForm("TogglePublish/" + item.Id, "Product"))
+                {
+                    string style = "btn btn-" + (item.IsPublic ? "danger" : "success");
+                    <button class="@style">Publish</button>
+                }
+            </div>
         </td>
     </tr>
 }
