@@ -28,13 +28,18 @@ namespace Authority.EmailService
         public async Task SendUserActivation(string recipient, UserActivationModel model)
         {
             string body = _templateProvider.Load(model);
-            await Send(recipient, "Activate your account at Authority", body);
+            string subject = string.Format("Activate your account at {0}", model.ProductName);
+            await Send(recipient, subject, body, model.Sender);
         }
 
-        private async Task Send(string recipient, string subject, string body)
+        private async Task Send(string recipient, string subject, string body, string sender = "")
         {
+            sender = string.IsNullOrEmpty(sender)
+            ? ConfigurationManager.AppSettings["DoNotReplyEmailAddress"]
+            : sender;
+
             SendGridMessage message = new SendGridMessage();
-            message.From = new MailAddress(ConfigurationManager.AppSettings["DoNotReplyEmailAddress"]);
+            message.From = new MailAddress(sender);
             message.Subject = subject;
             message.AddTo(new List<string> { recipient });
             message.Html = body;
