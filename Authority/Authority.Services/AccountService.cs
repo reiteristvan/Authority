@@ -9,7 +9,7 @@ namespace IdentityServer.Services
 {
     public interface IAccountService
     {
-        Task<bool> ValidateProduct(Guid clientId, string redirect_url);
+        Task<bool> ValidateProduct(Guid clientId);
         Task RegisterUser(Guid productId, string email, string username, string password);
         Task ActivateUser(Guid activationCode);
     }
@@ -28,10 +28,10 @@ namespace IdentityServer.Services
             _authorityContext = authorityContext;
         }
 
-        public async Task<bool> ValidateProduct(Guid clientId, string redirect_url)
+        public async Task<bool> ValidateProduct(Guid clientId)
         {
             Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
-            return product != null && product.IsPublic && product.IsActive && product.LandingPage.Equals(redirect_url, StringComparison.InvariantCultureIgnoreCase);
+            return product != null && product.IsPublic && product.IsActive;
         }
 
         public async Task RegisterUser(Guid clientId, string email, string username, string password)
@@ -46,6 +46,11 @@ namespace IdentityServer.Services
             UserActivation operation = new UserActivation(_authorityContext, activationCode);
             await operation.Do();
             await operation.CommitAsync();
+        }
+
+        public async Task<Guid> LoginUser()
+        {
+            return Guid.NewGuid();
         }
     }
 }
