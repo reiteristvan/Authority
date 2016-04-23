@@ -32,9 +32,16 @@ namespace IdentityServer.Web.Controllers
         }
 
         [Route("activate")]
-        public async Task Activate(ActivateModel model)
+        public async Task<HttpResponseMessage> Activate(ActivateModel model)
         {
+            if (!await _accountService.ValidateProductWithSecret(model.ClientId, model.ClientSecret))
+            {
+                return new HttpResponseMessage(HttpStatusCode.Forbidden);
+            }
+
             await _accountService.ActivateUser(model.ActivationCode);
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Route("login")]

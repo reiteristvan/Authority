@@ -12,6 +12,7 @@ namespace IdentityServer.Services
     public interface IAccountService
     {
         Task<bool> ValidateProduct(Guid clientId);
+        Task<bool> ValidateProductWithSecret(Guid clientId, Guid clientSecret);
         Task RegisterUser(Guid productId, string email, string username, string password);
         Task ActivateUser(Guid activationCode);
     }
@@ -41,6 +42,12 @@ namespace IdentityServer.Services
         {
             Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
             return product != null && product.IsPublic && product.IsActive;
+        }
+
+        public async Task<bool> ValidateProductWithSecret(Guid clientId, Guid clientSecret)
+        {
+            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
+            return product != null && product.IsPublic && product.IsActive && product.ClientSecret == clientSecret;
         }
 
         public async Task RegisterUser(Guid clientId, string email, string username, string password)
