@@ -16,7 +16,8 @@ namespace Authority.EntityFramework.Configurations
             Property(p => p.IsPublic).IsRequired();
             Property(p => p.IsActive).IsRequired();
             Property(p => p.SiteUrl).HasMaxLength(128).IsRequired();
-            Property(p => p.LandingPage).HasMaxLength(128).IsRequired();
+            Property(p => p.NotificationEmail).HasMaxLength(128).IsRequired();
+            Property(p => p.ActivationUrl).HasMaxLength(128).IsRequired();
             Property(p => p.ClientId).IsRequired();
             Property(p => p.ClientSecret).IsRequired();
 

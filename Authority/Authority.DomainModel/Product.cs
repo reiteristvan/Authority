@@ -17,7 +17,8 @@ namespace Authority.DomainModel
         public bool IsPublic { get; set; }
         public bool IsActive { get; set; }
         public string SiteUrl { get; set; }
-        public string LandingPage { get; set; }
+        public string NotificationEmail { get; set; }
+        public string ActivationUrl { get; set; }
         public Guid ClientId { get; set; }
         public Guid ClientSecret { get; set; }
         public virtual ProductStyle Style { get; set; }

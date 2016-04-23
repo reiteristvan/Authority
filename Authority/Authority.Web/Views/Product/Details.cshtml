@@ -57,11 +57,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LandingPage)
+            @Html.DisplayNameFor(model => model.NotificationEmail)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LandingPage)
+            @Html.DisplayFor(model => model.NotificationEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivationUrl) 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivationUrl)<label>/{activationCode}</label>
         </dd>
 
         <dt>

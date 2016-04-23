@@ -11,6 +11,9 @@ namespace Authority.Web.Models.Products
         public string SiteUrl { get; set; }
 
         [Required]
-        public string LandingPage { get; set; }
+        public string NotificationEmail { get; set; }
+
+        [Required]
+        public string ActivationUrl { get; set; }
     }
 }

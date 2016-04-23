@@ -11,15 +11,22 @@ namespace Authority.Operations.Products
         private readonly Guid _ownerId;
         private readonly string _name;
         private readonly string _siteUrl;
-        private readonly string _landingPage;
+        private readonly string _notificationEmail;
+        private readonly string _activationUrl;
 
-        public CreateProduct(IAuthorityContext AuthorityContext, Guid ownerId, string name, string siteUrl, string landingPage)
+        public CreateProduct(IAuthorityContext AuthorityContext, 
+                             Guid ownerId, 
+                             string name, 
+                             string siteUrl, 
+                             string notificationEmail,
+                             string activationUrl)
             : base(AuthorityContext)
         {
             _ownerId = ownerId;
             _name = name;
             _siteUrl = siteUrl;
-            _landingPage = landingPage;
+            _notificationEmail = notificationEmail;
+            _activationUrl = activationUrl;
         }
 
         public override async Task<Guid> Do()
@@ -33,7 +40,8 @@ namespace Authority.Operations.Products
                 IsActive = true,
                 IsPublic = false,
                 SiteUrl = _siteUrl,
-                LandingPage = _landingPage,
+                NotificationEmail = _notificationEmail,
+                ActivationUrl = _activationUrl,
                 ClientId = Guid.NewGuid(),
                 ClientSecret = Guid.NewGuid()
             };

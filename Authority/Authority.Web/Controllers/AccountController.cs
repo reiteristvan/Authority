@@ -25,7 +25,7 @@ namespace Authority.Web.Controllers
         [Route("register")]
         public async Task<ActionResult> Register(Guid client_id, string redirect_url, string state = "")
         {
-            if (!await _accountService.ValidateProduct(client_id, redirect_url))
+            if (!await _accountService.ValidateProduct(client_id))
             {
                 Redirect("/register");
             }

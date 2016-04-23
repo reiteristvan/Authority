@@ -16,7 +16,8 @@ namespace Authority.Services.Dto
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Site { get; set; }
-        public string LandingPage { get; set; }
+        public string NotificationEmail { get; set; }
+        public string ActivationUrl { get; set; }
         public bool IsPublic { get; set; }
         public Guid ClientId { get; set; }
         public List<PolicyDto> Policies { get; set; } 
