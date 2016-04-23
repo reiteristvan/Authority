@@ -5,6 +5,12 @@ namespace IdentityServer.Web.Models.Account
 {
     public sealed class ActivateModel
     {
+        [JsonProperty("clientId")]
+        public Guid ClientId { get; set; }
+
+        [JsonProperty("clientSecret")]
+        public Guid ClientSecret { get; set; }
+
         [JsonProperty("activationCode")]
         public Guid ActivationCode { get; set; }
     }
