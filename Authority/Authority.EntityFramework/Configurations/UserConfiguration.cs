@@ -9,7 +9,7 @@ namespace Authority.EntityFramework.Configurations
         {
             ToTable("Users");
 
-            HasKey(e => e.Id);
+            HasKey(e => new { e.ProductId, e.Email });
 
             Property(u => u.ProductId).IsRequired();
             Property(u => u.Email).IsRequired().HasMaxLength(128);
