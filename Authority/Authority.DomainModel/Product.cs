@@ -7,7 +7,6 @@ namespace Authority.DomainModel
     {
         public Product()
         {
-            Users = new HashSet<User>();
             Policies = new HashSet<Policy>();
             Claims = new HashSet<Claim>();
         }
@@ -23,7 +22,6 @@ namespace Authority.DomainModel
         public Guid ClientSecret { get; set; }
         public virtual ProductStyle Style { get; set; }
 
-        public ICollection<User> Users { get; set; } 
         public ICollection<Policy> Policies { get; set; }
         public ICollection<Claim> Claims { get; set; }
     }

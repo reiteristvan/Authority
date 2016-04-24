@@ -35,16 +35,9 @@ namespace IdentityServer.Web.Controllers
         [ApiTokenFilter]
         [Route("activate")]
         [HttpPost]
-        public async Task<HttpResponseMessage> Activate(ActivateModel model)
+        public async Task Activate(ActivateModel model)
         {
-            if (!await _accountService.ValidateProductWithSecret(model.ClientId, model.ClientSecret))
-            {
-                return new HttpResponseMessage(HttpStatusCode.Forbidden);
-            }
-
-            await _accountService.ActivateUser(model.ActivationCode);
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            await _accountService.ActivateUser(model.ClientId, model.ActivationCode);
         }
 
         [ApiTokenFilter]
@@ -52,15 +45,13 @@ namespace IdentityServer.Web.Controllers
         [HttpPost]
         public async Task<LoginResponse> Login(LoginModel model)
         {
-            if (!await _accountService.ValidateProductWithSecret(model.ClientId, model.ClientSecret))
+            LoginResponse result = new LoginResponse
             {
-                
-            }
-
-            return new LoginResponse
-            {
-                AccessToken = ""
+                Success = false
             };
+
+            result.Success = true;
+            return result;
         }
 
         [ApiTokenFilter]

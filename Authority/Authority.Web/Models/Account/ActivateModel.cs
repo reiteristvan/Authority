@@ -8,9 +8,6 @@ namespace IdentityServer.Web.Models.Account
         [JsonProperty("clientId")]
         public Guid ClientId { get; set; }
 
-        [JsonProperty("clientSecret")]
-        public Guid ClientSecret { get; set; }
-
         [JsonProperty("activationCode")]
         public Guid ActivationCode { get; set; }
     }

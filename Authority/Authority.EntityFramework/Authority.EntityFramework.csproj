@@ -127,6 +127,10 @@
     <Compile Include="Migrations\201604231609300_ProductRemoveLandingUrlAddNotificationEmailActivationUrl.Designer.cs">
       <DependentUpon>201604231609300_ProductRemoveLandingUrlAddNotificationEmailActivationUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604241107086_UserCompositeKey.cs" />
+    <Compile Include="Migrations\201604241107086_UserCompositeKey.Designer.cs">
+      <DependentUpon>201604241107086_UserCompositeKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -188,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604231609300_ProductRemoveLandingUrlAddNotificationEmailActivationUrl.resx">
       <DependentUpon>201604231609300_ProductRemoveLandingUrlAddNotificationEmailActivationUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604241107086_UserCompositeKey.resx">
+      <DependentUpon>201604241107086_UserCompositeKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

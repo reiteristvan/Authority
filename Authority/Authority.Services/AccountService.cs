@@ -14,7 +14,8 @@ namespace IdentityServer.Services
         Task<bool> ValidateProduct(Guid clientId);
         Task<bool> ValidateProductWithSecret(Guid clientId, Guid clientSecret);
         Task RegisterUser(Guid productId, string email, string username, string password);
-        Task ActivateUser(Guid activationCode);
+        Task ActivateUser(Guid clientId, Guid activationCode);
+        Task<string> LogInUser(Guid clientId, string email, string password);
     }
 
     public sealed class AccountService : IAccountService
@@ -52,11 +53,11 @@ namespace IdentityServer.Services
 
         public async Task RegisterUser(Guid clientId, string email, string username, string password)
         {
-            UserRegistration operation = new UserRegistration(_authorityContext, clientId, email, username, password);
+            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
+
+            UserRegistration operation = new UserRegistration(_authorityContext, product.Id, email, username, password);
             User user = await operation.Do();
             await operation.CommitAsync();
-
-            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
 
             await _emailService.SendUserActivation(email, new UserActivationModel
             {
@@ -66,11 +67,16 @@ namespace IdentityServer.Services
             });
         }
 
-        public async Task ActivateUser(Guid activationCode)
+        public async Task ActivateUser(Guid clientId, Guid activationCode)
         {
-            UserActivation operation = new UserActivation(_authorityContext, activationCode);
+            UserActivation operation = new UserActivation(_authorityContext, clientId, activationCode);
             await operation.Do();
             await operation.CommitAsync();
+        }
+
+        public Task<string> LogInUser(Guid clientId, string email, string password)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Guid> LoginUser()

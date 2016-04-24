@@ -10,17 +10,17 @@ namespace Authority.Operations.Account
 {
     public sealed class UserRegistration : OperationWithReturnValueAsync<User>
     {
-        private readonly Guid _clientId;
+        private readonly Guid _productId;
         private readonly string _email;
         private readonly string _username;
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
         public UserRegistration(IAuthorityContext AuthorityContext, 
-            Guid clientId, string email, string username, string password)
+            Guid productId, string email, string username, string password)
             : base(AuthorityContext)
         {
-            _clientId = clientId;
+            _productId = productId;
             _email = email;
             _username = username;
             _password = password;
@@ -29,13 +29,15 @@ namespace Authority.Operations.Account
 
         private async Task<bool> IsUserExist()
         {
-            User user = await Context.Users.FirstOrDefaultAsync(u => u.Email == _email);
+            User user = await Context.Users
+                .FirstOrDefaultAsync(u => u.Email == _email && u.ProductId == _productId);
             return user == null;
         }
 
         private async Task<bool> IsUsernameAvailable()
         {
-            User user = await Context.Users.FirstOrDefaultAsync(p => p.Username == _username);
+            User user = await Context.Users
+                .FirstOrDefaultAsync(p => p.Username == _username && p.ProductId == _productId);
             return user == null;
         }
 
@@ -44,7 +46,7 @@ namespace Authority.Operations.Account
             await Check(() => IsUserExist(), AccountErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(), AccountErrorCodes.UsernameNotAvailable);
 
-            Product product = await Context.Products.FirstOrDefaultAsync(p => p.ClientId == _clientId);
+            Product product = await Context.Products.FirstOrDefaultAsync(p => p.ClientId == _productId);
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(_password);
             byte[] saltBytes = _passwordService.CreateSalt();
@@ -62,8 +64,6 @@ namespace Authority.Operations.Account
                 IsActive = true,
                 IsExternal = false
             };
-
-            product.Users.Add(user);
 
             return user;
         }
