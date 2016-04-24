@@ -173,6 +173,7 @@
     <Compile Include="Infrastructure\WebApiUnityDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebApiUnityFilterProvider.cs" />
     <Compile Include="Models\Account\ActivateModel.cs" />
+    <Compile Include="Models\Account\ExchangeTokenModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\LoginResponse.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />

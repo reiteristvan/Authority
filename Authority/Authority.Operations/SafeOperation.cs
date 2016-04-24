@@ -15,7 +15,7 @@ namespace Authority.Operations
 
         public async Task Check(Func<Task<bool>> condition, int errorCode)
         {
-            if (!(await condition()))
+            if (!await condition())
             {
                 throw new RequirementFailedException(errorCode);
             }
