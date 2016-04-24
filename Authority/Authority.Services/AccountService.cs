@@ -6,6 +6,7 @@ using Authority.EmailService;
 using Authority.EmailService.Models;
 using Authority.EntityFramework;
 using Authority.Operations.Account;
+using IdentityServer.UnitOfWork.Account;
 
 namespace IdentityServer.Services
 {
@@ -74,14 +75,18 @@ namespace IdentityServer.Services
             await operation.CommitAsync();
         }
 
-        public Task<string> LogInUser(Guid clientId, string email, string password)
+        public async Task<string> LogInUser(Guid clientId, string email, string password)
         {
-            throw new NotImplementedException();
-        }
+            string accessToken = "";
 
-        public async Task<Guid> LoginUser()
-        {
-            return Guid.NewGuid();
+            UserLogIn operation = new UserLogIn(_authorityContext, clientId, email, password);
+
+            if (!await operation.Do())
+            {
+                return accessToken;
+            }
+
+            return accessToken;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Authority.Operations
 {
     public abstract class SafeOperation
     {
-        protected readonly ISafeAuthorityContext _authorityContext;
+        private readonly ISafeAuthorityContext _authorityContext;
 
         protected SafeOperation(ISafeAuthorityContext authorityContext)
         {
@@ -28,5 +28,7 @@ namespace Authority.Operations
                 throw new RequirementFailedException(errorCode);
             }
         }
+
+        protected ISafeAuthorityContext Context { get {  return _authorityContext; } }
     }
 }
