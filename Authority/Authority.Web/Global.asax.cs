@@ -28,6 +28,9 @@ namespace Authority.Web
             IUnityContainer container = DependencyRegistrations.Register();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
+            FilterProviders.Providers.Remove(FilterProviders.Providers.OfType<FilterAttributeFilterProvider>().First());
+            FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(container));
+
             GlobalFilters.Filters.Add(new ErrorHandler(container.Resolve<IErrorService>()));
         }
 

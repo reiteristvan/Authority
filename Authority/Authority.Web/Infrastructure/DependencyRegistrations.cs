@@ -2,6 +2,7 @@
 using Authority.EntityFramework;
 using Authority.Services;
 using IdentityServer.Services;
+using IdentityServer.Web.Infrastructure.Filters;
 using Microsoft.Practices.Unity;
 
 namespace Authority.Web.Infrastructure
@@ -25,6 +26,8 @@ namespace Authority.Web.Infrastructure
             container.RegisterType<IProductService, ProductService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IPolicyService, PolicyService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IAccountService, AccountService>(new ContainerControlledLifetimeManager());
+
+            container.RegisterType<ApiTokenFilter>(new InjectionProperty("AccountService"));
 
             return container;
         }

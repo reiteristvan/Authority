@@ -161,6 +161,7 @@
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\DependencyRegistrations.cs" />
     <Compile Include="Infrastructure\EmailSettingsProvider.cs" />
+    <Compile Include="Infrastructure\Filters\ApiTokenFilter.cs" />
     <Compile Include="Infrastructure\Filters\ErrorHandlerFilter.cs" />
     <Compile Include="Infrastructure\Filters\IdentityServerAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\HtmlHelpers\HtmlExtensions.cs" />
@@ -169,6 +170,8 @@
     <Compile Include="Infrastructure\Identity\DeveloperPrincipalSerializable.cs" />
     <Compile Include="Infrastructure\Identity\IDeveloperPrincipal.cs" />
     <Compile Include="Infrastructure\Identity\IPrincipalExtensions.cs" />
+    <Compile Include="Infrastructure\WebApiUnityDependencyResolver.cs" />
+    <Compile Include="Infrastructure\WebApiUnityFilterProvider.cs" />
     <Compile Include="Models\Account\ActivateModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\LoginResponse.cs" />

@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using IdentityServer.Services;
+using IdentityServer.Web.Infrastructure.Filters;
 using IdentityServer.Web.Models.Account;
 
 namespace IdentityServer.Web.Controllers
@@ -31,7 +32,9 @@ namespace IdentityServer.Web.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [ApiTokenFilter]
         [Route("activate")]
+        [HttpPost]
         public async Task<HttpResponseMessage> Activate(ActivateModel model)
         {
             if (!await _accountService.ValidateProductWithSecret(model.ClientId, model.ClientSecret))
@@ -44,16 +47,28 @@ namespace IdentityServer.Web.Controllers
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [ApiTokenFilter]
         [Route("login")]
         [HttpPost]
         public async Task<LoginResponse> Login(LoginModel model)
         {
-            //await _accountService.
+            if (!await _accountService.ValidateProductWithSecret(model.ClientId, model.ClientSecret))
+            {
+                
+            }
 
             return new LoginResponse
             {
                 AccessToken = ""
             };
+        }
+
+        [ApiTokenFilter]
+        [Route("test")]
+        [HttpGet]
+        public string Test()
+        {
+            return "alma";
         }
     }
 }
