@@ -64,6 +64,14 @@ namespace IdentityServer.Web.Controllers
         }
 
         [ApiTokenFilter]
+        [Route("token")]
+        [HttpPost]
+        public async Task ExchangeToken(ExchangeTokenModel model)
+        {
+            
+        }
+
+        [ApiTokenFilter]
         [Route("test")]
         [HttpGet]
         public string Test()
