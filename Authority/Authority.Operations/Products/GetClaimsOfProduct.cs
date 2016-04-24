@@ -19,7 +19,7 @@ namespace Authority.Operations.Products
 
         public async Task<IEnumerable<Claim>>  Retrieve(Guid userId, Guid productId)
         {
-            Product product = await _authorityContext.Products
+            Product product = await Context.Products
                 .Include(p => p.Policies)
                 .Include(p => p.Policies.Select(po => po.Claims))
                 .FirstOrDefaultAsync(p => p.Id == productId);

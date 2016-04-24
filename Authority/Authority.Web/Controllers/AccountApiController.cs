@@ -47,9 +47,18 @@ namespace IdentityServer.Web.Controllers
         {
             LoginResponse result = new LoginResponse
             {
-                Success = false
+                Success = false,
+                AccessToken = ""
             };
 
+            string accessToken = await _accountService.LogInUser(model.ClientId, model.Email, model.Password);
+
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                return result;
+            }
+
+            result.AccessToken = accessToken;
             result.Success = true;
             return result;
         }
