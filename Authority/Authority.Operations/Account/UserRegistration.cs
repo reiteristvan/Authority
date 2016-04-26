@@ -46,7 +46,7 @@ namespace Authority.Operations.Account
             await Check(() => IsUserExist(), AccountErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(), AccountErrorCodes.UsernameNotAvailable);
 
-            Product product = await Context.Products.FirstOrDefaultAsync(p => p.ClientId == _productId);
+            Product product = await Context.Products.FirstOrDefaultAsync(p => p.Id == _productId);
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(_password);
             byte[] saltBytes = _passwordService.CreateSalt();

@@ -9,22 +9,6 @@ using Authority.Services;
 
 namespace Authority.Benchmark
 {
-    public sealed class EmailSettingsProvider : IEmailSettingsProvider
-    {
-        public string TemplateFolderPath
-        {
-            get { return ""; }
-        }
-    }
-
-    public sealed class Configuration : IConfiguration
-    {
-        public string DeveloperActivationUrlTemplate
-        {
-            get { return ""; }
-        }
-    }
-
     class Program
     {
         static void Main(string[] args)
