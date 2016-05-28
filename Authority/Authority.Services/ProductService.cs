@@ -48,8 +48,8 @@ namespace Authority.Services
 
         public async Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId)
         {
-            GetProductDetails operation = new GetProductDetails(_authorityContext);
-            Product product = await operation.GetDetails(ownerId, proudctId);
+            GetProductDetails operation = new GetProductDetails(_authorityContext, ownerId, proudctId);
+            Product product = await operation.Do();
 
             return product.ToDto();
         }

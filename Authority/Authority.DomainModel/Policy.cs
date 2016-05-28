@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Authority.DomainModel
 {
@@ -9,6 +10,8 @@ namespace Authority.DomainModel
             Claims = new HashSet<Claim>();
             Users = new HashSet<User>();
         }
+
+        public Guid ProductId { get; set; }
 
         public string Name { get; set; }
 

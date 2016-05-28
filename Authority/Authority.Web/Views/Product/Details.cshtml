@@ -30,6 +30,21 @@
             $('#apiKey').val(response);
         });
     };
+
+    function createPolicy() {
+        var requestUrl = '/products/' + '@Model.Id' + '/policies';
+        var name = $('#newPolicyName').val();
+        var model = { Name: name };
+
+        $.ajax({
+            method: 'POST',
+            url: requestUrl,
+            data: model,
+            dataType: 'json'
+        }).done(function(response) {
+            console.log('OK');
+        });
+    };
 </script>
 
 <p>
@@ -83,23 +98,33 @@
 
     <hr/>
 
+    <h4>Policies</h4>
+
+    <h6>New</h6>
+    <div>
+        <input id="newPolicyName" value=""/>
+        <button class="btn btn-default" onclick="createPolicy();">Create</button>
+    </div>
+
     <div>
         @foreach (PolicyDto policy in Model.Policies)
         {
             <h4>@policy.Name</h4>
-            <h3>Claims:</h3>
+            <h6>Claims:</h6>
 
             foreach (ClaimDto claim in policy.Claims)
             {
-                <h4>@claim.Issuer</h4>
-                <h4>@claim.Type</h4>
-                <h4>@claim.Value</h4>
+                <h6>@claim.Issuer</h6>
+                <h6>@claim.Type</h6>
+                <h6>@claim.Value</h6>
                 <br/>
             }
 
-            <hr/>
+            <br/>
         }
     </div>
+
+    <hr/>
 
     <div>
         @{

@@ -39,7 +39,8 @@ namespace Authority.Operations.Policies
 
             Policy policy = new Policy
             {
-                Name = _name
+                Name = _name,
+                ProductId = product.Id
             };
 
             Context.Policies.Add(policy);
