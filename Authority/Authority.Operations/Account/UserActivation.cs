@@ -8,19 +8,19 @@ namespace Authority.Operations.Account
 {
     public sealed class UserActivation : OperationWithNoReturnAsync
     {
-        private readonly Guid _clientId;
+        private readonly Guid _productId;
         private readonly Guid _activationCode;
 
-        public UserActivation(IAuthorityContext authorityContext, Guid clientId, Guid activationCode)
+        public UserActivation(IAuthorityContext authorityContext, Guid productId, Guid activationCode)
             : base(authorityContext)
         {
-            _clientId = clientId;
+            _productId = productId;
             _activationCode = activationCode;
         }
 
         public override async Task Do()
         {
-            Product product = await Context.Products.FirstOrDefaultAsync(p => p.ClientId == _clientId);
+            Product product = await Context.Products.FirstOrDefaultAsync(p => p.Id == _productId);
 
             if (_activationCode == Guid.Empty || product == null || !product.IsActive || !product.IsPublic)
             {

@@ -17,7 +17,7 @@ namespace Authority.Services
         Task<Guid> Create(Guid ownerId, string name, string siteUrl, string notificationEmail, string activationUrl);
         Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
         Task<bool> ToggleProductPublish(Guid ownerId, Guid productId);
-        Task<Guid> GetClientSecretForProduct(Guid ownerId, Guid productId);
+        Task<Guid> GetApiKeyForProduct(Guid ownerId, Guid productId);
     }
 
     public sealed class ProductService : IProductService
@@ -63,12 +63,12 @@ namespace Authority.Services
             return publishState;
         }
 
-        public async Task<Guid> GetClientSecretForProduct(Guid ownerId, Guid productId)
+        public async Task<Guid> GetApiKeyForProduct(Guid ownerId, Guid productId)
         {
             Product product = await _authorityContext.Products
                 .FirstOrDefaultAsync(p => p.Id == productId && p.OwnerId == ownerId);
 
-            return product.ClientSecret;
+            return product.ApiKey;
         }
     }
 }

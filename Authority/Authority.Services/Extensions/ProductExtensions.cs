@@ -27,7 +27,7 @@ namespace Authority.Services.Extensions
                 NotificationEmail = product.NotificationEmail,
                 ActivationUrl = product.ActivationUrl,
                 Name = product.Name,
-                ClientId = product.ClientId,
+                ClientId = product.ApiKey,
                 Policies = product.Policies.Select(p => p.ToDto()).ToList()
             };
         }

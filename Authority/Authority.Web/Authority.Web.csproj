@@ -25,6 +25,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -147,7 +148,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountApiController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\DevelopersController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -158,10 +158,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AuthorityApiController.cs" />
     <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\DependencyRegistrations.cs" />
     <Compile Include="Infrastructure\EmailSettingsProvider.cs" />
-    <Compile Include="Infrastructure\Filters\ApiTokenFilter.cs" />
+    <Compile Include="Infrastructure\Filters\ApiKeyFilter.cs" />
     <Compile Include="Infrastructure\Filters\ErrorHandlerFilter.cs" />
     <Compile Include="Infrastructure\Filters\IdentityServerAuthorizationAttribute.cs" />
     <Compile Include="Infrastructure\HtmlHelpers\HtmlExtensions.cs" />
@@ -173,7 +174,6 @@
     <Compile Include="Infrastructure\WebApiUnityDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebApiUnityFilterProvider.cs" />
     <Compile Include="Models\Account\ActivateModel.cs" />
-    <Compile Include="Models\Account\ExchangeTokenModel.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\LoginResponse.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />

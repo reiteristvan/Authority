@@ -18,8 +18,7 @@ namespace Authority.EntityFramework.Configurations
             Property(p => p.SiteUrl).HasMaxLength(128).IsRequired();
             Property(p => p.NotificationEmail).HasMaxLength(128).IsRequired();
             Property(p => p.ActivationUrl).HasMaxLength(128).IsRequired();
-            Property(p => p.ClientId).IsRequired();
-            Property(p => p.ClientSecret).IsRequired();
+            Property(p => p.ApiKey).IsRequired();
 
             HasMany(p => p.Policies);
             HasMany(p => p.Claims).WithOptional().WillCascadeOnDelete(false);

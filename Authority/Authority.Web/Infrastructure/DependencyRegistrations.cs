@@ -27,7 +27,7 @@ namespace Authority.Web.Infrastructure
             container.RegisterType<IPolicyService, PolicyService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IAccountService, AccountService>(new ContainerControlledLifetimeManager());
 
-            container.RegisterType<ApiTokenFilter>(new InjectionProperty("AccountService"));
+            container.RegisterType<ApiKeyFilter>(new InjectionProperty("AccountService"));
 
             return container;
         }

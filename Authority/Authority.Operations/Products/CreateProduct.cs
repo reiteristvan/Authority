@@ -42,8 +42,7 @@ namespace Authority.Operations.Products
                 SiteUrl = _siteUrl,
                 NotificationEmail = _notificationEmail,
                 ActivationUrl = _activationUrl,
-                ClientId = Guid.NewGuid(),
-                ClientSecret = Guid.NewGuid()
+                ApiKey= Guid.NewGuid()
             };
 
             product.Style = new ProductStyle(product.Id)
