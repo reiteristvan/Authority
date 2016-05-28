@@ -70,7 +70,7 @@ namespace Authority.Web.Controllers
 
         [HttpGet]
         [Route("apikey/{productId}")]
-        public async Task<Guid> GetSecretOfProduct(Guid productId)
+        public async Task<Guid> GetApiKeyOfProduct(Guid productId)
         {
             Guid userId = HttpContext.User.GetUserId();
             Guid apiKey = await _productService.GetApiKeyForProduct(userId, productId);
