@@ -6,6 +6,7 @@ using Authority.Services;
 using Authority.Services.Dto;
 using Authority.Web.Infrastructure.Filters;
 using Authority.Web.Infrastructure.Identity;
+using Authority.Web.Models.Policies;
 using Authority.Web.Models.Products;
 
 namespace Authority.Web.Controllers
@@ -15,10 +16,12 @@ namespace Authority.Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IPolicyService _policyService;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IPolicyService policyService)
         {
             _productService = productService;
+            _policyService = policyService;
         }
 
         [HttpGet]
@@ -76,6 +79,14 @@ namespace Authority.Web.Controllers
             Guid apiKey = await _productService.GetApiKeyForProduct(userId, productId);
 
             return apiKey;
+        }
+
+        [HttpPost]
+        [Route("{productId}/policies")]
+        public async Task CreatePolicy(Guid productId, NewPolicyModel model)
+        {
+            Guid userId = HttpContext.User.GetUserId();
+            await _policyService.CreatePolicy(userId, productId, model.Name);
         }
     }
 }

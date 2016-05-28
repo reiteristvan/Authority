@@ -135,6 +135,10 @@
     <Compile Include="Migrations\201605280827068_ChangeAuthtoApiKey.Designer.cs">
       <DependentUpon>201605280827068_ChangeAuthtoApiKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605281201276_PolicyHasProductIdInModel.cs" />
+    <Compile Include="Migrations\201605281201276_PolicyHasProductIdInModel.Designer.cs">
+      <DependentUpon>201605281201276_PolicyHasProductIdInModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605280827068_ChangeAuthtoApiKey.resx">
       <DependentUpon>201605280827068_ChangeAuthtoApiKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605281201276_PolicyHasProductIdInModel.resx">
+      <DependentUpon>201605281201276_PolicyHasProductIdInModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
