@@ -11,15 +11,15 @@ namespace IdentityServer.UnitOfWork.Account
 {
     public sealed class UserLogIn : SafeOperationWithReturnValueAsync<bool>
     {
-        private readonly Guid _clientId;
+        private readonly Guid _productId;
         private readonly string _email;
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public UserLogIn(ISafeAuthorityContext authorityContext, Guid clientId, string email, string password)
+        public UserLogIn(ISafeAuthorityContext authorityContext, Guid productId, string email, string password)
             : base(authorityContext)
         {
-            _clientId = clientId;
+            _productId = productId;
             _email = email;
             _password = password;
             _passwordService = new PasswordService();
@@ -28,7 +28,7 @@ namespace IdentityServer.UnitOfWork.Account
         public override async Task<bool> Do()
         {
             Product product = await Context.Products
-                .FirstOrDefaultAsync(p => p.ClientId == _clientId);
+                .FirstOrDefaultAsync(p => p.Id == _productId);
 
             if (product == null || !product.IsActive || !product.IsPublic)
             {

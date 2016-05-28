@@ -69,13 +69,13 @@ namespace Authority.Web.Controllers
         }
 
         [HttpGet]
-        [Route("secret/{productId}")]
+        [Route("apikey/{productId}")]
         public async Task<Guid> GetSecretOfProduct(Guid productId)
         {
             Guid userId = HttpContext.User.GetUserId();
-            Guid secret = await _productService.GetClientSecretForProduct(userId, productId);
+            Guid apiKey = await _productService.GetApiKeyForProduct(userId, productId);
 
-            return secret;
+            return apiKey;
         }
     }
 }

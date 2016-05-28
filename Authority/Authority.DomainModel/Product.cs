@@ -18,8 +18,7 @@ namespace Authority.DomainModel
         public string SiteUrl { get; set; }
         public string NotificationEmail { get; set; }
         public string ActivationUrl { get; set; }
-        public Guid ClientId { get; set; }
-        public Guid ClientSecret { get; set; }
+        public Guid ApiKey { get; set; }
         public virtual ProductStyle Style { get; set; }
 
         public ICollection<Policy> Policies { get; set; }

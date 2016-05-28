@@ -12,11 +12,16 @@ namespace IdentityServer.Services
 {
     public interface IAccountService
     {
-        Task<bool> ValidateProduct(Guid clientId);
-        Task<bool> ValidateProductWithSecret(Guid clientId, Guid clientSecret);
+        Task<ValidationResult> ValidateProduct(Guid apiKey);
         Task RegisterUser(Guid productId, string email, string username, string password);
-        Task ActivateUser(Guid clientId, Guid activationCode);
-        Task<string> LogInUser(Guid clientId, string email, string password);
+        Task ActivateUser(Guid productId, Guid activationCode);
+        Task<string> LogInUser(Guid productId, string email, string password);
+    }
+
+    public class ValidationResult
+    {
+        public bool IsValid { get; set; }
+        public Guid ProductId { get; set; }
     }
 
     public sealed class AccountService : IAccountService
@@ -40,21 +45,23 @@ namespace IdentityServer.Services
             _emailService = emailService;
         }
 
-        public async Task<bool> ValidateProduct(Guid clientId)
+        public async Task<ValidationResult> ValidateProduct(Guid apiKey)
         {
-            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
-            return product != null && product.IsPublic && product.IsActive;
+            ValidationResult result = new ValidationResult();
+            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ApiKey == apiKey);
+
+            if (product != null)
+            {
+                result.ProductId = product.Id;
+            }
+
+            result.IsValid =  product != null && product.IsPublic && product.IsActive;
+            return result;
         }
 
-        public async Task<bool> ValidateProductWithSecret(Guid clientId, Guid clientSecret)
+        public async Task RegisterUser(Guid productId, string email, string username, string password)
         {
-            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
-            return product != null && product.IsPublic && product.IsActive && product.ClientSecret == clientSecret;
-        }
-
-        public async Task RegisterUser(Guid clientId, string email, string username, string password)
-        {
-            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.ClientId == clientId);
+            Product product = await _authorityContext.Products.FirstOrDefaultAsync(p => p.Id == productId);
 
             UserRegistration operation = new UserRegistration(_authorityContext, product.Id, email, username, password);
             User user = await operation.Do();
@@ -68,18 +75,18 @@ namespace IdentityServer.Services
             });
         }
 
-        public async Task ActivateUser(Guid clientId, Guid activationCode)
+        public async Task ActivateUser(Guid productId, Guid activationCode)
         {
-            UserActivation operation = new UserActivation(_authorityContext, clientId, activationCode);
+            UserActivation operation = new UserActivation(_authorityContext, productId, activationCode);
             await operation.Do();
             await operation.CommitAsync();
         }
 
-        public async Task<string> LogInUser(Guid clientId, string email, string password)
+        public async Task<string> LogInUser(Guid productId, string email, string password)
         {
             string accessToken = "";
 
-            UserLogIn operation = new UserLogIn(_authorityContext, clientId, email, password);
+            UserLogIn operation = new UserLogIn(_authorityContext, productId, email, password);
 
             if (!await operation.Do())
             {

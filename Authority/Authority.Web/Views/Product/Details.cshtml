@@ -20,14 +20,14 @@
         });
     };
 
-    function getClientSecret() {
-        var requestUrl = '/products/secret/' + '@Model.Id';
+    function getApiKey() {
+        var requestUrl = '/products/apikey/' + '@Model.Id';
 
         $.ajax({
             method: 'GET',
             url: requestUrl
         }).done(function(response) {
-            $('#clientSecret').val(response);
+            $('#apiKey').val(response);
         });
     };
 </script>
@@ -84,8 +84,8 @@
             Client Secret
         </dt>
         <dd>
-            <input id="clientSecret" value=""/>
-            <button class="btn btn-warning" onclick="getClientSecret();">Get Secret</button>
+            <input id="apiKey" value=""/>
+            <button class="btn btn-warning" onclick="getApiKey();">Get Secret</button>
         </dd>
     </dl>
 

@@ -26,7 +26,7 @@ namespace IdentityServer.IntegrationTests.Accounts
             string username = RandomData.RandomString();
             string password = RandomData.RandomString(12, true);
 
-            UserRegistration operation = new UserRegistration(_fixture.Context, product.ClientId, email, username, password);
+            UserRegistration operation = new UserRegistration(_fixture.Context, product.Id, email, username, password);
             await operation.Do();
             await operation.CommitAsync();
         }

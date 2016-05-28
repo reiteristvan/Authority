@@ -3,13 +3,15 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using IdentityServer.Services;
+using IdentityServer.Web.Infrastructure;
 using IdentityServer.Web.Infrastructure.Filters;
 using IdentityServer.Web.Models.Account;
 
 namespace IdentityServer.Web.Controllers
 {
+    [ApiKeyFilter]
     [RoutePrefix("api/account")]
-    public class AccountApiController : ApiController
+    public class AccountApiController : AuthorityApiController
     {
         private readonly IAccountService _accountService;
 
@@ -22,25 +24,18 @@ namespace IdentityServer.Web.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> Register(RegisterModel model)
         {
-            if (!await _accountService.ValidateProduct(model.ClientId))
-            {
-                return new HttpResponseMessage(HttpStatusCode.Forbidden);
-            }
-
-            await _accountService.RegisterUser(model.ClientId, model.Email, model.Username, model.Password);
+            await _accountService.RegisterUser(Context.ApiKey, model.Email, model.Username, model.Password);
 
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        [ApiTokenFilter]
         [Route("activate")]
         [HttpPost]
         public async Task Activate(ActivateModel model)
         {
-            await _accountService.ActivateUser(model.ClientId, model.ActivationCode);
+            await _accountService.ActivateUser(Context.ApiKey, model.ActivationCode);
         }
 
-        [ApiTokenFilter]
         [Route("login")]
         [HttpPost]
         public async Task<LoginResponse> Login(LoginModel model)
@@ -51,7 +46,7 @@ namespace IdentityServer.Web.Controllers
                 AccessToken = ""
             };
 
-            string accessToken = await _accountService.LogInUser(model.ClientId, model.Email, model.Password);
+            string accessToken = await _accountService.LogInUser(Context.ApiKey, model.Email, model.Password);
 
             if (string.IsNullOrEmpty(accessToken))
             {
@@ -63,15 +58,6 @@ namespace IdentityServer.Web.Controllers
             return result;
         }
 
-        [ApiTokenFilter]
-        [Route("token")]
-        [HttpPost]
-        public async Task ExchangeToken(ExchangeTokenModel model)
-        {
-            
-        }
-
-        [ApiTokenFilter]
         [Route("test")]
         [HttpGet]
         public string Test()
