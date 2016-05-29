@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using Authority.DomainModel;
 using Authority.EmailService;
@@ -15,7 +17,8 @@ namespace IdentityServer.Services
         Task<ValidationResult> ValidateProduct(Guid apiKey);
         Task RegisterUser(Guid productId, string email, string username, string password);
         Task ActivateUser(Guid productId, Guid activationCode);
-        Task<string> LogInUser(Guid productId, string email, string password);
+        Task<bool> LogInUser(Guid productId, string email, string password);
+        Task<List<Claim>> GetUserClaims(string email);
     }
 
     public class ValidationResult
@@ -82,18 +85,40 @@ namespace IdentityServer.Services
             await operation.CommitAsync();
         }
 
-        public async Task<string> LogInUser(Guid productId, string email, string password)
+        public async Task<bool> LogInUser(Guid productId, string email, string password)
         {
-            string accessToken = "";
-
             UserLogIn operation = new UserLogIn(_authorityContext, productId, email, password);
 
             if (!await operation.Do())
             {
-                return accessToken;
+                return false;
             }
 
-            return accessToken;
+            return true;
+        }
+
+        public async Task<List<Claim>> GetUserClaims(string email)
+        {
+            User user = await _authorityContext.Users
+                .Include(u => u.Policies)
+                .Include(u => u.Policies.Select(po => po.Claims))
+                .FirstAsync(u => u.Email == email);
+
+            List<Claim> claims = user.Policies.SelectMany(u => u.Claims).ToList();
+
+            HashSet<Guid> idList = new HashSet<Guid>();
+            List<Claim> distinctClaims = new List<Claim>();
+
+            foreach (Claim claim in claims)
+            {
+                if (!idList.Contains(claim.Id))
+                {
+                    idList.Add(claim.Id);
+                    distinctClaims.Add(claim);
+                }
+            }
+
+            return distinctClaims;
         }
     }
 }

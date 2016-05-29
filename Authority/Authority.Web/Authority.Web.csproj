@@ -176,6 +176,7 @@
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\LoginResponse.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
+    <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\Developers\LoginModel.cs" />
     <Compile Include="Models\Developers\RegisterModel.cs" />
     <Compile Include="Models\Policies\NewPolicyModel.cs" />
@@ -247,6 +248,10 @@
     <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Authority.DomainModel\Authority.DomainModel.csproj">
+      <Project>{EA0A007E-85B0-4048-8B54-B4B712C4EDC7}</Project>
+      <Name>Authority.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Authority.EmailService\Authority.EmailService.csproj">
       <Project>{713f8d1a-3927-47c2-a37c-f9d36f28ae63}</Project>
       <Name>Authority.EmailService</Name>

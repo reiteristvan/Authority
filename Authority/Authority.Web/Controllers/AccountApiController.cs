@@ -1,10 +1,14 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Authority.DomainModel;
 using IdentityServer.Services;
 using IdentityServer.Web.Infrastructure;
 using IdentityServer.Web.Infrastructure.Filters;
+using IdentityServer.Web.Models;
 using IdentityServer.Web.Models.Account;
 
 namespace IdentityServer.Web.Controllers
@@ -38,24 +42,33 @@ namespace IdentityServer.Web.Controllers
 
         [Route("login")]
         [HttpPost]
-        public async Task<LoginResponse> Login(LoginModel model)
+        public async Task<ApiResponse<LoginResponse>> Login(LoginModel model)
         {
-            LoginResponse result = new LoginResponse
+            ApiResponse<LoginResponse> response = new ApiResponse<LoginResponse>
             {
-                Success = false,
-                AccessToken = ""
+                Success = false
             };
 
-            string accessToken = await _accountService.LogInUser(Context.ApiKey, model.Email, model.Password);
-
-            if (string.IsNullOrEmpty(accessToken))
+            if (!await _accountService.LogInUser(Context.ProductId, model.Email, model.Password))
             {
-                return result;
+                return response;
             }
 
-            result.AccessToken = accessToken;
-            result.Success = true;
-            return result;
+            List<Claim> claims = await _accountService.GetUserClaims(model.Email);
+
+            response.Data = new LoginResponse
+            {
+                Email = model.Email,
+                Claims = claims.Select(c => new AuthorityClaim
+                {
+                    Issuer = c.Issuer,
+                    Type = c.Type,
+                    Value = c.Value
+                }).ToList()
+            };
+
+            response.Success = true;
+            return response;
         }
 
         [Route("test")]
