@@ -40,7 +40,8 @@ namespace Authority.Operations.Policies
             Policy policy = new Policy
             {
                 Name = _name,
-                ProductId = product.Id
+                ProductId = product.Id,
+                Default = false
             };
 
             Context.Policies.Add(policy);

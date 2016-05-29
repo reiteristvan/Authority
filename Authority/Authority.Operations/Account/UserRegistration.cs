@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Authority.DomainModel;
@@ -16,9 +17,9 @@ namespace Authority.Operations.Account
         private readonly string _password;
         private readonly PasswordService _passwordService;
 
-        public UserRegistration(IAuthorityContext AuthorityContext, 
+        public UserRegistration(IAuthorityContext authorityContext, 
             Guid productId, string email, string username, string password)
-            : base(AuthorityContext)
+            : base(authorityContext)
         {
             _productId = productId;
             _email = email;
@@ -46,7 +47,9 @@ namespace Authority.Operations.Account
             await Check(() => IsUserExist(), AccountErrorCodes.EmailAlreadyExists);
             await Check(() => IsUsernameAvailable(), AccountErrorCodes.UsernameNotAvailable);
 
-            Product product = await Context.Products.FirstOrDefaultAsync(p => p.Id == _productId);
+            Product product = await Context.Products
+                .Include(p => p.Policies)
+                .FirstOrDefaultAsync(p => p.Id == _productId);
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(_password);
             byte[] saltBytes = _passwordService.CreateSalt();
@@ -64,6 +67,15 @@ namespace Authority.Operations.Account
                 IsActive = true,
                 IsExternal = false
             };
+
+            Context.Users.Add(user);
+
+            Policy defaultPolicy = product.Policies.FirstOrDefault(p => p.Default);
+
+            if (defaultPolicy != null)
+            {
+                user.Policies.Add(defaultPolicy);
+            }
 
             return user;
         }

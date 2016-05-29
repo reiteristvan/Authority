@@ -139,6 +139,10 @@
     <Compile Include="Migrations\201605281201276_PolicyHasProductIdInModel.Designer.cs">
       <DependentUpon>201605281201276_PolicyHasProductIdInModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605291144508_AddDefaultToPolicy.cs" />
+    <Compile Include="Migrations\201605291144508_AddDefaultToPolicy.Designer.cs">
+      <DependentUpon>201605291144508_AddDefaultToPolicy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -209,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605281201276_PolicyHasProductIdInModel.resx">
       <DependentUpon>201605281201276_PolicyHasProductIdInModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605291144508_AddDefaultToPolicy.resx">
+      <DependentUpon>201605291144508_AddDefaultToPolicy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

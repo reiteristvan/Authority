@@ -13,6 +13,7 @@ namespace Authority.EntityFramework.Configurations
 
             Property(p => p.ProductId).IsRequired();
             Property(p => p.Name).IsRequired();
+            Property(p => p.Default).IsRequired();
 
             HasMany(p => p.Claims);
         }
