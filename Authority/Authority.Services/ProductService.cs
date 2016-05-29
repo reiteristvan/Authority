@@ -15,7 +15,7 @@ namespace Authority.Services
     {
         Task<IEnumerable<ProductSimpleDto>> GetProductsOfUser(Guid ownerId);
         Task<Guid> Create(Guid ownerId, string name, string siteUrl, string notificationEmail, string activationUrl);
-        Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId);
+        Task<ProductDto> GetProductDetails(Guid ownerId, Guid productId);
         Task<bool> ToggleProductPublish(Guid ownerId, Guid productId);
         Task<Guid> GetApiKeyForProduct(Guid ownerId, Guid productId);
     }
@@ -46,9 +46,9 @@ namespace Authority.Services
             return id;
         }
 
-        public async Task<ProductDto> GetProductDetails(Guid ownerId, Guid proudctId)
+        public async Task<ProductDto> GetProductDetails(Guid ownerId, Guid productId)
         {
-            GetProductDetails operation = new GetProductDetails(_authorityContext, ownerId, proudctId);
+            GetProductDetails operation = new GetProductDetails(_authorityContext, ownerId, productId);
             Product product = await operation.Do();
 
             return product.ToDto();
