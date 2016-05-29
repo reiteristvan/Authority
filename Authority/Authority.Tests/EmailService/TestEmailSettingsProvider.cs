@@ -8,5 +8,8 @@ namespace Authority.Tests.EmailService
         {
             get { return @"EmailService/Templates"; }
         }
+
+        public string SendGridUsername { get { return ""; } }
+        public string SendGridPassword { get { return ""; } }
     }
 }

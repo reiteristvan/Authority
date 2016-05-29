@@ -170,6 +170,7 @@
     <Compile Include="Infrastructure\Identity\DeveloperPrincipalSerializable.cs" />
     <Compile Include="Infrastructure\Identity\IDeveloperPrincipal.cs" />
     <Compile Include="Infrastructure\Identity\IPrincipalExtensions.cs" />
+    <Compile Include="Infrastructure\Vault.cs" />
     <Compile Include="Infrastructure\WebApiUnityDependencyResolver.cs" />
     <Compile Include="Infrastructure\WebApiUnityFilterProvider.cs" />
     <Compile Include="Models\Account\ActivateModel.cs" />
