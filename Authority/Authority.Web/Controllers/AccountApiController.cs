@@ -8,7 +8,6 @@ using Authority.DomainModel;
 using IdentityServer.Services;
 using IdentityServer.Web.Infrastructure;
 using IdentityServer.Web.Infrastructure.Filters;
-using IdentityServer.Web.Models;
 using IdentityServer.Web.Models.Account;
 
 namespace IdentityServer.Web.Controllers
@@ -42,33 +41,29 @@ namespace IdentityServer.Web.Controllers
 
         [Route("login")]
         [HttpPost]
-        public async Task<ApiResponse<LoginResponse>> Login(LoginModel model)
+        public async Task<LoginResponse> Login(LoginModel model)
         {
-            ApiResponse<LoginResponse> response = new ApiResponse<LoginResponse>
+            LoginResponse result = new LoginResponse
             {
                 Success = false
             };
 
             if (!await _accountService.LogInUser(Context.ProductId, model.Email, model.Password))
             {
-                return response;
+                return result;
             }
 
             List<Claim> claims = await _accountService.GetUserClaims(model.Email);
 
-            response.Data = new LoginResponse
+            result.Email = model.Email;
+            result.Claims = claims.Select(c => new AuthorityClaim
             {
-                Email = model.Email,
-                Claims = claims.Select(c => new AuthorityClaim
-                {
-                    Issuer = c.Issuer,
-                    Type = c.Type,
-                    Value = c.Value
-                }).ToList()
-            };
+                Issuer = c.Issuer,
+                Type = c.Type,
+                Value = c.Value
+            }).ToList();
 
-            response.Success = true;
-            return response;
+            return result;
         }
 
         [Route("test")]

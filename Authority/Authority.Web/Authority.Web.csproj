@@ -177,7 +177,6 @@
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\LoginResponse.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
-    <Compile Include="Models\ApiResponse.cs" />
     <Compile Include="Models\Developers\LoginModel.cs" />
     <Compile Include="Models\Developers\RegisterModel.cs" />
     <Compile Include="Models\Policies\NewPolicyModel.cs" />
