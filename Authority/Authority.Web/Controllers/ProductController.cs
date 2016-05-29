@@ -8,12 +8,13 @@ using Authority.Web.Infrastructure.Filters;
 using Authority.Web.Infrastructure.Identity;
 using Authority.Web.Models.Policies;
 using Authority.Web.Models.Products;
+using IdentityServer.Web.Infrastructure;
 
 namespace Authority.Web.Controllers
 {
     [AuthorityAuthorization]
     [RoutePrefix("products")]
-    public class ProductController : Controller
+    public class ProductController : AuthorityController
     {
         private readonly IProductService _productService;
         private readonly IPolicyService _policyService;
@@ -29,8 +30,7 @@ namespace Authority.Web.Controllers
         [Route("index")]
         public async Task<ActionResult> Index()
         {
-            Guid userId = HttpContext.User.GetUserId();
-            IEnumerable<ProductSimpleDto> products = await _productService.GetProductsOfUser(userId);
+            IEnumerable<ProductSimpleDto> products = await _productService.GetProductsOfUser(CallingContext.UserId);
 
             return View(products);
         }
@@ -47,8 +47,7 @@ namespace Authority.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(NewProductModel model)
         {
-            Guid userId = HttpContext.User.GetUserId();
-            await _productService.Create(userId, model.Name, model.SiteUrl, model.NotificationEmail, model.ActivationUrl);
+            await _productService.Create(CallingContext.UserId, model.Name, model.SiteUrl, model.NotificationEmail, model.ActivationUrl);
             return RedirectToAction("Index");
         }
 
@@ -56,8 +55,7 @@ namespace Authority.Web.Controllers
         [Route("edit/{id}")]
         public async Task<ActionResult> Details(Guid id)
         {
-            Guid userId = HttpContext.User.GetUserId();
-            ProductDto product = await _productService.GetProductDetails(userId, id);
+            ProductDto product = await _productService.GetProductDetails(CallingContext.UserId, id);
 
             return View(product);
         }
@@ -66,8 +64,7 @@ namespace Authority.Web.Controllers
         [Route("publish/{id}")]
         public async Task<bool> TogglePublish(Guid id)
         {
-            Guid userId = HttpContext.User.GetUserId();
-            bool publishState = await _productService.ToggleProductPublish(userId, id);
+            bool publishState = await _productService.ToggleProductPublish(CallingContext.UserId, id);
             return publishState;
         }
 
@@ -75,8 +72,7 @@ namespace Authority.Web.Controllers
         [Route("apikey/{productId}")]
         public async Task<Guid> GetApiKeyOfProduct(Guid productId)
         {
-            Guid userId = HttpContext.User.GetUserId();
-            Guid apiKey = await _productService.GetApiKeyForProduct(userId, productId);
+            Guid apiKey = await _productService.GetApiKeyForProduct(CallingContext.UserId, productId);
 
             return apiKey;
         }
@@ -85,8 +81,7 @@ namespace Authority.Web.Controllers
         [Route("{productId}/policies")]
         public async Task CreatePolicy(Guid productId, NewPolicyModel model)
         {
-            Guid userId = HttpContext.User.GetUserId();
-            await _policyService.CreatePolicy(userId, productId, model.Name);
+            await _policyService.CreatePolicy(CallingContext.UserId, productId, model.Name);
         }
     }
 }
