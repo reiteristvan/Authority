@@ -5,6 +5,9 @@ namespace IdentityServer.Web.Models.Account
 {
     public sealed class LoginResponse
     {
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
         [JsonProperty("email")]
         public string Email { get; set; }
 
