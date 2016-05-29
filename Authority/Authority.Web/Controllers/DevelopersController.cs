@@ -11,11 +11,12 @@ using Authority.Services.Dto;
 using Authority.Web.Infrastructure.Filters;
 using Authority.Web.Infrastructure.Identity;
 using Authority.Web.Models.Developers;
+using IdentityServer.Web.Infrastructure;
 
 namespace Authority.Web.Controllers
 {
     [RoutePrefix("developers")]
-    public class DevelopersController : Controller
+    public class DevelopersController : AuthorityController
     {
         private const string ActivationSuccessQuerystringParameter = "activated";
 
@@ -34,8 +35,7 @@ namespace Authority.Web.Controllers
         [Route("index")]
         public async Task<ActionResult> Index()
         {
-            Guid userId = HttpContext.User.GetUserId();
-            IEnumerable<ProductSimpleDto> products = await _productService.GetProductsOfUser(userId);
+            IEnumerable<ProductSimpleDto> products = await _productService.GetProductsOfUser(CallingContext.UserId);
 
             return View(products);
         }
