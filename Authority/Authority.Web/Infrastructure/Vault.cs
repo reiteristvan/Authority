@@ -16,14 +16,14 @@ namespace IdentityServer.Web.Infrastructure
         {
             if (!ConfigurationManager.AppSettings.AllKeys.Contains(VaultFilePathKey))
             {
-                throw new InvalidOperationException("Vault file path not set");
+                return;
             }
 
             string vaultFilePath = ConfigurationManager.AppSettings["VaultFilePath"];
 
             if (string.IsNullOrEmpty(vaultFilePath) || !File.Exists(vaultFilePath))
             {
-                throw new InvalidOperationException("Invalid path");
+                return;
             }
 
             foreach (string line in File.ReadAllLines(vaultFilePath))
@@ -35,6 +35,11 @@ namespace IdentityServer.Web.Infrastructure
 
         public static string Keys(string key)
         {
+            if (!_values.Any())
+            {
+                return ConfigurationManager.AppSettings[key];
+            }
+
             if (!_values.ContainsKey(key))
             {
                 throw new ArgumentException("Invalid key");
