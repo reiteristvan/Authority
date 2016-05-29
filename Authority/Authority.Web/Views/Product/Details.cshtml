@@ -41,19 +41,30 @@
             url: requestUrl,
             data: model,
             dataType: 'json'
-        }).done(function(response) {
-            console.log('OK');
+        }).done(function() {
+            window.location.reload();
         });
     };
+
+    function deletePolicy(policyId) {
+        
+    }
 </script>
 
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<style>
+    .policyList li {
+        display: inline-block;
+        padding: 1px;
+    }
+</style>
 
-<h2>@Model.Name</h2>
+<div class="container-fluid">
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
-<div>
+    <h2>@Model.Name</h2>
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -80,7 +91,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ActivationUrl) 
+            @Html.DisplayNameFor(model => model.ActivationUrl)
         </dt>
 
         <dd>
@@ -106,22 +117,19 @@
         <button class="btn btn-default" onclick="createPolicy();">Create</button>
     </div>
 
-    <div>
-        @foreach (PolicyDto policy in Model.Policies)
-        {
-            <h4>@policy.Name</h4>
-            <h6>Claims:</h6>
-
-            foreach (ClaimDto claim in policy.Claims)
+    <div class="container-fluid policyList">
+        <ul>
+            @foreach (PolicyDto policy in Model.Policies)
             {
-                <h6>@claim.Issuer</h6>
-                <h6>@claim.Type</h6>
-                <h6>@claim.Value</h6>
-                <br/>
+                <li>
+                    <div class="container-fluid">
+                        @policy.Name<br />
+                        <button class="btn btn-danger" onclick="deletePolicy('@policy.Id');">Delete</button><br />
+                        <button class="btn btn-success">Edit</button><br />
+                    </div>
+                </li>
             }
-
-            <br/>
-        }
+        </ul>
     </div>
 
     <hr/>
