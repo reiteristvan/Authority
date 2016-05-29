@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Web.Hosting;
 using Authority.EmailService;
+using IdentityServer.Web.Infrastructure;
 
 namespace Authority.Web.Infrastructure
 {
@@ -12,6 +13,16 @@ namespace Authority.Web.Infrastructure
             {
                 return HostingEnvironment.MapPath(ConfigurationManager.AppSettings["EmailTemplatePath"]);
             } 
+        }
+
+        public string SendGridUsername
+        {
+            get { return Vault.Keys("SendGridUsername"); }
+        }
+
+        public string SendGridPassword
+        {
+            get { return Vault.Keys("SendGridPassword"); }
         }
     }
 }

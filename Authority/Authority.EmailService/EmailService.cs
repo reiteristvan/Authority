@@ -45,8 +45,8 @@ namespace Authority.EmailService
             message.Html = body;
 
             Web credentials = new Web(new NetworkCredential(
-                ConfigurationManager.AppSettings["SendGridUsername"],
-                ConfigurationManager.AppSettings["SendGridPassword"]));
+                _emailSettingsProvider.SendGridUsername,
+                _emailSettingsProvider.SendGridPassword));
 
             await credentials.DeliverAsync(message);
         }

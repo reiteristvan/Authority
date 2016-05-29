@@ -10,6 +10,7 @@ using Authority.Services;
 using Authority.Web.Infrastructure;
 using Authority.Web.Infrastructure.Filters;
 using Authority.Web.Infrastructure.Identity;
+using IdentityServer.Web.Infrastructure;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Mvc;
 using Newtonsoft.Json;
@@ -32,6 +33,8 @@ namespace Authority.Web
             FilterProviders.Providers.Add(new UnityFilterAttributeFilterProvider(container));
 
             GlobalFilters.Filters.Add(new ErrorHandler(container.Resolve<IErrorService>()));
+
+            Vault.Init();
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
