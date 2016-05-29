@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using Authority.Services;
 using Authority.Services.Dto;
 using Authority.Web.Infrastructure.Filters;
-using Authority.Web.Infrastructure.Identity;
 using Authority.Web.Models.Policies;
 using Authority.Web.Models.Products;
 using IdentityServer.Web.Infrastructure;
@@ -47,7 +46,13 @@ namespace Authority.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(NewProductModel model)
         {
-            await _productService.Create(CallingContext.UserId, model.Name, model.SiteUrl, model.NotificationEmail, model.ActivationUrl);
+            await _productService.Create(
+                CallingContext.UserId, 
+                model.Name, 
+                model.SiteUrl, 
+                model.NotificationEmail, 
+                model.ActivationUrl);
+
             return RedirectToAction("Index");
         }
 
