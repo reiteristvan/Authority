@@ -15,6 +15,12 @@ namespace Authority.EntityFramework
     {
         private DbContextTransaction _transaction;
 
+        public AuthorityContext(string connection)
+            : base(connection)
+        {
+            
+        }
+
         public AuthorityContext()
             : base("AuthorityConnection")
         {
