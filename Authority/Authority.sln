@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Web", "Authority.Web\Authority.Web.csproj", "{A02F4439-1F33-4FBD-9DD3-6FE2F7A2339F}"
 EndProject
@@ -21,40 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Operations", "Aut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Benchmark", "Authority.Benchmark\Authority.Benchmark.csproj", "{1CE5B9E6-A362-4945-A89F-4FADA47F2D5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authority.Library", "Authority.Library\Authority.Library.csproj", "{08B5E522-31EE-41F4-B109-339031943470}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 10
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://reiteristvan.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Authority.DomainModel\\Authority.DomainModel.csproj
-		SccProjectName1 = Authority.DomainModel
-		SccLocalPath1 = Authority.DomainModel
-		SccProjectUniqueName2 = Authority.EmailService\\Authority.EmailService.csproj
-		SccProjectName2 = Authority.EmailService
-		SccLocalPath2 = Authority.EmailService
-		SccProjectUniqueName3 = Authority.EntityFramework\\Authority.EntityFramework.csproj
-		SccProjectName3 = Authority.EntityFramework
-		SccLocalPath3 = Authority.EntityFramework
-		SccProjectUniqueName4 = Authority.IntegrationTests\\Authority.IntegrationTests.csproj
-		SccProjectName4 = Authority.IntegrationTests
-		SccLocalPath4 = Authority.IntegrationTests
-		SccProjectUniqueName5 = Authority.Services\\Authority.Services.csproj
-		SccProjectName5 = Authority.Services
-		SccLocalPath5 = Authority.Services
-		SccProjectUniqueName6 = Authority.Tests\\Authority.Tests.csproj
-		SccProjectName6 = Authority.Tests
-		SccLocalPath6 = Authority.Tests
-		SccProjectUniqueName7 = Authority.Web\\Authority.Web.csproj
-		SccProjectName7 = Authority.Web
-		SccLocalPath7 = Authority.Web
-		SccProjectUniqueName8 = Authority.Operations\\Authority.Operations.csproj
-		SccProjectName8 = Authority.Operations
-		SccLocalPath8 = Authority.Operations
-		SccProjectUniqueName9 = Authority.Benchmark\\Authority.Benchmark.csproj
-		SccProjectName9 = Authority.Benchmark
-		SccLocalPath9 = Authority.Benchmark
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -96,6 +65,10 @@ Global
 		{1CE5B9E6-A362-4945-A89F-4FADA47F2D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CE5B9E6-A362-4945-A89F-4FADA47F2D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CE5B9E6-A362-4945-A89F-4FADA47F2D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08B5E522-31EE-41F4-B109-339031943470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08B5E522-31EE-41F4-B109-339031943470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08B5E522-31EE-41F4-B109-339031943470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08B5E522-31EE-41F4-B109-339031943470}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
