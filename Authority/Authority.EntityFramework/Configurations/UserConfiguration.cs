@@ -7,7 +7,7 @@ namespace Authority.EntityFramework.Configurations
     {
         public UserConfiguration()
         {
-            ToTable("Users");
+            ToTable("Authority.Users");
 
             HasKey(e => new { e.ProductId, e.Email });
 

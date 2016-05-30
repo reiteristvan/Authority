@@ -7,7 +7,7 @@ namespace Authority.EntityFramework.Configurations
     {
         public PolicyConfiguration()
         {
-            ToTable("Policies");
+            ToTable("Authority.Policies");
 
             HasKey(e => e.Id);
 

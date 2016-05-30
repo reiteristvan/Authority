@@ -7,7 +7,7 @@ namespace Authority.EntityFramework.Configurations
     {
         public ClientApplicationConfiguration()
         {
-            ToTable("ClientApplications");
+            ToTable("Authority.ClientApplications");
 
             HasKey(e => e.Id);
 

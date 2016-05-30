@@ -7,7 +7,7 @@ namespace Authority.EntityFramework.Configurations
     {
         public DeveloperConfiguration()
         {
-            ToTable("Developers");
+            ToTable("Authority.Developers");
 
             HasKey(e => e.Id);
 

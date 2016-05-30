@@ -7,7 +7,7 @@ namespace Authority.EntityFramework.Configurations
     {
         public ErrorConfiguration()
         {
-            ToTable("Errors");
+            ToTable("Authority.Errors");
 
             HasKey(e => e.Id);
 

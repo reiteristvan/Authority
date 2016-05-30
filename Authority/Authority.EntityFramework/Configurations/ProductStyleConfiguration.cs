@@ -7,7 +7,7 @@ namespace IdentityServer.EntityFramework.Configurations
     {
         public ProductStyleConfiguration()
         {
-            ToTable("ProductStyles");
+            ToTable("Authority.ProductStyles");
 
             HasKey(e => e.Id);
 

@@ -7,7 +7,7 @@ namespace Authority.EntityFramework.Configurations
     {
         public ProductConfiguration()
         {
-            ToTable("Products");
+            ToTable("Authority.Products");
 
             HasKey(e => e.Id);
 
